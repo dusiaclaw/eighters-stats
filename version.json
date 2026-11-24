@@ -1,11 +1,10 @@
 {
-  "version": "3.0",
+  "version": "3.1",
   "date": "2026-11-24",
   "notes": [
-    "All seasons on EasyScore: 2011–2026 (16 seasons).",
-    "New menu: sidebar on the computer, tab bar at the bottom on the phone.",
-    "New Home page with the club history: win % by season, best season, all-time record and milestones.",
-    "New Hall of Fame with the MVP and rookie of the year for each season.",
-    "New app icon: the 8-ball baseball."
+    "New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.",
+    "Home shows the all-time leaders instead of the record tables.",
+    "Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.",
+    "Full names for 25 more players from the 2011–2013 line-ups."
   ]
 }

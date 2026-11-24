@@ -325,7 +325,7 @@ header.top .rng{color:var(--pale);font-size:13px}
 header.top .rng select,header.top .ysel select{background:var(--navy2);color:#fff;border-color:#2A4A85}
 header.top .ynow{color:#CAC294}
 header.top .theme,header.top .ver{background:transparent;color:#DCE3F0;border-color:#2A4A85}
-body.mode-home header.top .sbox,body.mode-hall header.top .sbox{display:none}
+body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leaders header.top .sbox{display:none}
 @media(min-width:900px){
  body{padding-left:248px}
  header.top{position:fixed;top:0;left:0;bottom:0;width:248px;display:flex;flex-direction:column;gap:18px;padding:18px 14px;overflow-y:auto}
@@ -355,7 +355,7 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox{display:none}
  header.top .slab{display:none}
  header.top .yrow{display:flex}
  header.top .ysel{display:block}
- header.top .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--navy);padding:6px 2px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.25)}
+ header.top .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(7,1fr);gap:0;background:var(--navy);padding:6px 2px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.25)}
  header.top .tabs button{flex-direction:column;justify-content:center;gap:3px;padding:4px 0;font-size:10px;min-height:52px;color:#9FB0CF;text-align:center}
  header.top .tabs button[aria-selected=true]{background:none;box-shadow:none;color:#CAC294}
  header.top .tabs .lgt{display:none}header.top .tabs .sht{display:inline}
@@ -383,6 +383,30 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox{display:none}
 .hstat b{display:block;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:44px;line-height:1.05;color:var(--head)}
 .hstat span{font-size:14px;color:var(--mut)}
 .htwo{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px}
+.ltabs{display:flex;gap:8px;margin:4px 0 8px}
+.lsec{margin:22px 0 10px;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:26px;color:var(--head);letter-spacing:.3px}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.lcard{border:1px solid var(--line);background:var(--card);padding:12px 14px}
+.lcard h4{margin:0 0 8px;font-size:14px;font-weight:800;color:var(--goldtxt);display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.lcard h4 small{font-size:11px;font-weight:600;color:var(--mut)}
+.lcard table{width:100%;border-collapse:collapse;font-size:14px}
+.lcard td{padding:5px 0;border-top:1px solid var(--line)}
+.lcard tr:first-child td{border-top:0}
+.lcard td.rk{width:22px;color:var(--mut);font-weight:800}
+.lcard td.yr{width:44px;color:var(--mut);font-size:12px;font-weight:700}
+.lcard td.v{text-align:right;font-family:Anton,Impact,sans-serif;font-size:17px;color:var(--head);white-space:nowrap}
+.lcard a{color:var(--head);font-weight:700;text-decoration:none}.lcard a:hover{text-decoration:underline}
+.lcard tr:first-child a,.lcard tr:first-child td.v{color:var(--goldtxt)}
+.lcard img{height:14px;vertical-align:-2px;margin-left:4px}
+.rgrid2{display:grid;grid-template-columns:1fr;gap:6px 28px}
+@media(min-width:1150px){.rgrid2{grid-template-columns:1fr 1fr}}
+.rh{margin:14px 0 6px;font-size:13px;font-weight:800;color:var(--head)}
+.rec{width:100%;border-collapse:collapse;font-size:14px}
+.rec th{text-align:left;font-weight:600;color:var(--mut);padding:6px 8px 6px 0;border-top:1px solid var(--line);width:44%}
+.rec td{padding:6px 0;border-top:1px solid var(--line);vertical-align:top}
+.rec td.v{font-family:Anton,Impact,sans-serif;font-size:18px;color:var(--head);padding-right:10px;white-space:nowrap;width:1%}
+.rec a{color:var(--head);font-weight:700}
+.rec small{color:var(--mut);font-weight:700;margin-left:2px}
 .ms{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
 .ms li{display:grid;grid-template-columns:78px 1fr;gap:10px;font-size:15px;line-height:1.4}
 .ms li b{color:var(--goldtxt);font-weight:800}
@@ -414,7 +438,7 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox{display:none}
 <header class="top" id="top">
 <a class="brand" href="#home" title="Home"><i class="logo8" aria-hidden="true"></i><span class="bt">Eighters<br>stats</span></a>
 <span class="ptitle" id="ptitle">Home</span>
-<nav class="tabs" role="tablist" aria-label="Pages"><button type="button" role="tab" data-mode="home" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg><span class="lgt">Home</span><span class="sht">Home</span></button><button type="button" role="tab" data-mode="seasons" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="lgt">Season compare</span><span class="sht">Seasons</span></button><button type="button" role="tab" data-mode="team" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 9v6M12 9v6M16 9v6"/></svg><span class="lgt">Team</span><span class="sht">Team</span></button><button type="button" role="tab" data-mode="players" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/></svg><span class="lgt">Players</span><span class="sht">Players</span></button><button type="button" role="tab" data-mode="roster" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="lgt">Roster</span><span class="sht">Roster</span></button><button type="button" role="tab" data-mode="hall" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><span class="lgt">Hall of Fame</span><span class="sht">Fame</span></button></nav>
+<nav class="tabs" role="tablist" aria-label="Pages"><button type="button" role="tab" data-mode="home" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg><span class="lgt">Home</span><span class="sht">Home</span></button><button type="button" role="tab" data-mode="seasons" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="lgt">Season compare</span><span class="sht">Seasons</span></button><button type="button" role="tab" data-mode="team" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 9v6M12 9v6M16 9v6"/></svg><span class="lgt">Team</span><span class="sht">Team</span></button><button type="button" role="tab" data-mode="players" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/></svg><span class="lgt">Players</span><span class="sht">Players</span></button><button type="button" role="tab" data-mode="roster" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="lgt">Roster</span><span class="sht">Roster</span></button><button type="button" role="tab" data-mode="leaders" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 21V11h4v10M14 21V5h4v16"/></svg><span class="lgt">All-time leaders</span><span class="sht">Leaders</span></button><button type="button" role="tab" data-mode="hall" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><span class="lgt">Hall of Fame</span><span class="sht">Fame</span></button></nav>
 <div class="sbox"><span class="slab">Season</span><div class="yrow"><div class="yrs" id="years" role="group" aria-label="Season"></div>
 <div class="yctl"><button type="button" class="pill" id="combine" aria-pressed="false" title="Click several seasons to add them up">Combine seasons</button>
 <label class="rng">From <select id="yFrom" aria-label="From season"></select></label><label class="rng">to <select id="yTo" aria-label="To season"></select></label>
@@ -429,8 +453,17 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox{display:none}
 <div class="hhero"><i class="logo8 big" aria-hidden="true"></i><div><h1 class="cond">Zürich Eighters</h1><p id="hSub"></p></div></div>
 <div class="hcard"><h2 class="hh">Win % by season</h2><p class="sub sm">Each bar is one season. Pick a bar to open that season on the Team page.</p><div class="hbars" id="hBars"></div></div>
 <div class="hstats" id="hStats"></div>
-<div class="htwo"><div class="hcard"><h2 class="hh">Milestones</h2><ul class="ms" id="hMs"></ul></div>
-<div class="hcard"><h2 class="hh">Hall of Fame</h2><div id="hFame"></div><button type="button" class="hlink" data-mode="hall">All MVPs and rookies of the year →</button></div></div>
+<div class="hcard"><h2 class="hh">Hall of Fame</h2><div id="hFame"></div><button type="button" class="hlink" data-mode="hall">All MVPs and rookies of the year →</button></div><div class="hcard"><h2 class="hh">All-time leaders</h2><div id="hRec"></div><button type="button" class="hlink" data-mode="leaders">All career and single-season leaders →</button></div>
+
+</div></section></div>
+<div id="v-leaders" hidden>
+<section class="s pad"><div class="wrap">
+<h2 class="sec cond">All-time leaders</h2>
+<p class="sub">The top 5 Eighters in each category, for a whole career and for a single season, from every season on EasyScore (2011–2026). Pick a name to open the player page.</p>
+<div class="ltabs" role="group" aria-label="Show"><button type="button" class="pill" data-lt="bat" aria-pressed="true">Batting</button><button type="button" class="pill" data-lt="pit" aria-pressed="false">Pitching</button></div>
+<h3 class="lsec">Career leaders</h3><div class="lgrid" id="lCar"></div>
+<h3 class="lsec">Single-season leaders</h3><div class="lgrid" id="lSea"></div>
+<p class="sub sm" id="lNote"></p>
 </div></section></div>
 <div id="v-hall" hidden>
 <section class="s pad"><div class="wrap">
@@ -561,8 +594,8 @@ const M=__DATA__;
 {
 const GC=id=>`https://www.easyscore.com/live/boxscore/${id}`;
 const LGID={2011:84,2012:84,2013:84,2014:84,2015:84,2016:84,2017:84,2018:84,2019:84,2020:84,2021:83,2022:84,2023:84,2024:9947,2025:10028,2026:10143};
-const APP_VERSION='3.0';const VERSION='V'+APP_VERSION;
-/*CHANGELOG*/const CHANGELOG=[{"v": "3.0", "date": "2026-11-24", "notes": ["All seasons on EasyScore: 2011–2026 (16 seasons).", "New menu: sidebar on the computer, tab bar at the bottom on the phone.", "New Home page with the club history: win % by season, best season, all-time record and milestones.", "New Hall of Fame with the MVP and rookie of the year for each season.", "New app icon: the 8-ball baseball."]}, {"v": "2.7", "date": "2026-11-24", "notes": ["Shorter footer: license and data sources."]}, {"v": "2.6", "date": "2026-11-24", "notes": ["Splash screen with the 8-ball when the app opens.", "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.", "Season compare has its own page; pick a season there to open it on the Team page."]}, {"v": "2.5", "date": "2026-11-24", "notes": ["Renamed to Eighters-stats, with an 8-ball app icon.", "Installable app: add it to your phone or computer, and it updates itself when a new version is published.", "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.", "Published on GitHub: github.com/dusiaclaw/eighters-stats."]}, {"v": "2.4", "date": "2026-11-24", "notes": ["Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.", "Player page shows an 'Innings by position' strip under the name."]}, {"v": "2.3", "date": "2026-11-24", "notes": ["All roster cards have the same size.", "9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings."]}, {"v": "2.2", "date": "2026-11-24", "notes": ["Z-License now sorts like any other player once you click a column heading.", "Version shown as V2.2 instead of v22."]}, {"v": "2.1", "date": "2026-11-24", "notes": ["Button to open each player's EasyScore page for the season shown."]}, {"v": "2.0", "date": "2026-11-24", "notes": ["Games link to the EasyScore box score with the win-probability chart.", "Line scores follow scoreboard order: away team on top; Eighters runs always in gold.", "Win/loss squares hidden on narrow screens."]}, {"v": "1.9", "date": "2026-11-24", "notes": ["Click a 2026 game to open it on EasyScore."]}, {"v": "1.8", "date": "2026-11-24", "notes": ["Version number in a bubble next to the theme switch.", "Shorter footer with sources and creation date."]}, {"v": "1.7", "date": "2026-11-24", "notes": ["Players tab always opens on #8 Z-License.", "Thierry Schnieper marked as a Raven."]}, {"v": "1.6", "date": "2026-11-24", "notes": ["Win % column and sortable Seasons compared table.", "Green wins, red losses; only the picked seasons are listed when combining."]}, {"v": "1.5", "date": "2026-11-24", "notes": ["Seasons 2016–2019 added.", "Combine seasons: From/to range or pick any years to add them up.", "Hover hints on every table column heading."]}, {"v": "1.4", "date": "2026-11-24", "notes": ["First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers."]}];/*END*/
+const APP_VERSION='3.1';const VERSION='V'+APP_VERSION;
+/*CHANGELOG*/const CHANGELOG=[{"v": "3.1", "date": "2026-11-24", "notes": ["New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.", "Home shows the all-time leaders instead of the record tables.", "Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.", "Full names for 25 more players from the 2011–2013 line-ups."]}, {"v": "3.0", "date": "2026-11-24", "notes": ["All seasons on EasyScore: 2011–2026 (16 seasons).", "New menu: sidebar on the computer, tab bar at the bottom on the phone.", "New Home page with the club history: win % by season, best season, all-time record and milestones.", "New Hall of Fame with the MVP and rookie of the year for each season.", "New app icon: the 8-ball baseball."]}, {"v": "2.7", "date": "2026-11-24", "notes": ["Shorter footer: license and data sources."]}, {"v": "2.6", "date": "2026-11-24", "notes": ["Splash screen with the 8-ball when the app opens.", "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.", "Season compare has its own page; pick a season there to open it on the Team page."]}, {"v": "2.5", "date": "2026-11-24", "notes": ["Renamed to Eighters-stats, with an 8-ball app icon.", "Installable app: add it to your phone or computer, and it updates itself when a new version is published.", "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.", "Published on GitHub: github.com/dusiaclaw/eighters-stats."]}, {"v": "2.4", "date": "2026-11-24", "notes": ["Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.", "Player page shows an 'Innings by position' strip under the name."]}, {"v": "2.3", "date": "2026-11-24", "notes": ["All roster cards have the same size.", "9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings."]}, {"v": "2.2", "date": "2026-11-24", "notes": ["Z-License now sorts like any other player once you click a column heading.", "Version shown as V2.2 instead of v22."]}, {"v": "2.1", "date": "2026-11-24", "notes": ["Button to open each player's EasyScore page for the season shown."]}, {"v": "2.0", "date": "2026-11-24", "notes": ["Games link to the EasyScore box score with the win-probability chart.", "Line scores follow scoreboard order: away team on top; Eighters runs always in gold.", "Win/loss squares hidden on narrow screens."]}, {"v": "1.9", "date": "2026-11-24", "notes": ["Click a 2026 game to open it on EasyScore."]}, {"v": "1.8", "date": "2026-11-24", "notes": ["Version number in a bubble next to the theme switch.", "Shorter footer with sources and creation date."]}, {"v": "1.7", "date": "2026-11-24", "notes": ["Players tab always opens on #8 Z-License.", "Thierry Schnieper marked as a Raven."]}, {"v": "1.6", "date": "2026-11-24", "notes": ["Win % column and sortable Seasons compared table.", "Green wins, red losses; only the picked seasons are listed when combining."]}, {"v": "1.5", "date": "2026-11-24", "notes": ["Seasons 2016–2019 added.", "Combine seasons: From/to range or pick any years to add them up.", "Hover hints on every table column heading."]}, {"v": "1.4", "date": "2026-11-24", "notes": ["First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers."]}];/*END*/
 const ME=32163,PEOPLE=M.people,YEARS=Object.keys(M.years).map(Number).sort();
 const GUEST={3678:'lions',47408:'lions',4116:'lions',3955:'lions',47410:'lions',47407:'lions',4146:'ravens',4148:'ravens',37510:'ravens'};
 const GUESTNAME={4146:'Cedric Thommen',4148:'Nolan Thommen'};
@@ -667,7 +700,7 @@ function renderHeader(){
  $('ynow').textContent=isAgg()?`${pickYrs.length} seasons added up: ${yLabel()}`:'';
  $('guests').setAttribute('aria-pressed',showGuests);$('guests').querySelector('.st').textContent=showGuests?'On':'Off';$('guests').setAttribute('aria-label',(showGuests?'Exclude':'Include')+' Lions and Ravens players');
  const dk=document.documentElement.dataset.ui==='dark';$('theme').setAttribute('aria-pressed',dk);$('theme').querySelector('span').textContent=dk?'Light':'Dark';$('theme').setAttribute('aria-label',dk?'Switch to light theme':'Switch to dark theme');
- ['home','hall','seasons','team','players','roster'].forEach(m=>document.body.classList.toggle('mode-'+m,mode===m));$('v-home').hidden=mode!=='home';$('v-hall').hidden=mode!=='hall';$('ptitle').textContent={home:'Eighters-stats',hall:'Hall of Fame',seasons:'Season compare',team:'Team',players:'Players',roster:'Roster'}[mode];$('v-seasons').hidden=mode!=='seasons';$('v-team').hidden=mode!=='team';$('v-players').hidden=mode!=='players';$('v-roster').hidden=mode!=='roster';
+ ['home','hall','leaders','seasons','team','players','roster'].forEach(m=>document.body.classList.toggle('mode-'+m,mode===m));$('v-home').hidden=mode!=='home';$('v-leaders').hidden=mode!=='leaders';$('v-hall').hidden=mode!=='hall';$('ptitle').textContent={home:'Eighters-stats',hall:'Hall of Fame',leaders:'All-time leaders',seasons:'Season compare',team:'Team',players:'Players',roster:'Roster'}[mode];$('v-seasons').hidden=mode!=='seasons';$('v-team').hidden=mode!=='team';$('v-players').hidden=mode!=='players';$('v-roster').hidden=mode!=='roster';
 }
 /* ---------- team view ---------- */
 const fmtD=d=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});
@@ -838,9 +871,11 @@ function renderRoster(){
 const AWARDS={
  2026:{mvp:{id:46333},roty:{name:'Marcos Ramirez',no:'12'}},
  2025:{mvp:{id:15789},roty:{id:45069}},
- 2023:{mvp:{id:3882},roty:{id:42253}}
+ 2024:{mvp:{id:3882},roty:{id:42253}},
+ 2023:{mvp:{id:3882}},
+ 2020:{roty:{id:32161}}
 };
-const MILESTONES=[[2011,'First Eighters season on EasyScore, in the 1. Liga'],[2021,'One season in the NLB, then back to the 1. Liga'],[2025,'Joint 1. Liga roster with the Lions (EIG/LIO2)'],[2026,'First season with game-by-game line scores and box scores']];
+const MILESTONES_UNUSED=[[2011,'First Eighters season on EasyScore, in the 1. Liga'],[2021,'One season in the NLB, then back to the 1. Liga'],[2025,'Joint 1. Liga roster with the Lions (EIG/LIO2)'],[2026,'First season with game-by-game line scores and box scores']];
 const awName=a=>a.id&&PEOPLE[a.id]?PEOPLE[a.id].n:a.name||'';
 const awNo=a=>a.id&&PEOPLE[a.id]?jn(PEOPLE[a.id]):a.no||'';
 function awLine(a,y){const e=a.id&&M.years[y]?.p[a.id];if(!e)return a.id?`No EasyScore stats for ${y}`:'No EasyScore stats yet';const b=e.bat,pt=e.pit;
@@ -859,21 +894,32 @@ function renderHome(){const R=YEARS.map(seasonRec),W=sum(R,r=>r.W),L=sum(R,r=>r.
  $('hBars').innerHTML=R.map(r=>`<button type="button" data-ty="${r.y}" title="${r.y}: ${r.W}–${r.L}${r.st?'':' (pitcher decisions)'}" aria-label="${r.y}: ${r.W} wins, ${r.L} losses, open season"><em>${r===best?'BEST':''}</em><span class="bv">${r3(r.pct)}</span><i class="${r===best?'best':r===last?'now':''}" style="height:${Math.max(2,r.pct*100)}%"></i><small>'${String(r.y).slice(2)}</small></button>`).join('');
  $('hStats').innerHTML=[['Best season',best.y,`${best.W}–${best.L} · ${r3(best.pct)}`],['This season',last.y,`${last.W}–${last.L}${TM?.st?'':''}`],['All-time',`${W}–${L}`,`${r3(W/(W+L))} · ${YEARS.length} seasons`]].map(([a,b,c])=>`<div class="hstat"><small>${a}</small><b>${b}</b><span>${c}</span></div>`).join('');
  // records (Eighters only, no Z-License, guests included as they played for the Eighters)
- const rows=[];YEARS.forEach(y=>Object.entries(M.years[y].p).forEach(([id,e])=>{if(PEOPLE[id]?.ph)return;rows.push({y,id:+id,b:e.bat||{},p:e.pit||{}})}));
- const top=(f,flt=()=>true)=>rows.filter(flt).sort((a,b)=>(f(b)||0)-(f(a)||0))[0];
- const pn=id=>`<a href="#players-${yHash()}-${id}" data-pl="${id}">${esc(PEOPLE[id].n)}</a>`;
- const rec=[['Most hits in a season',top(r=>r.b.H),r=>`${int(r.b.H)} hits`],['Best batting average',top(r=>r.b.BA,r=>(r.b.PA||0)>=25),r=>`${r3(r.b.BA)} (min. 25 PA)`],['Most RBI in a season',top(r=>r.b.RBI),r=>`${int(r.b.RBI)} RBI`],['Most stolen bases',top(r=>r.b.SB),r=>`${int(r.b.SB)} steals`],['Most home runs',top(r=>r.b.HR),r=>`${int(r.b.HR)} home runs`],['Most strikeouts by a pitcher',top(r=>r.p.K),r=>`${int(r.p.K)} strikeouts`]];
- const car={};rows.forEach(r=>{const c=car[r.id]||(car[r.id]={id:r.id,ys:new Set(),H:0});c.ys.add(r.y);c.H+=r.b.H||0});
- const C=Object.values(car),most=Math.max(...C.map(c=>c.ys.size)),lng=C.filter(c=>c.ys.size===most),hk=C.sort((a,b)=>b.H-a.H)[0];
- const items=[...MILESTONES.map(([y,s])=>[y,esc(s)]),
-  ...rec.filter(x=>x[1]).map(([l,r,f])=>[r.y,`${l}: ${pn(r.id)}, ${f(r)}`]),
-  [`${YEARS[0]}–${YEARS[YEARS.length-1]}`,`Longest service: ${lng.map(c=>pn(c.id)).join(' and ')}, ${most} seasons${lng.length>1?' each':''}`],
-  ['All-time',`Most career hits: ${pn(hk.id)}, ${int(hk.H)}`]];
- items.sort((a,b)=>String(a[0]).localeCompare(String(b[0])));
- $('hMs').innerHTML=items.map(([y,s])=>`<li><b>${y}</b><span>${s}</span></li>`).join('');
+ const {C:CC}=allTime(),pk=(f)=>CC.filter(c=>f(c)>0).sort((a,b)=>f(b)-f(a))[0];
+ $('hRec').innerHTML='<table class="rec"><tbody>'+[['Career hits',c=>c.b.H,int],['Career RBI',c=>c.b.RBI,int],['Career stolen bases',c=>c.b.SB,int],['Career strikeouts (pitcher)',c=>c.p.K,int]].map(([l,f,fm])=>{const c=pk(f);return c?`<tr><th scope="row">${l}</th><td class="v">${fm(f(c))}</td><td><a href="#" data-pl="${c.id}">${esc(PEOPLE[c.id].n)}</a></td></tr>`:''}).join('')+'</tbody></table>';
  const ly=[...YEARS].reverse().find(y=>AWARDS[y]);const A=ly&&AWARDS[ly];
  $('hFame').innerHTML=A?`<p class="sub sm" style="margin:0">Latest awards, ${ly}</p><div class="fmini"><div><small>MVP</small>${A.mvp?esc((awNo(A.mvp)?'#'+awNo(A.mvp)+' ':'')+awName(A.mvp)):'–'}</div><div><small>ROTY</small>${A.roty?esc((awNo(A.roty)?'#'+awNo(A.roty)+' ':'')+awName(A.roty)):'–'}</div></div>`:'';
 }
+
+/* ---------- all-time leaders ---------- */
+let LT='bat';
+function allTime(){const rows=[];YEARS.forEach(y=>Object.entries(M.years[y].p).forEach(([id,e])=>{if(PEOPLE[id]?.ph||(!showGuests&&GUEST[id]))return;rows.push({y,id:+id,b:e.bat||{},p:e.pit||{}})}));
+ const car={};rows.forEach(r=>{const c=car[r.id]||(car[r.id]={id:r.id,ys:new Set(),b:{},p:{}});c.ys.add(r.y);for(const k of ['G','PA','AB','H','2B','3B','HR','R','RBI','BB','HBP','SF','SB'])c.b[k]=(c.b[k]||0)+(r.b[k]||0);for(const k of ['G','GS','W','L','K','Outs','SV','ER','HA','BBA'])c.p[k]=(c.p[k]||0)+(r.p[k]||0)});
+ const C=Object.values(car);C.forEach(c=>{c.n=c.ys.size;const b=c.b,p=c.p;b.BA=b.AB?b.H/b.AB:null;const den=b.AB+b.BB+b.HBP+b.SF;b.OBP=den?(b.H+b.BB+b.HBP)/den:null;p.ERA=p.Outs?p.ER*21/p.Outs:null;p.WHIP=p.Outs?(p.HA+p.BBA)*3/p.Outs:null});
+ return {rows,C}}
+const LCAT={bat:[['Batting average','BA',r3,{min:'PA',car:100,sea:25,lab:'PA'}],['Hits','H',int],['Home runs','HR',int],['RBI','RBI',int],['Runs','R',int],['Stolen bases','SB',int],['Doubles','2B',int],['Walks','BB',int],['On-base %','OBP',r3,{min:'PA',car:100,sea:25,lab:'PA'}],['Games','G',int]],
+ pit:[['Wins','W',int],['Strikeouts','K',int],['Innings pitched','Outs',ipOf],['ERA','ERA',r2,{min:'Outs',car:180,sea:63,lab:'IP',low:1}],['Saves','SV',int],['WHIP','WHIP',r2,{min:'Outs',car:180,sea:63,lab:'IP',low:1}],['Games started','GS',int],['Games pitched','G',int]]};
+function leaderCard(title,k,fm,o,list,isSea){const grp=LT==='bat'?'b':'p';
+ let L=list.filter(x=>{const v=x[grp][k];if(v==null||isNaN(v))return false;if(o&&(x[grp][o.min]||0)<(isSea?o.sea:o.car))return false;return o&&o.low?true:v>0});
+ L.sort((a,b)=>o&&o.low?a[grp][k]-b[grp][k]:b[grp][k]-a[grp][k]);
+ if(!L.length)return '';const cut=L[Math.min(4,L.length-1)][grp][k];L=L.filter((x,i)=>i<5||x[grp][k]===cut).slice(0,8);
+ let rk=0,prev=null;const rows=L.map((x,i)=>{const v=x[grp][k];if(v!==prev){rk=i+1;prev=v}return `<tr><td class="rk">${rk}</td><td><a href="#" data-pl="${x.id}">${esc(PEOPLE[x.id].n)}</a>${badge(PEOPLE[x.id])}</td>${isSea?`<td class="yr">${x.y}</td>`:''}<td class="v">${fm(v)}</td></tr>`}).join('');
+ const minTxt=o&&o.min?`<small>min. ${o.min==='Outs'?(isSea?o.sea:o.car)/3:(isSea?o.sea:o.car)} ${o.lab}</small>`:'';
+ return `<article class="lcard"><h4>${title}${minTxt}</h4><table><tbody>${rows}</tbody></table></article>`}
+function renderLeaders(){const {rows,C}=allTime();
+ document.querySelectorAll('[data-lt]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lt===LT));
+ $('lCar').innerHTML=LCAT[LT].map(([t,k,fm,o])=>leaderCard(t,k,fm,o,C,false)).join('');
+ $('lSea').innerHTML=LCAT[LT].filter(c=>c[1]!=='G'||LT==='bat').map(([t,k,fm,o])=>leaderCard(t,k,fm,o,rows,true)).join('');
+ $('lNote').textContent=`Z-License excluded${showGuests?'':', Lions & Ravens players hidden (see Settings)'}. Ties share a rank. Averages need a minimum of plate appearances or innings.`}
 /* ---------- column hints ---------- */
 const GL={Season:'Season (year)',League:'League the Eighters played in',W:'Wins','Win %':'Winning percentage: wins ÷ (wins + losses)','W–L':'Wins – losses',RS:'Runs scored by the Eighters',RA:'Runs allowed to opponents',AVG:'Batting average: hits ÷ at-bats',OBP:'On-base percentage: (hits + walks + hit by pitch) ÷ (at-bats + walks + hit by pitch + sacrifice flies)',SLG:'Slugging percentage: total bases ÷ at-bats',OPS:'On-base plus slugging: OBP + SLG',SB:'Stolen bases',ERA:'Earned run average: earned runs per 7 innings',WHIP:'Walks plus hits per inning pitched','BB issued':'Base on balls (walks) issued by Eighters pitchers',Players:'Players who appeared',Date:'Game date',Opponent:'Opponent (@ = away game)',Result:'W = win, L = loss',Player:'Player name','#':'Jersey number',G:'Games played',PA:'Plate appearances',AB:'At-bats',R:'Runs scored',H:'Hits','2B':'Doubles','3B':'Triples',HR:'Home runs',RBI:'Runs batted in',BB:'Base on balls (walks)',SO:'Strikeouts',HBP:'Hit by pitch',CS:'Caught stealing',GS:'Games started as pitcher',IP:'Innings pitched (.1 = one out, .2 = two outs)',BF:'Batters faced',ER:'Earned runs allowed',K:'Strikeouts by the pitcher',WP:'Wild pitches',L:'Losses',SV:'Saves','Opp AVG':'Opponents\' batting average against this pitcher',Pitches:'Pitches thrown',Inn:'Innings played in the field',TC:'Total chances: putouts + assists + errors',PO:'Putouts',A:'Assists',E:'Errors',DP:'Double plays',FPct:'Fielding percentage: (putouts + assists) ÷ total chances',PB:'Passed balls (catchers)','SB att':'Stolen base attempts against (catchers)'};
 const GLX={pit:{G:'Games pitched',H:'Hits allowed',R:'Runs allowed',BB:'Base on balls (walks) issued',HBP:'Batters hit by pitch'},fld:{G:'Games in the field',CS:'Runners caught stealing (catchers)'},ls:{R:'Runs',H:'Hits',E:'Errors'}};
@@ -886,9 +932,9 @@ document.addEventListener('focusin',e=>{const el=e.target.closest('[data-tip]');
 document.addEventListener('focusout',hideTip);addEventListener('scroll',hideTip,{passive:true});
 /* ---------- wiring ---------- */
 function renderAll(){D=dataFor(year);TM=teamOf(year);if(sel==null||(sel!==+PHID&&!D.some(p=>p.id===sel)))sel=defaultSel();
- renderHeader();if(mode==='home')renderHome();else if(mode==='hall')renderHall();else if(mode==='seasons')renderSeasons();else if(mode==='team')renderTeam();else if(mode==='roster')renderRoster();else{renderPlayer();renderCtrls();renderLB();renderTable()}applyTips()}
+ renderHeader();if(mode==='home')renderHome();else if(mode==='hall')renderHall();else if(mode==='leaders')renderLeaders();else if(mode==='seasons')renderSeasons();else if(mode==='team')renderTeam();else if(mode==='roster')renderRoster();else{renderPlayer();renderCtrls();renderLB();renderTable()}applyTips()}
 const yHash=()=>isAgg()?(pickYrs.length===YEARS.length?'all':pickYrs.join('x')):String(year);
-const hashOf=()=>mode==='home'||mode==='hall'?'#'+mode:`#${mode}-${yHash()}${mode==='players'?'-'+sel:''}`;
+const hashOf=()=>['home','hall','leaders'].includes(mode)?'#'+mode:`#${mode}-${yHash()}${mode==='players'?'-'+sel:''}`;
 function setYears(a){a=[...new Set(a.map(Number).filter(y=>YEARS.includes(y)))].sort((x,y)=>x-y);if(!a.length)return;pickYrs=a;year=a.length===1?a[0]:'all';minV=null}
 function yearClick(v){if(v==='all')setYears(YEARS);else{const y=+v;if(combine){const s=new Set(pickYrs);s.has(y)?s.delete(y):s.add(y);if(!s.size)return;setYears([...s])}else setYears([y])}go(null,null)}
 function go(m,y,id){if(m)mode=m;if(y!=null)setYears(y==='all'?YEARS:[+y]);if(id!=null)sel=id;try{history.replaceState(null,'',hashOf())}catch(e){}renderAll()}
@@ -899,6 +945,7 @@ document.addEventListener('click',e=>{
  const yr=e.target.closest('[data-year]');if(yr){yearClick(yr.dataset.year);if(!yr.closest('#years')&&!combine)scrollTo({top:0,behavior:'smooth'});return}
  const sh=e.target.closest('#ssn th[data-k]');if(sh){const k=sh.dataset.k;const lowGood=k==='era'||k==='bba'||k==='RA'||k==='y'||k==='lg';if(ssnK===k)ssnDir=-ssnDir;else{ssnK=k;ssnDir=lowGood?1:-1}renderSeasons();applyTips();return}
  const gr=e.target.closest('tr[data-gc]');if(gr&&!e.target.closest('a')){gr.querySelector('a.gclink')?.click();return}
+ const lt=e.target.closest('[data-lt]');if(lt){LT=lt.dataset.lt;renderLeaders();return}
  const tb=e.target.closest('[data-ty]');if(tb){go('team',tb.dataset.ty);scrollTo({top:0});return}
  const pl=e.target.closest('[data-pl]');if(pl){e.preventDefault();sel=+pl.dataset.pl;const ys=YEARS.filter(y=>M.years[y].p[sel]);if(ys.length)setYears([ys[ys.length-1]]);go('players',null,+pl.dataset.pl);scrollTo({top:0});return}
  const cb=e.target.closest('#combine');if(cb){combine=!combine;renderHeader();return}
@@ -923,7 +970,7 @@ $('pq').addEventListener('keydown',e=>{
  else if(e.key==='ArrowUp'){e.preventDefault();moveAct(-1)}
  else if(e.key==='Enter'){e.preventDefault();const o=[...$('plist').querySelectorAll('li[data-id]')];const t=o[act]||o[0];if(t){pickPlayer(+t.dataset.id);e.target.blur()}}
  else if(e.key==='Escape'){closeList();e.target.value=cur()?.n||''}});
-const fromHash=()=>{const[m,y,id]=location.hash.slice(1).split('-');if(m==='menu')mode='home';else if(['home','hall','seasons','team','players','roster'].includes(m))mode=m;else if(!m)mode='home';if(y==='all')setYears(YEARS);else if(y)setYears(y.split('x'));if(id&&PEOPLE[id])sel=+id;renderAll()};
+const fromHash=()=>{const[m,y,id]=location.hash.slice(1).split('-');if(m==='menu')mode='home';else if(['home','hall','leaders','seasons','team','players','roster'].includes(m))mode=m;else if(!m)mode='home';if(y==='all')setYears(YEARS);else if(y)setYears(y.split('x'));if(id&&PEOPLE[id])sel=+id;renderAll()};
 try{const s=localStorage.getItem('eig-ui');if(s==='dark'||s==='light')document.documentElement.dataset.ui=s}catch(e){}
 $('splashVer').textContent=VERSION;{const sp=$('splash'),hide=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),500)};sp.addEventListener('click',hide);setTimeout(hide,matchMedia('(prefers-reduced-motion: reduce)').matches?400:1500)}
 $('ver').textContent=VERSION;$('ver').title='Version '+VERSION+' – open settings';

@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1 (2026-11-24)
+- New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.
+- Home shows the all-time leaders instead of the record tables.
+- Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.
+- Full names for 25 more players from the 2011–2013 line-ups.
+
 ## v3.0 (2026-11-24)
 - All seasons on EasyScore: 2011–2026 (16 seasons).
 - New menu: sidebar on the computer, tab bar at the bottom on the phone.
