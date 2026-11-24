@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.2 (2026-11-24)
+- New version popup: when an update is ready, choose Update or see What’s new.
+- All-time leaders always count Eighters players only (no Lions or Ravens).
+- Single-season leaders: a player with the same record in several seasons is listed once with all the years.
+
 ## v3.1 (2026-11-24)
 - New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.
 - Home shows the all-time leaders instead of the record tables.

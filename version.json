@@ -1,10 +1,9 @@
 {
-  "version": "3.1",
+  "version": "3.2",
   "date": "2026-11-24",
   "notes": [
-    "New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.",
-    "Home shows the all-time leaders instead of the record tables.",
-    "Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.",
-    "Full names for 25 more players from the 2011–2013 line-ups."
+    "New version popup: when an update is ready, choose Update or see What’s new.",
+    "All-time leaders always count Eighters players only (no Lions or Ravens).",
+    "Single-season leaders: a player with the same record in several seasons is listed once with all the years."
   ]
 }
