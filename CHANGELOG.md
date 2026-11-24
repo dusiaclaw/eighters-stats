@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.3 (2026-11-24)
+- Every player now has a full name: 21 more names found in old EasyScore line-ups (2011–2023).
+- Single-season batting average and on-base % need 15 plate appearances instead of 25.
+- Season compare shows only the seasons you pick; one season shows one row.
+
 ## v3.2 (2026-11-24)
 - New version popup: when an update is ready, choose Update or see What’s new.
 - All-time leaders always count Eighters players only (no Lions or Ravens).
