@@ -1,9 +1,7 @@
 {
-  "version": "2.6",
+  "version": "2.7",
   "date": "2026-11-24",
   "notes": [
-    "Splash screen with the 8-ball when the app opens.",
-    "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.",
-    "Season compare has its own page; pick a season there to open it on the Team page."
+    "Shorter footer: license and data sources."
   ]
 }
