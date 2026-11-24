@@ -1,0 +1,10 @@
+{
+  "version": "2.5",
+  "date": "2026-11-24",
+  "notes": [
+    "Renamed to Eighters-stats, with an 8-ball app icon.",
+    "Installable app: add it to your phone or computer, and it updates itself when a new version is published.",
+    "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.",
+    "Published on GitHub: github.com/dusiaclaw/eighters-stats."
+  ]
+}

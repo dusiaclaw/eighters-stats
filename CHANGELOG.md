@@ -1,0 +1,51 @@
+# Changelog
+
+## v2.5 (2026-11-24)
+- Renamed to Eighters-stats, with an 8-ball app icon.
+- Installable app: add it to your phone or computer, and it updates itself when a new version is published.
+- New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.
+- Published on GitHub: github.com/dusiaclaw/eighters-stats.
+
+## v2.4 (2026-11-24)
+- Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.
+- Player page shows an 'Innings by position' strip under the name.
+
+## v2.3 (2026-11-24)
+- All roster cards have the same size.
+- 9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings.
+
+## v2.2 (2026-11-24)
+- Z-License now sorts like any other player once you click a column heading.
+- Version shown as V2.2 instead of v22.
+
+## v2.1 (2026-11-24)
+- Button to open each player's EasyScore page for the season shown.
+
+## v2.0 (2026-11-24)
+- Games link to the EasyScore box score with the win-probability chart.
+- Line scores follow scoreboard order: away team on top; Eighters runs always in gold.
+- Win/loss squares hidden on narrow screens.
+
+## v1.9 (2026-11-24)
+- Click a 2026 game to open it on EasyScore.
+
+## v1.8 (2026-11-24)
+- Version number in a bubble next to the theme switch.
+- Shorter footer with sources and creation date.
+
+## v1.7 (2026-11-24)
+- Players tab always opens on #8 Z-License.
+- Thierry Schnieper marked as a Raven.
+
+## v1.6 (2026-11-24)
+- Win % column and sortable Seasons compared table.
+- Green wins, red losses; only the picked seasons are listed when combining.
+
+## v1.5 (2026-11-24)
+- Seasons 2016–2019 added.
+- Combine seasons: From/to range or pick any years to add them up.
+- Hover hints on every table column heading.
+
+## v1.4 (2026-11-24)
+- First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers.
+

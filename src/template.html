@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-ui="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eighters-stats</title>
+<meta name="description" content="Season and player stats for the Zürich Eighters baseball club, 2016–2026">
+<meta name="theme-color" content="#051D49">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='b' cx='38%25' cy='32%25' r='70%25'%3E%3Cstop offset='0' stop-color='%234a4f5c'/%3E%3Cstop offset='.45' stop-color='%2316181f'/%3E%3Cstop offset='1' stop-color='%23000'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23b)'/%3E%3Ccircle cx='29' cy='27' r='14' fill='%23fbfaf4'/%3E%3Ctext x='29' y='27' text-anchor='middle' dominant-baseline='central' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='19' fill='%23111'%3E8%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,400..900&family=Big+Shoulders+Display:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+/* VOICE: the club's own stats room: proud, plain-spoken, built around the uniform
+   IDEA: team view is a stadium scoreboard; player view is the player's own game jersey
+   PICTURE: the navy KNoah jersey with each player's name and number; the gold-on-navy scoreboard
+   COLOUR and TYPE: Eighters navy #051D49, Vegas gold #C5B358, white; Archivo, Anton (jersey), Big Shoulders Display (scoreboard)
+   LAYOUT: one header (view, season, theme); light or dark page; scoreboards stay navy in both */
+:root{--navy:#051D49;--navy2:#0E2C66;--board:#02112E;--edge:#1B3A75;--gold:#C5B358;--gold2:#D9CB82;--pale:#C9D0DF;
+ --bg:#FFFFFF;--bg2:#F3F5F9;--text:#222222;--head:#051D49;--mut:#5B6478;--line:#E3E6EE;--card:#FFFFFF;--chip:#D5DAE5;--hi:#FBF8EA;--bar:#051D49;--track:#E9ECF2;--hover:#F6F7FA;--goldtxt:#6E6020;--sel:#051D49;--selt:#FFFFFF;color-scheme:light}
+html[data-ui=dark]{--bg:#051D49;--bg2:#0A2357;--text:#FFFFFF;--head:#FFFFFF;--mut:#C9D0DF;--line:#1B3A75;--card:#02112E;--chip:#1B3A75;--hi:#0E2C66;--bar:#8FA0C4;--track:#0E2C66;--hover:#0A2357;--goldtxt:#D9CB82;--sel:#C5B358;--selt:#051D49;color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Archivo,"Segoe UI",system-ui,sans-serif;overflow-x:clip}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto}
+.pad{padding-inline:max(5vw,16px)}
+.cond{font-weight:900;font-stretch:82%;letter-spacing:-.02em;text-transform:uppercase}
+h2.sec{margin:0 0 6px;font-size:clamp(30px,4vw,40px);line-height:1;color:var(--head)}
+.sub{margin:0 0 18px;color:var(--mut);max-width:68ch}
+section.s{padding-block:clamp(28px,4vw,48px)}
+/* header */
+.top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.ver{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:999px;border:2px solid var(--chip);background:var(--card);color:var(--mut);font-size:13px;font-weight:700;white-space:nowrap}
+.top .wrap{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px 18px;padding-block:10px}
+.brand{font-size:22px;color:var(--head);text-decoration:none;white-space:nowrap}
+.brand b{color:var(--gold)}
+.brand span{font-weight:600;font-stretch:100%;text-transform:none;font-size:15px;color:var(--mut);letter-spacing:0;margin-left:6px}
+.tabs{display:flex;gap:2px}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;min-height:44px;font-weight:800;color:var(--head);cursor:pointer}
+.tabs button[aria-selected=true]{border-bottom-color:var(--gold)}
+.yrow{grid-column:1/-1;order:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.yrs{display:flex;flex-wrap:wrap;gap:4px}
+.yctl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.pill{min-height:40px;padding:0 12px;border-radius:999px;border:2px dashed var(--chip);background:var(--card);color:var(--head);font-weight:700;font-size:14px;cursor:pointer}
+.pill[aria-pressed=true]{border-style:solid;border-color:var(--gold);background:var(--gold);color:var(--navy)}
+.rng{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--mut)}
+.rng select{min-height:40px;padding:0 8px;border:2px solid var(--chip);border-radius:8px;background:var(--card);color:var(--head);font-weight:700}
+.ynow{font-size:13px;font-weight:700;color:var(--goldtxt)}
+#tip{position:fixed;z-index:50;max-width:260px;padding:8px 10px;border-radius:6px;background:var(--navy);color:#fff;font-size:13px;line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none}
+#tip b{color:var(--gold2)}
+th[data-tip]{text-decoration:underline dotted 1px;text-underline-offset:3px;cursor:help}
+.full th[data-tip]{cursor:pointer}
+.yrs button{min-height:40px;padding:0 11px;border-radius:999px;border:2px solid var(--chip);background:var(--card);color:var(--head);font-weight:700;font-size:15px;cursor:pointer}
+.yrs button[aria-pressed=true]{background:var(--sel);border-color:var(--sel);color:var(--selt)}
+.ysel{display:none}
+.ysel select,.theme{min-height:44px;border:2px solid var(--chip);border-radius:999px;background:var(--card);color:var(--head);font-weight:700}
+.ysel select{padding:0 14px;font-size:16px}
+.theme{display:inline-flex;align-items:center;gap:8px;padding:0 14px;cursor:pointer;white-space:nowrap}
+.theme svg{width:18px;height:18px}
+.guests .gi{height:18px;width:auto}
+.guests .st{font-size:13px;padding:2px 8px;border-radius:999px;background:var(--gold);color:var(--navy)}
+.guests[aria-pressed=false] .gi{opacity:.35;filter:grayscale(1)}
+.guests[aria-pressed=false] .st{background:var(--chip);color:var(--head)}
+.cl{height:18px;width:auto;vertical-align:-3px;margin-left:6px}
+.ident .cl{height:.55em;margin-left:.15em;vertical-align:.05em}
+.sq .cl{height:16px;vertical-align:-2px}
+/* ---------- scoreboard pieces (navy in both themes) ---------- */
+.board{background:var(--board);color:#fff;border:6px solid var(--navy2);border-radius:6px;padding:clamp(14px,2.4vw,28px);box-shadow:inset 0 0 0 2px var(--board),inset 0 0 0 4px var(--edge)}
+.board .hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 24px;margin-bottom:18px}
+.board h1{margin:0;font-size:clamp(34px,6vw,64px);line-height:.95;font-family:"Big Shoulders Display",sans-serif;font-weight:900}
+.board .hd p{margin:0;color:var(--pale);max-width:46ch}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.tile{background:var(--navy);border:2px solid var(--edge);padding:12px 8px;text-align:center}
+.tile .l{font-size:14px;font-weight:800;color:var(--gold2)}
+.tile .v{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:clamp(46px,7vw,84px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.tile .s{font-size:13px;color:#A9B3C9}
+.dark{overflow-x:auto;background:var(--board);border:2px solid var(--edge);color:#fff}
+.ls{width:100%;min-width:860px;border-collapse:separate;border-spacing:4px;font-size:15px}
+.ls th{color:var(--gold2);font-weight:800;padding:8px 0;text-align:center}
+.ls th.l,.ls td.l{text-align:left;padding:6px 10px;white-space:nowrap}
+.ls td.c{background:var(--navy);text-align:center;padding:4px 0;font-family:"Big Shoulders Display",sans-serif;line-height:1.05;width:44px}
+.ls td.c.t{background:var(--navy2);width:52px}
+.u{font-weight:900;font-size:24px;color:var(--gold)}
+.o{font-weight:600;font-size:16px;color:#fff}
+.res{display:inline-block;min-width:36px;padding:5px 0;text-align:center;font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:22px}
+.res.w{background:var(--gold);color:var(--navy)}.res.l{box-shadow:inset 0 0 0 2px #5B6B8F;color:#fff}
+.gcards{display:none;gap:10px}
+.ls tr.gl{cursor:pointer}.ls tr.gl:hover td{background:rgba(255,255,255,.06)}
+.gclink{color:inherit;text-decoration:underline dotted 1px;text-underline-offset:3px}.gclink:hover{color:var(--gold2)}
+.gcbtn{display:flex;align-items:center;justify-content:center;min-height:40px;margin-top:10px;border:1px solid var(--edge);color:var(--gold2);font-weight:700;font-size:14px;text-decoration:none}
+.gcbtn:hover{background:rgba(255,255,255,.06)}
+.gcard{background:var(--board);border:2px solid var(--edge);color:#fff;padding:12px}
+.gcard .top1{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.gcard .top1 .who{flex:1}
+.gcard .who b{display:block;font-weight:700}.gcard .who span{font-size:13px;color:var(--pale)}
+.gcard .sc{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:30px;color:var(--gold);white-space:nowrap}
+.mini{width:100%;border-collapse:separate;border-spacing:3px;font-family:"Big Shoulders Display",sans-serif;text-align:center}
+.mini th{font-family:Archivo,sans-serif;font-size:12px;color:var(--gold2);font-weight:700}
+.mini td{background:var(--navy);padding:3px 0;font-weight:800;font-size:18px}
+.mini td.k{background:none;font-family:Archivo,sans-serif;font-size:12px;font-weight:700;color:var(--pale);text-align:left;width:34px}
+.mini tr.us td:not(.k){color:var(--gold)}.mini td.t{background:var(--navy2)}
+.msg{margin:0;padding:16px 18px;border:2px dashed var(--line);color:var(--mut);background:var(--bg2)}
+/* seasons compared (theme colours) */
+.box{overflow-x:auto;border:1px solid var(--line);background:var(--card)}
+.ssn{width:100%;min-width:880px;border-collapse:collapse;font-size:15px}
+.ssn th{color:var(--head);background:var(--bg2);font-weight:800;text-align:right;padding:11px 12px;white-space:nowrap}
+.ssn td{text-align:right;padding:9px 12px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ssn th:nth-child(-n+2),.ssn td:nth-child(-n+2){text-align:left}
+.ssn tbody tr{cursor:pointer}.ssn tbody tr:hover td{background:var(--hover)}
+.ssn tr.cur td{background:var(--hi);font-weight:700}
+.ssn tr.cur td:first-child{box-shadow:inset 4px 0 0 var(--gold)}
+.yr{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:22px;color:var(--head)}
+.ssn tfoot td{color:var(--mut);font-size:14px;text-align:left}
+.pips{display:inline-flex;flex-wrap:nowrap;justify-content:center;gap:2px;vertical-align:middle}
+@media(max-width:1180px){.ssn .pc{display:none}.ssn{min-width:0}}.pips i{width:7px;height:14px;border-radius:1px;background:var(--win)}.pips i.l{background:var(--loss)}
+:root{--win:#2E9E5B;--loss:#D03A3A}html[data-ui=dark]{--win:#4CC27D;--loss:#EF6060}
+.ssn td.pc{text-align:center}
+.ssn th[data-k]{cursor:pointer;user-select:none}.ssn th[data-k]:hover{color:var(--goldtxt)}
+.ssn th .ar{display:inline-block;width:10px;margin-left:3px;color:var(--goldtxt)}
+.scards{display:none;gap:8px}
+.scard{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;width:100%;text-align:left;padding:12px 14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.scard.cur{background:var(--hi);box-shadow:inset 4px 0 0 var(--gold)}
+.scard .yr{font-size:30px;grid-row:span 2}
+.scard .lg{font-weight:700}.scard .wl{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:26px;color:var(--head);text-align:right}
+.scard .mt{grid-column:2/4;display:flex;flex-wrap:wrap;gap:2px 14px;font-size:14px;color:var(--mut)}
+.scard .mt b{color:var(--text)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.stand{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.stand li{display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--bg2)}
+.stand li.us{background:var(--hi);box-shadow:inset 4px 0 0 var(--gold)}
+.stand .rk{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:28px;width:26px;color:var(--goldtxt)}
+.stand .n{flex:1;font-weight:700}
+.stand .wl{font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:26px;color:var(--head);min-width:60px;text-align:right}
+.stand .d{color:var(--mut);min-width:48px;text-align:right}
+.key{display:flex;gap:16px;font-size:14px;color:var(--mut);margin:-8px 0 14px}
+.key span::before{content:"";display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px;background:var(--gold)}
+.key span.a::before{background:var(--bar)}
+.inn{display:grid;gap:10px}
+.inn>div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center}
+.inn .i{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:26px;color:var(--head);line-height:1}
+.inn .i small{display:block;font-family:Archivo,sans-serif;font-size:12px;font-weight:600;color:var(--mut)}
+.inn .b{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}
+.inn .b i{display:block;height:14px;background:var(--gold)}.inn .b.a i{background:var(--bar)}
+.tot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.tot h3{margin:0 0 8px;font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:28px;color:var(--head)}
+.tot dl{margin:0;display:grid;gap:4px}
+.tot dl div{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;background:var(--bg2)}
+.tot dt{color:var(--mut)}.tot dd{margin:0;font-weight:800;text-align:right}
+/* ---------- player view ---------- */
+.hero{background:var(--bg2);border-bottom:6px solid var(--navy);padding-block:clamp(20px,3vw,36px)}
+.pick{position:relative;max-width:520px;margin-bottom:clamp(16px,2.5vw,26px)}
+.pick label{display:block;font-size:14px;font-weight:700;color:var(--head);margin-bottom:4px}
+.pick input{width:100%;min-height:48px;padding:0 14px;border:2px solid var(--chip);border-radius:10px;background:var(--card);color:var(--text);font-size:16px}
+.pick ul{position:absolute;z-index:6;left:0;right:0;top:100%;margin:4px 0 0;padding:6px;list-style:none;background:var(--card);border:2px solid var(--head);border-radius:10px;max-height:min(360px,60vh);overflow-y:auto;box-shadow:0 12px 30px rgba(5,29,73,.2)}
+.pick li{display:grid;grid-template-columns:46px 1fr;gap:10px;align-items:center;padding:8px 10px;border-radius:6px;cursor:pointer;min-height:44px}
+.pick li[aria-selected=true]{background:var(--sel);color:var(--selt)}
+.pick li.act{outline:2px solid var(--gold);outline-offset:-2px}
+.pick .no{font-family:Anton,sans-serif;font-size:18px;text-align:right}
+.idrow{--f:clamp(30px,5.6vw,68px);display:flex;align-items:center;gap:clamp(12px,2.5vw,32px)}
+.jersey{position:relative;flex:none;height:calc(var(--f)*2.75);aspect-ratio:920/615}
+.jersey img,.jersey svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.jt{font-family:Anton,Impact,"Arial Black",sans-serif;text-anchor:middle;fill:#CAC294;paint-order:stroke fill;stroke-linejoin:round}
+.ident .num{font-family:Anton,Impact,sans-serif;font-size:calc(var(--f)*.8);line-height:1;color:var(--goldtxt)}
+.pstrip{margin-top:14px}
+.plab{display:block;font-size:12px;font-weight:700;color:var(--mut);margin-bottom:4px}
+.pstrip .p9{gap:3px;max-width:400px}
+.pstrip .p9 i{font-size:12px;line-height:28px;border-radius:4px;color:var(--mut);background:var(--track);box-shadow:inset 0 0 0 1px var(--chip)}
+.pstrip .p9 i.on{background:rgba(197,179,88,var(--a));color:var(--navy);box-shadow:none}
+.ident h1{margin:0;font-size:var(--f);line-height:.95;color:var(--head);overflow-wrap:anywhere}
+.more{margin-top:clamp(16px,2.5vw,24px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px 40px;align-items:start}
+.more .pos{margin:0 0 4px;color:var(--mut);font-weight:600}
+.more .lead{margin:0 0 10px;max-width:52ch}
+.esbtn{display:inline-flex;align-items:center;min-height:40px;margin-top:12px;padding:0 14px;border:2px solid var(--chip);border-radius:999px;background:var(--card);color:var(--head);font-weight:700;font-size:14px;text-decoration:none}
+.esbtn:hover{border-color:var(--gold)}
+.note{margin:0;padding-left:10px;border-left:3px solid var(--gold);font-size:14px;color:var(--mut)}
+.kgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.kgrid div{background:var(--card);padding:12px 14px}
+.kgrid b{display:block;font-weight:900;font-stretch:85%;font-size:clamp(26px,3vw,36px);line-height:1;color:var(--head)}
+.kgrid span{display:block;margin-top:6px;font-size:14px}
+.kgrid em{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--goldtxt)}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.groups>div{border-top:6px solid var(--head);padding-top:12px}
+.groups h3{margin:0 0 8px;font-size:20px;font-weight:800;color:var(--head)}
+.groups dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.groups dl div{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:9px 12px 9px 0;border-bottom:1px solid var(--line)}
+.groups dt{color:var(--mut);font-size:15px}.groups dd{margin:0;font-weight:800;font-size:20px;color:var(--head)}
+.groups .none{color:var(--mut);margin:0}
+.lt{width:100%;border-collapse:collapse;font-size:15px}
+.lt th{background:var(--bg2);color:var(--head);font-weight:800;text-align:right;padding:11px 12px;white-space:nowrap}
+.lt td{text-align:right;padding:10px 12px;border-top:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums}
+.lt th:first-child,.lt td:first-child{text-align:left}
+.lt tr.cur td{background:var(--hi);font-weight:700}
+.obp{display:flex;align-items:center;gap:10px;min-width:180px}
+.obp div{flex:1;height:12px;background:var(--track)}.obp div i{display:block;height:100%;background:var(--bar)}
+.lt tr.cur .obp div i{background:var(--gold)}
+.ctrls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--chip);background:var(--card);color:var(--head);font-weight:700;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--sel);border-color:var(--sel);color:var(--selt)}
+.seg.g button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+label.f{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--mut)}
+label.f select{min-height:44px;padding:0 10px;border:2px solid var(--chip);border-radius:8px;background:var(--card);color:var(--head);font-size:16px}
+.lb{display:grid;gap:5px}
+.row{display:grid;grid-template-columns:minmax(140px,240px) 1fr 66px;gap:12px;align-items:center;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-height:32px;color:var(--text)}
+.row .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+.row .tr{display:block;height:22px;background:var(--track)}
+.row .fl{display:block;height:100%;background:var(--bar);transition:width .4s ease}
+.row.sel .fl{background:var(--gold)}.row.sel .nm{font-weight:800;color:var(--head)}
+.row .v{font-weight:900;font-stretch:85%;font-size:20px;text-align:right;color:var(--head)}
+.full th{cursor:pointer;user-select:none}
+.full th[aria-sort]{box-shadow:inset 0 -3px 0 var(--gold)}
+.full th[aria-sort=descending]::after{content:" ▾"}.full th[aria-sort=ascending]::after{content:" ▴"}
+.full tbody tr{cursor:pointer}.full tbody tr:hover td{background:var(--hover)}
+.full td:first-child,.full th:first-child{position:sticky;left:0;z-index:1}
+.full td:first-child{background:var(--card)}
+.full tr.cur td,.full tr.cur td:first-child{background:var(--hi);font-weight:700}
+.full tfoot td{font-weight:800;border-top:2px solid var(--head)}
+.empty{color:var(--mut);padding:12px 0}
+footer{background:var(--navy);color:var(--pale);font-size:14px;padding:26px 0}
+footer a{color:var(--gold2);text-underline-offset:2px}
+.tv{display:inline-flex;align-items:center;gap:8px}
+footer p{margin:0 0 6px;max-width:90ch}
+/* roster */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.sq{height:126px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:1fr auto;gap:6px 12px;padding:10px 12px;text-align:left;cursor:pointer;background:var(--navy);color:#fff;border:2px solid var(--navy);box-shadow:inset 0 0 0 2px var(--gold);overflow:hidden;min-width:0}
+.sq .p9{grid-column:1/-1}
+html[data-ui=dark] .sq{border-color:var(--edge)}
+.sq:hover{box-shadow:inset 0 0 0 3px #CAC294}
+.sq .pos{font-size:12px;font-weight:700;color:var(--gold2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq .n{align-self:center;min-width:62px;font-family:Anton,Impact,sans-serif;font-size:44px;line-height:1;color:#CAC294;-webkit-text-stroke:1px #fff;paint-order:stroke fill}
+.sq .n.none{font-size:15px;line-height:44px;-webkit-text-stroke:0;color:var(--pale);font-family:Archivo,sans-serif;font-weight:700}
+.sq .fn{display:block;font-size:13px;color:var(--pale);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq .nm{min-width:0;align-self:center;display:grid}
+.sq .ln{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:900;font-stretch:82%;text-transform:uppercase;font-size:19px;line-height:1.05;overflow-wrap:anywhere}
+.sq .ln.long{font-size:15px}
+.sq .st{display:block;font-size:12px;color:var(--pale);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sq .st.yr{color:var(--gold2);font-weight:700}
+.p9{display:grid;grid-template-columns:repeat(9,1fr);gap:2px}
+.p9 i{font-style:normal;font-size:9px;font-weight:800;text-align:center;line-height:16px;border-radius:2px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+.p9 i.on{background:rgba(202,194,148,var(--a));color:var(--navy)}
+.sq .st b{color:#fff}
+/* ---------- responsive ---------- */
+@media(max-width:900px){.two,.tot,.groups{grid-template-columns:minmax(0,1fr)}.more{grid-template-columns:minmax(0,1fr)}.tiles{grid-template-columns:repeat(6,minmax(0,1fr))}.tile{grid-column:span 2}.tile:nth-child(4),.tile:nth-child(5){grid-column:span 3}}
+@media(max-width:720px){
+ .rgrid{grid-template-columns:minmax(0,1fr);gap:8px}
+ .top{position:static}.top .wrap{grid-template-columns:1fr auto auto;gap:8px}
+ .guests>span{display:none}
+ .brand{font-size:19px}.brand span{display:none}
+ .brand{min-width:0;overflow:hidden;text-overflow:clip}
+}
+@media(max-width:430px){.brand{font-size:clamp(12px,3.9vw,16px)}.guests{gap:4px;padding:0 8px}.guests .gi{height:15px}.guests .st{padding:2px 6px;font-size:12px}.theme{padding:0 9px}.ver{padding:0 7px}.top .wrap{gap:8px 6px}
+ .theme{padding:0 10px}.ver{min-height:36px;padding:0 9px;font-size:12px}.tv{gap:6px}
+ .tabs{grid-column:1/-1;order:3}.tabs button{flex:1}
+ .yrs{display:none}.ysel{display:block;order:4;grid-column:1/-1}.ysel select{width:100%}
+ .yrow{order:6}.pill{flex:1}
+ .combining .yrs{display:flex;order:-1;width:100%}
+ .srt{display:none}
+ .theme span{display:none}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile,.tile:nth-child(4){grid-column:span 1}.tile:nth-child(5){grid-column:span 2}
+ .ssnTable,.lsTable{display:none}.scards,.gcards{display:grid}
+ .kgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .groups dl{grid-template-columns:minmax(0,1fr)}
+ .row{grid-template-columns:112px 1fr 54px}.lt{font-size:13px}.lt td,.lt th{padding:8px}
+}
+button.ver{cursor:pointer;font:inherit;font-size:13px;font-weight:700}
+#setDlg .theme span,#setDlg .guests>span{display:inline}button.ver:hover{border-color:var(--gold)}
+#setDlg{width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 40px);padding:0;border:0;border-radius:14px;background:var(--bg);color:var(--text);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#setDlg::backdrop{background:rgba(2,17,46,.55)}
+.dhead{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--navy);color:#fff;position:sticky;top:0}
+.dhead h2{margin:0;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:26px;letter-spacing:.5px}
+.dx{width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:24px;cursor:pointer}
+.dbody{padding:6px 20px 20px}
+.dbody section{padding:14px 0;border-bottom:1px solid var(--line)}.dbody section:last-child{border:0}
+.dbody h3{margin:0 0 10px;font-size:13px;font-weight:800;color:var(--goldtxt);letter-spacing:.3px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:6px 0}
+.srow>div{display:grid;gap:2px;flex:1;min-width:0}.srow>button{flex:none;white-space:nowrap}.srow b{color:var(--head)}.srow span{font-size:13px;color:var(--mut)}
+.srow .theme span{color:inherit;font-size:inherit}
+.dbody details{margin:6px 0;border:1px solid var(--line);border-radius:8px;padding:0 12px}
+.dbody summary{cursor:pointer;font-weight:700;color:var(--head);padding:10px 0;min-height:24px}
+.dbody ol,.dbody ul{margin:0 0 12px;padding-left:20px;font-size:14px;line-height:1.5}
+.dbody p{font-size:14px;line-height:1.5;margin:0 0 8px}.dbody a{color:var(--head)}
+.clv{margin:4px 0 2px;font-weight:800;color:var(--head);font-size:14px}.clv small{font-weight:600;color:var(--mut)}
+@media(max-width:560px){.srow{flex-direction:column;align-items:stretch}}
+@media(prefers-reduced-motion:reduce){.row .fl{transition:none}}
+</style></head>
+<body>
+<header class="top"><div class="wrap pad">
+<a class="brand cond" href="#team-2026">Zurich <b>Eighters</b><span>Stats</span></a>
+<div class="tabs" role="tablist" aria-label="View">
+<button type="button" role="tab" data-mode="team" aria-selected="true">Team</button>
+<button type="button" role="tab" data-mode="players" aria-selected="false">Players</button>
+<button type="button" role="tab" data-mode="roster" aria-selected="false">Roster</button>
+</div>
+<div class="yrow"><div class="yrs" id="years" role="group" aria-label="Season"></div>
+<div class="yctl"><button type="button" class="pill" id="combine" aria-pressed="false" title="Click several seasons to add them up">Combine seasons</button>
+<label class="rng">From <select id="yFrom" aria-label="From season"></select></label><label class="rng">to <select id="yTo" aria-label="To season"></select></label>
+<span class="ynow" id="ynow"></span></div></div>
+<label class="ysel"><span class="sr" style="position:absolute;left:-9999px">Season</span><select id="ysel"></select></label>
+<span class="tv"><button type="button" class="theme" id="openSet" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></button><button type="button" class="ver" id="ver" aria-haspopup="dialog"></button></span>
+</div></header>
+<main>
+<div id="v-team">
+<section class="s pad"><div class="wrap">
+<div class="board">
+<div class="hd"><h1 id="tTitle"></h1><p id="tLead"></p></div>
+<div class="tiles" id="tiles"></div>
+</div>
+</div></section>
+<section class="s pad" style="padding-top:0"><div class="wrap">
+<h2 class="sec cond">Seasons compared</h2>
+<p class="sub" id="ssnSub"></p>
+<div class="box ssnTable"><table class="ssn" id="ssn"></table></div>
+<div class="scards" id="scards"></div>
+</div></section>
+<section class="s pad" style="padding-top:0"><div class="wrap">
+<h2 class="sec cond">Line scores</h2>
+<p class="sub" id="gameSub"></p>
+<div class="dark lsTable" id="gameBox"><table class="ls" id="ls" data-ctx="ls"></table></div>
+<div class="gcards" id="gcards"></div>
+<p class="msg" id="noGames" hidden></p>
+</div></section>
+<section class="s pad" style="padding-top:0" id="midSec"><div class="wrap two">
+<div id="standWrap"><h2 class="sec cond" id="standH">Standings</h2><p class="sub" id="standSub"></p><ol class="stand" id="stand"></ol></div>
+<div id="innWrap"><h2 class="sec cond">Runs by inning</h2><p class="sub">All games combined.</p><p class="key"><span>Scored</span><span class="a">Allowed</span></p><div class="inn" id="inn"></div></div>
+</div></section>
+<section class="s pad" style="padding-top:0;padding-bottom:64px"><div class="wrap">
+<h2 class="sec cond">Team totals</h2>
+<p class="sub">All players combined, added up from the individual lines.</p>
+<div class="tot" id="tot"></div>
+</div></section>
+</div>
+
+<div id="v-roster" hidden>
+<section class="s pad" style="padding-bottom:64px"><div class="wrap">
+<h2 class="sec cond" id="rTitle">Roster</h2>
+<p class="sub" id="rSub"></p>
+<div class="ctrls"><div class="seg" id="rpos" role="group" aria-label="Position"></div></div>
+<div class="rgrid" id="rgrid"></div>
+</div></section>
+</div>
+
+<div id="v-players" hidden>
+<section class="hero pad"><div class="wrap">
+<div class="pick">
+<label for="pq">Player</label>
+<input id="pq" type="text" role="combobox" aria-expanded="false" aria-controls="plist" aria-autocomplete="list" autocomplete="off" placeholder="Search by name or number">
+<ul id="plist" role="listbox" aria-label="Players" hidden></ul>
+</div>
+<div class="idrow">
+<div class="jersey">
+<img src="jersey.png" alt="" width="920" height="615">
+<svg viewBox="215 100 920 615" role="img" id="jsvg" aria-label="">
+<text class="jt" id="jFront" x="520" y="415" font-size="69" stroke="#FFFFFF" stroke-width="4"></text>
+<text class="jt" id="jName" x="894" y="243" font-size="35" letter-spacing="2" stroke="#16182C" stroke-width="2"></text>
+<text class="jt" id="jBack" x="894" y="421" font-size="184" stroke="#FFFFFF" stroke-width="7"></text>
+</svg>
+</div>
+<div class="ident"><div class="num" id="pNum"></div><h1 class="cond" id="pName"></h1><div class="pstrip" id="pStrip"></div></div>
+</div>
+<div class="more">
+<div><p class="pos" id="pPos"></p><p class="lead" id="pLead"></p><p class="note" id="pNote" hidden></p><a class="esbtn" id="pES" target="_blank" rel="noopener" hidden>EasyScore player page ↗</a></div>
+<div class="kgrid" id="pKey"></div>
+</div>
+</div></section>
+<section class="s pad"><div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:18px"><h2 class="sec cond" id="gTitle"></h2><p class="sub" style="margin:0" id="gSub"></p></div>
+<div class="groups" id="groups"></div>
+</div></section>
+<section class="s pad" style="padding-top:0"><div class="wrap">
+<h2 class="sec cond">Season by season</h2>
+<p class="sub">On-base percentage by season: the share of plate appearances that reached base. Pick a row to switch season.</p>
+<div class="box"><table class="lt" id="career"></table></div>
+</div></section>
+<section class="s pad" style="padding-top:0"><div class="wrap">
+<h2 class="sec cond" id="lbTitle"></h2>
+<p class="sub" id="lbSub"></p>
+<div class="ctrls">
+<div class="seg g" id="grp" role="group" aria-label="Stat group"></div>
+<div class="seg" id="met" role="group" aria-label="Leaderboard stat"></div>
+<label class="f">Minimum <span id="minLbl"></span><select id="minSel"></select></label>
+</div>
+<div class="lb" id="lb"></div>
+</div></section>
+<section class="s pad" style="padding-top:0;padding-bottom:64px"><div class="wrap">
+<h2 class="sec cond">Every player, every line</h2>
+<p class="sub">Click a column to sort. Click a player to put them on the jersey.</p>
+<div class="ctrls"><div class="seg g" id="grp2" role="group" aria-label="Stat group"></div></div>
+<div class="box"><table class="lt full" id="tbl"><thead></thead><tbody></tbody><tfoot></tfoot></table></div>
+</div></section>
+</div>
+</main>
+<footer><div class="wrap pad">
+<p>Created 22 November 2026. All data is publicly available on <a href="https://eighters.ch/">eighters.ch</a> and <a href="https://www.easyscore.com/">easyscore.com</a>, or is an invented placeholder name (such as "Z-License").</p>
+</div></footer>
+<dialog id="setDlg" aria-labelledby="setTitle">
+<div class="dhead"><h2 id="setTitle">Settings</h2><button type="button" class="dx" id="closeSet" aria-label="Close settings">×</button></div>
+<div class="dbody">
+<section><h3>Look</h3>
+<div class="srow"><div><b>Theme</b><span>Light or dark page. Scoreboards stay navy either way.</span></div><button type="button" class="theme" id="theme" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span>Dark</span></button>
+</div>
+<div class="srow"><div><b>Lions &amp; Ravens players</b><span>Include or hide the 6 Lions and 3 Ravens players in every list and in the player totals. Team record and runs stay as played.</span></div><button type="button" class="theme guests" id="guests" aria-pressed="true" title="Include or exclude Lions and Ravens players"><img src="lions.png" alt="" class="gi"><img src="ravens.png" alt="" class="gi"><span>Lions &amp; Ravens</span><b class="st"></b></button></div>
+</section>
+<section><h3>Version</h3>
+<div class="srow"><div><b id="setVer"></b><span id="updMsg">Updates install themselves when the app is opened from GitHub Pages.</span></div><button type="button" class="theme" id="chkUpd">Check for updates</button></div>
+<details><summary>What’s new</summary><div id="clog"></div></details>
+</section>
+<section><h3>Install as an app</h3>
+<details><summary>Android (Chrome)</summary><ol><li>Open <a href="https://dusiaclaw.github.io/eighters-stats/" target="_blank" rel="noopener">dusiaclaw.github.io/eighters-stats</a> in Chrome.</li><li>Tap the ⋮ menu, then <b>Install app</b> (or <b>Add to Home screen</b>).</li><li>The 8-ball icon appears on your home screen; the app opens full screen.</li></ol></details>
+<details><summary>iPhone / iPad (Safari)</summary><ol><li>Open the address above in Safari.</li><li>Tap the Share button, then <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol></details>
+<details><summary>Computer (Chrome or Edge)</summary><ol><li>Open the address above.</li><li>Click the install icon at the right end of the address bar, or ⋮ › <b>Install Eighters-stats</b>.</li></ol></details>
+</section>
+<section><h3>License and data</h3>
+<p>Eighters-stats is free software under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GNU GPL v3.0</a>. Source code: <a href="https://github.com/dusiaclaw/eighters-stats" target="_blank" rel="noopener">github.com/dusiaclaw/eighters-stats</a>.</p>
+<p>Stats are publicly available on <a href="https://www.easyscore.com/" target="_blank" rel="noopener">easyscore.com</a>; names and numbers on <a href="https://eighters.ch/" target="_blank" rel="noopener">eighters.ch</a>. "Z-License" is a placeholder for players without a profile. Jersey artwork after the KNoah Eighters team jersey. Fonts: Archivo, Anton, Big Shoulders Display (SIL Open Font License).</p>
+</section>
+</div></dialog>
+<script>
+const M=__DATA__;
+{
+const GC=id=>`https://www.easyscore.com/live/boxscore/${id}`;
+const LGID={2016:84,2017:84,2018:84,2019:84,2020:84,2021:83,2022:84,2023:84,2024:9947,2025:10028,2026:10143};
+const APP_VERSION='2.5';const VERSION='V'+APP_VERSION;
+/*CHANGELOG*/const CHANGELOG=[{"v": "2.5", "date": "2026-11-24", "notes": ["Renamed to Eighters-stats, with an 8-ball app icon.", "Installable app: add it to your phone or computer, and it updates itself when a new version is published.", "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.", "Published on GitHub: github.com/dusiaclaw/eighters-stats."]}, {"v": "2.4", "date": "2026-11-24", "notes": ["Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.", "Player page shows an 'Innings by position' strip under the name."]}, {"v": "2.3", "date": "2026-11-24", "notes": ["All roster cards have the same size.", "9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings."]}, {"v": "2.2", "date": "2026-11-24", "notes": ["Z-License now sorts like any other player once you click a column heading.", "Version shown as V2.2 instead of v22."]}, {"v": "2.1", "date": "2026-11-24", "notes": ["Button to open each player's EasyScore page for the season shown."]}, {"v": "2.0", "date": "2026-11-24", "notes": ["Games link to the EasyScore box score with the win-probability chart.", "Line scores follow scoreboard order: away team on top; Eighters runs always in gold.", "Win/loss squares hidden on narrow screens."]}, {"v": "1.9", "date": "2026-11-24", "notes": ["Click a 2026 game to open it on EasyScore."]}, {"v": "1.8", "date": "2026-11-24", "notes": ["Version number in a bubble next to the theme switch.", "Shorter footer with sources and creation date."]}, {"v": "1.7", "date": "2026-11-24", "notes": ["Players tab always opens on #8 Z-License.", "Thierry Schnieper marked as a Raven."]}, {"v": "1.6", "date": "2026-11-24", "notes": ["Win % column and sortable Seasons compared table.", "Green wins, red losses; only the picked seasons are listed when combining."]}, {"v": "1.5", "date": "2026-11-24", "notes": ["Seasons 2016–2019 added.", "Combine seasons: From/to range or pick any years to add them up.", "Hover hints on every table column heading."]}, {"v": "1.4", "date": "2026-11-24", "notes": ["First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers."]}];/*END*/
+const ME=32163,PEOPLE=M.people,YEARS=Object.keys(M.years).map(Number).sort();
+const GUEST={3678:'lions',47408:'lions',4116:'lions',3955:'lions',47410:'lions',47407:'lions',4146:'ravens',4148:'ravens',37510:'ravens'};
+const GUESTNAME={4146:'Cedric Thommen',4148:'Nolan Thommen'};
+for(const [id,g] of Object.entries(GUEST))if(PEOPLE[id]){PEOPLE[id].g=g;if(GUESTNAME[id]){PEOPLE[id].n=GUESTNAME[id];PEOPLE[id].full=true}}
+const FOUND={45094:['Keisuke Yokota','33'],42253:['Sanghyun Bae','36'],32161:['Alexander Blechschmidt','79'],37482:['Gabriel Chavarria','15'],33991:['Fabrice Cadalbert','37'],3638:['Juan Francisco Robles',''],37510:['Thierry Schnieper','8'],4146:['Cedric Thommen','97'],9133:['Christian Betschart','52'],19627:['Daniel Rohrer','43'],28842:['Paul Calzadilla','90'],34556:['Paul Rojas','41'],34655:['Danilo Amatucci',''],19791:['Marco Christen',''],40419:['Thibaud Mahmoudi','20','eighters.ch'],32262:['Fernando Pini','22','eighters.ch'],29327:['Honey Gigato Romero','62','eighters.ch'],8728:['Martin Peña González','50','a 2019 EasyScore lineup'],4122:['Martin Stoll','42','a 2019 EasyScore lineup'],16506:['Christian Locher','67','a 2019 EasyScore lineup'],15777:['Benjamin Mahler','32','a 2019 EasyScore lineup'],9160:['Patompong Joe Tankura','19','a 2019 EasyScore lineup'],8344:['Dominique Müller','19','a 2019 EasyScore lineup'],19791:['Marco Christen','30','a 2019 EasyScore lineup'],28825:['Yannick Gsell','59','a 2019 EasyScore lineup'],28826:['Benoit Latulippe','11','a 2019 EasyScore lineup']};
+for(const [id,[n,no,src]] of Object.entries(FOUND))if(PEOPLE[id]){PEOPLE[id].n=n;PEOPLE[id].full=true;PEOPLE[id].src=src||'EasyScore';if(no&&!PEOPLE[id].no)PEOPLE[id].esno=no}
+const SURN2={3638:'Francisco Robles'};
+
+const CLUBNAME={lions:'Zürich Lions',ravens:'Ravens'};
+const badge=p=>p.g?`<img class="cl" src="${p.g}.png" alt="${CLUBNAME[p.g]}" title="${CLUBNAME[p.g]} player">`:'';
+let showGuests=true;try{showGuests=localStorage.getItem('eig-guests')!=='off'}catch(e){}
+const PH=Object.values(PEOPLE).filter(p=>p.n.startsWith('Z-licence')).map(p=>String(p.id));
+const PHID=PH[0];
+if(PHID){
+ const BK=['G','PA','AB','R','H','2B','3B','HR','RBI','BB','SO','HBP','SB','CS','SF'],PK=['G','GS','HA','RA','ER','BBA','K','HBPA','WP','W','L','SV','OppAB','PitchCount','BF','Outs'],FK=['G','PO','A','E','TC','DP','PB','SBA','CS'];
+ const inn=s=>{if(s==null||s==='')return 0;if(typeof s==='number')return s;const[a,b]=String(s).split('.');return +a+(+b||0)/3};
+ const add=(a,b,ks)=>{if(!b)return a;a=a||Object.fromEntries(ks.map(k=>[k,0]));ks.forEach(k=>a[k]+=+b[k]||0);return a};
+ for(const [y,I] of Object.entries(M.ip||{})){const rows=PH.map(id=>I[id]).filter(Boolean);if(!rows.length)continue;const s=[0,0,0,0,0,0,0];rows.forEach(r=>r.forEach((v,i)=>s[i]+=v));PH.forEach(id=>delete I[id]);I[PHID]=s}
+ for(const Y of Object.values(M.years)){const es=PH.map(id=>Y.p[id]).filter(Boolean);if(!es.length)continue;
+  const m={merged:true,pos:[...new Set(es.flatMap(e=>(e.pos||'').split('/').filter(Boolean)))].join('/')};
+  for(const e of es){m.bat=add(m.bat,e.bat,BK);m.pit=add(m.pit,e.pit,PK);if(e.fld){m.fld=add(m.fld,e.fld,FK);m.fld.INN=(m.fld.INN||0)+inn(e.fld.INN)}}
+  PH.forEach(id=>delete Y.p[id]);Y.p[PHID]=m}
+ PH.slice(1).forEach(id=>delete PEOPLE[id]);
+ Object.assign(PEOPLE[PHID],{n:'Z-License',no:'8',ph:true,full:true,club:true,nat:'',age:''});
+}
+/* unique jersey numbers: 2026 numbers win (team list first, then EasyScore); others take the closest free number */
+{const lastYr=id=>Math.max(...Object.keys(M.years).filter(y=>M.years[y].p[id]).map(Number),0);
+ const want=p=>parseInt(p.no||p.esno,10);
+ const ppl=Object.values(PEOPLE).filter(p=>!isNaN(want(p)));
+ const rank=p=>[p.ph?0:1,lastYr(p.id)===2026?0:1,p.no?0:1,-lastYr(p.id)];
+ ppl.sort((a,b)=>{const x=rank(a),y=rank(b);for(let i=0;i<x.length;i++)if(x[i]!==y[i])return x[i]-y[i];return 0});
+ const taken=new Map(),later=[];
+ for(const p of ppl){const n=want(p);if(!taken.has(n)){taken.set(n,p);p.num=String(n)}else later.push(p)}
+ for(const p of later){const n=want(p);let f=null;for(let d=1;d<99&&f==null;d++){for(const c of [n+d,n-d])if(c>=1&&c<=99&&!taken.has(c)){f=c;break}}
+  if(f!=null){taken.set(f,p);p.num=String(f);p.renum={from:String(n),by:taken.get(n),prio:lastYr(taken.get(n).id)===2026||taken.get(n).ph}}}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ok=x=>x!=null&&!isNaN(x)&&isFinite(x);
+const r3=x=>ok(x)?(x>=1?x.toFixed(3):x.toFixed(3).replace(/^0/,'')):'–';
+const r2=x=>ok(x)?x.toFixed(2):'–';
+const r1=x=>ok(x)?x.toFixed(1):'–';
+const int=x=>ok(x)?String(Math.round(x)):'–';
+const ipOf=o=>ok(o)?Math.floor(o/3)+'.'+(Math.round(o)%3):'–';
+const innNum=s=>{if(s==null||s==='')return 0;if(typeof s==='number')return s;const[a,b]=String(s).split('.');return +a+(+b||0)/3};
+const sum=(a,f)=>a.reduce((s,x)=>s+(+f(x)||0),0);
+const ord=n=>n+(['th','st','nd','rd'][(n%100-20)%10]||['th','st','nd','rd'][n%100]||'th');
+const jn=p=>p.num||'';
+const SURN={34560:'Yeh',21168:'Ramirez Mendez',3638:'Francisco Robles',8728:'Peña González',29327:'Gigato Romero'};
+const isPh=p=>!!p.ph;
+const surname=p=>{if(isPh(p))return 'Z-License';if(SURN[p.id])return SURN[p.id];const t=p.n.split(' ');return /\.$/.test(t[0])?t.slice(1).join(' '):t[t.length-1]};
+const firstOf=p=>{if(isPh(p))return '';const s=surname(p);return p.n.slice(0,p.n.length-s.length).trim()};
+const sortKey=p=>isPh(p)?'~'+p.n:surname(p);
+const numKey=p=>{if(isPh(p))return -1;const n=parseInt(jn(p),10);return isNaN(n)?1000:n};
+const POS={P:'pitcher',C:'catcher','1B':'first base','2B':'second base','3B':'third base',SS:'shortstop',LF:'left field',CF:'centre field',RF:'right field',DH:'designated hitter',PH:'pinch hitter',PR:'pinch runner',R:'runner'};
+const posText=s=>{const a=(s||'').split('/').filter(Boolean).map(x=>POS[x]||x);if(!a.length)return '';const t=a.length>1?a.slice(0,-1).join(', ')+' and '+a[a.length-1]:a[0];return t[0].toUpperCase()+t.slice(1)};
+const lg=y=>M.years[y].league.replace(/ \d{4}$/,'').replace('1.Liga','1. Liga').replace(' Baseball','');
+/* ---------- data ---------- */
+const BC=['G','PA','AB','R','H','2B','3B','HR','RBI','BB','SO','HBP','SB','CS','SF'],PC=['G','GS','HA','RA','ER','BBA','K','HBPA','WP','W','L','SV','OppAB','PitchCount','BF','Outs'],FC=['G','PO','A','E','TC','DP','PB','SBA','CS'];
+function rates(p){
+ if(p.bat){const b=p.bat,den=b.AB+b.BB+b.HBP+(b.SF||0),ob=den?(b.H+b.BB+b.HBP)/den:null,sl=b.AB?(b.H+b['2B']+2*b['3B']+3*b.HR)/b.AB:null;b.BA=b.AB?b.H/b.AB:null;b.OBP=ob;b.SLG=sl;b.OPS=ok(ob)&&ok(sl)?ob+sl:null}
+ if(p.pit){const t=p.pit,ip=t.Outs/3;t.ERA=ip?t.ER*7/ip:null;t.WHIP=ip?(t.HA+t.BBA)/ip:null;t.OppAVG=t.OppAB?t.HA/t.OppAB:null}
+ if(p.fld){const f=p.fld;f.FPct=f.TC?(f.PO+f.A)/f.TC:null}}
+const seasonOf=y=>Object.entries(M.years[y].p).map(([id,e])=>{const p={...PEOPLE[id],pos:e.pos||'',bat:e.bat&&{...e.bat},pit:e.pit&&{...e.pit},fld:e.fld&&{...e.fld,INN:innNum(e.fld.INN)}};if(e.merged)rates(p);return p});
+function allSeasons(){const acc={};
+ for(const y of pickYrs)for(const p of seasonOf(y)){const a=acc[p.id]||(acc[p.id]={...PEOPLE[p.id],pos:new Set(),yrs:0});a.yrs++;(p.pos||'').split('/').filter(Boolean).forEach(x=>a.pos.add(x));
+  if(p.bat){a.bat=a.bat||Object.fromEntries(BC.map(k=>[k,0]));BC.forEach(k=>a.bat[k]+=p.bat[k]||0)}
+  if(p.pit){a.pit=a.pit||Object.fromEntries(PC.map(k=>[k,0]));PC.forEach(k=>a.pit[k]+=p.pit[k]||0)}
+  if(p.fld){a.fld=a.fld||Object.fromEntries([...FC,'INN'].map(k=>[k,0]));FC.forEach(k=>a.fld[k]+=p.fld[k]||0);a.fld.INN+=p.fld.INN||0}}
+ const order=['P','C','1B','2B','3B','SS','LF','CF','RF','DH','PH','PR','R'];
+ return Object.values(acc).map(a=>{a.pos=[...a.pos].sort((x,y)=>order.indexOf(x)-order.indexOf(y)).join('/');rates(a);return a})}
+const isAgg=()=>year==='all';
+const isRun=a=>a.every((y,i)=>!i||y===a[i-1]+1);
+const yLabelOf=a=>a.length===1?String(a[0]):isRun(a)?`${a[0]}–${a[a.length-1]}`:a.join(', ');
+const yLabel=()=>yLabelOf(isAgg()?pickYrs:[year]);
+const CACHE={};const rawFor=y=>{const k=y==='all'?'A'+pickYrs.join('.'):String(y);return CACHE[k]||(CACHE[k]=y==='all'?allSeasons():seasonOf(y))};
+const dataFor=y=>showGuests?rawFor(y):rawFor(y).filter(p=>!p.g);
+function teamOf(y){const D=dataFor(y),bats=D.filter(p=>p.bat),pits=D.filter(p=>p.pit),flds=D.filter(p=>p.fld);
+ const B=k=>sum(bats,p=>p.bat[k]),P=k=>sum(pits,p=>p.pit[k]),F=k=>sum(flds,p=>p.fld[k]);
+ const RW=rawFor(y),RB=k=>sum(RW.filter(p=>p.bat),p=>p.bat[k]),RP=k=>sum(RW.filter(p=>p.pit),p=>p.pit[k]);
+ const st=y==='all'?null:M.standings[y],me=st&&st.rows.find(r=>r[0]==='Zürich Eighters');
+ let W=me?me[1]:RP('W'),L=me?me[2]:RP('L'),RS=me?me[6]:RB('R'),RA=me?me[7]:RP('RA');
+ if(y==='all'){const per=pickYrs.map(teamOf);W=sum(per,r=>r.W);L=sum(per,r=>r.L);RS=sum(per,r=>r.RS);RA=sum(per,r=>r.RA)}
+ const ip=P('Outs')/3,obp=(B('H')+B('BB')+B('HBP'))/(B('AB')+B('BB')+B('HBP')+B('SF')),slg=(B('H')+B('2B')+2*B('3B')+3*B('HR'))/B('AB');
+ return {y,D,bats,pits,flds,B,P,F,W,L,RS,RA,me,st,fromSt:!!me,avg:B('H')/B('AB'),obp,slg,era:P('ER')*7/ip,whip:(P('HA')+P('BBA'))/ip}}
+/* ---------- state ---------- */
+const DEF=[+PHID,3882];
+const defaultSel=()=>+PHID;
+const stub8=()=>({...PEOPLE[PHID],id:+PHID,pos:'',bat:null,pit:null,fld:null,yrs:0,stub:true});
+const withStub=L=>L.some(p=>p.id===+PHID)?L:[stub8(),...L];
+let pickYrs=[2026],combine=false,ssnK=null,ssnDir=1;
+let year=2026,mode='team',sel=null,grp='bat',metric='OPS',minV=null,sortK=null,sortDir=-1,D=[],TM=null;
+/* ---------- header ---------- */
+function renderHeader(){
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-selected',b.dataset.mode===mode));
+ const allOn=pickYrs.length===YEARS.length;
+ $('years').innerHTML=YEARS.map(y=>`<button type="button" data-year="${y}" aria-pressed="${pickYrs.includes(y)}">${y}</button>`).join('')+`<button type="button" data-year="all" aria-pressed="${allOn}">All</button>`;
+ const cur=isAgg()&&!allOn?'custom':isAgg()?'all':String(year);
+ $('ysel').innerHTML=[...YEARS.map(String)].reverse().map(y=>`<option value="${y}" ${cur===y?'selected':''}>Season ${y}</option>`).join('')+`<option value="all" ${cur==='all'?'selected':''}>All seasons</option>`+(cur==='custom'?`<option value="custom" selected>${esc(yLabel())}</option>`:'');
+ const opt=v=>YEARS.map(y=>`<option value="${y}" ${y===v?'selected':''}>${y}</option>`).join('');
+ $('yFrom').innerHTML=opt(pickYrs[0]);$('yTo').innerHTML=opt(pickYrs[pickYrs.length-1]);
+ $('combine').setAttribute('aria-pressed',combine);document.body.classList.toggle('combining',combine);
+ $('ynow').textContent=isAgg()?`${pickYrs.length} seasons added up: ${yLabel()}`:'';
+ $('guests').setAttribute('aria-pressed',showGuests);$('guests').querySelector('.st').textContent=showGuests?'On':'Off';$('guests').setAttribute('aria-label',(showGuests?'Exclude':'Include')+' Lions and Ravens players');
+ const dk=document.documentElement.dataset.ui==='dark';$('theme').setAttribute('aria-pressed',dk);$('theme').querySelector('span').textContent=dk?'Light':'Dark';$('theme').setAttribute('aria-label',dk?'Switch to light theme':'Switch to dark theme');
+ $('v-team').hidden=mode!=='team';$('v-players').hidden=mode!=='players';$('v-roster').hidden=mode!=='roster';
+}
+/* ---------- team view ---------- */
+const fmtD=d=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+function renderTeam(){const t=TM,all=year==='all';
+ $('tTitle').textContent=all?`${yLabel()} · ${pickYrs.length} seasons combined`:`${year} · ${lg(year)}${t.st?' '+t.st.group.replace(/^1\. Liga ?/,'').replace('Vorrunde ',''):''}`.toUpperCase();
+ const gx=showGuests?'':' Player totals exclude Lions and Ravens.';
+ $('tLead').textContent=(all?`${t.W} wins and ${t.L} losses across ${pickYrs.length} seasons, with ${t.D.length} different players.`:`${t.W}–${t.L} with a ${r3(t.avg)} team average. Pitchers walked ${t.P('BBA')} and struck out ${t.P('K')} in ${ipOf(t.P('Outs'))} innings.`)+gx;
+ const G=all?null:M.games[year];
+ const homeAway=t.me?[`${t.me[4]} at home`,`${t.me[5]} on the road`]:['pitcher decisions','pitcher decisions'];
+ const place=t.st?ord(t.st.rows.findIndex(r=>r[0]==='Zürich Eighters')+1):'–';
+ $('tiles').innerHTML=[['Won',t.W,homeAway[0]],['Lost',t.L,homeAway[1]],['Runs scored',t.RS,G?`${r1(t.RS/G.length)} per game`:(t.fromSt?'from standings':'from player totals')],['Runs allowed',t.RA,G?`${r1(t.RA/G.length)} per game`:(t.fromSt?'from standings':'from pitcher totals')],['Place',place,t.st?`of ${t.st.rows.length} in the group`:(all?`${pickYrs.length} seasons`:'no group table')]]
+  .map(([l,v,s])=>`<div class="tile"><div class="l">${esc(l)}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join('');
+ /* line scores */
+ $('gameBox').hidden=!G;$('gcards').hidden=!G;$('noGames').hidden=!!G;$('innWrap').hidden=!G;
+ $('gameSub').textContent=G?'Eighters runs in gold, opponent runs in white. The away team bats first, so it is on top. Click a game to open its box score and win-probability chart on EasyScore.':'';
+ $('noGames').textContent=all?'Pick a single season to see its games. Line scores exist for 2026.':`EasyScore has only season totals for ${year}, no game-by-game results. Line scores are available for 2026.`;
+ if(G){const NI=Math.max(...G.map(g=>Math.max(g.ln.length,g.oln.length)));
+  $('ls').innerHTML=`<thead><tr><th class="l" scope="col">Date</th><th class="l" scope="col">Opponent</th>${Array.from({length:NI},(_,i)=>`<th scope="col">${i+1}</th>`).join('')}<th scope="col">R</th><th scope="col">H</th><th scope="col">E</th><th scope="col">Result</th></tr></thead><tbody>`+
+   G.map(g=>{const w=g.r>g.ra,cell=(a,b,c='')=>{const E=`<div class="u">${a??''}</div>`,O=`<div class="o">${b??''}</div>`;return `<td class="c ${c}">${g.home?O+E:E+O}</td>`};
+    return `<tr class="gl" data-gc="${g.id}"><td class="l" style="color:var(--pale)">${fmtD(g.d)}</td><td class="l" style="font-weight:600"><a class="gclink" href="${GC(g.id)}" target="_blank" rel="noopener" aria-label="Box score: ${g.home?'vs':'at'} ${esc(g.opp)}, ${fmtD(g.d)} (opens EasyScore)">${g.home?'':'@ '}${esc(g.opp)}</a></td>${Array.from({length:NI},(_,i)=>cell(i<g.ln.length?(g.ln[i]??'x'):'',i<g.oln.length?(g.oln[i]??'x'):'')).join('')}${cell(g.r,g.ra,'t')}${cell(g.h,g.oh)}${cell(g.e,g.oe)}<td style="text-align:center"><span class="res ${w?'w':'l'}">${w?'W':'L'}</span></td></tr>`}).join('')+'</tbody>';
+  $('gcards').innerHTML=G.map(g=>{const w=g.r>g.ra,abbr=g.opp.split(' ').map(x=>x[0]).join('').slice(0,3).toUpperCase(),n=Math.max(g.ln.length,g.oln.length);
+   const row=(k,a,r,h,e,us)=>`<tr${us?' class="us"':''}><td class="k">${k}</td>${Array.from({length:n},(_,i)=>`<td>${i<a.length?(a[i]??'x'):''}</td>`).join('')}<td class="t">${r}</td><td>${h}</td><td>${e}</td></tr>`;
+   return `<article class="gcard"><div class="top1"><span class="res ${w?'w':'l'}">${w?'W':'L'}</span><div class="who"><b>${g.home?'vs':'@'} ${esc(g.opp)}</b><span>${fmtD(g.d)}, ${g.home?'home':'away'}</span></div><span class="sc">${g.r}–${g.ra}</span></div>
+   <table class="mini" data-ctx="ls"><thead><tr><th></th>${Array.from({length:n},(_,i)=>`<th scope="col">${i+1}</th>`).join('')}<th scope="col">R</th><th scope="col">H</th><th scope="col">E</th></tr></thead><tbody>${g.home?row(esc(abbr),g.oln,g.ra,g.oh,g.oe,0)+row('EIG',g.ln,g.r,g.h,g.e,1):row('EIG',g.ln,g.r,g.h,g.e,1)+row(esc(abbr),g.oln,g.ra,g.oh,g.oe,0)}</tbody></table><a class="gcbtn" href="${GC(g.id)}" target="_blank" rel="noopener">Box score on EasyScore ↗</a></article>`}).join('');
+  const inn=Array.from({length:NI},(_,i)=>({i:i+1,s:sum(G,g=>g.ln[i]),a:sum(G,g=>g.oln[i]),n:G.filter(g=>g.ln.length>i||g.oln.length>i).length}));
+  const im=Math.max(...inn.map(x=>Math.max(x.s,x.a)),1);
+  $('inn').innerHTML=inn.map(x=>`<div><span class="i">${x.i}<small>${x.n} games</small></span><span style="display:grid;gap:3px"><span class="b"><i style="width:${x.s/im*86}%"></i>${x.s}</span><span class="b a"><i style="width:${x.a/im*86}%"></i>${x.a}</span></span></div>`).join('')}
+ /* seasons */
+ const multi=isAgg()&&pickYrs.length<YEARS.length;
+ const rows=(isAgg()?pickYrs:YEARS).map(teamOf).map(r=>({...r,pct:r.W+r.L?r.W/(r.W+r.L):null,ops:r.obp+r.slg,sb:r.B('SB'),bba:r.P('BBA'),np:r.D.length}));
+ const SC=[['y','Season',1],['lg','League',1],['W','W–L'],['pct','Win %'],['pc','',0,'pc'],['RS','RS'],['RA','RA'],['avg','AVG'],['obp','OBP'],['ops','OPS'],['sb','SB'],['era','ERA',0,0,1],['bba','BB issued',0,0,1],['np','Players']];
+ const sv=(r,k)=>k==='lg'?lg(r.y):r[k];
+ if(ssnK&&ssnK!=='pc')rows.sort((a,b)=>{const x=sv(a,ssnK),z=sv(b,ssnK);if(x==null)return 1;if(z==null)return -1;return (typeof x==='string'?x.localeCompare(z):x-z)*ssnDir||a.y-b.y});
+ const ar=k=>`<span class="ar" aria-hidden="true">${ssnK===k?(ssnDir>0?'▴':'▾'):''}</span>`;
+ $('ssnSub').innerHTML=(multi?`The ${pickYrs.length} seasons you picked (${yLabel()}). `:'Every Eighters season on record. Pick a season to switch to it, or turn on Combine seasons to add several up. ')+'<span class="srt">Click a column heading to sort.</span>';
+ $('ssn').innerHTML='<thead><tr>'+SC.map(([k,h])=>k==='pc'?'<th scope="col" class="pc"></th>':`<th scope="col" data-k="${k}" aria-sort="${ssnK===k?(ssnDir>0?'ascending':'descending'):'none'}">${h}${ar(k)}</th>`).join('')+'</tr></thead><tbody>'+
+  rows.map(r=>`<tr data-year="${r.y}" class="${pickYrs.includes(r.y)?'cur':''}"><td><span class="yr">${r.y}</span></td><td>${esc(lg(r.y))}</td><td>${r.W}–${r.L}${r.fromSt?'':'*'}</td><td>${r.pct==null?'–':r3(r.pct)}</td><td class="pc"><span class="pips" role="img" aria-label="${r.W} wins, ${r.L} losses">${'<i></i>'.repeat(r.W)}${'<i class="l"></i>'.repeat(r.L)}</span></td><td>${r.RS}</td><td>${r.RA}</td><td>${r3(r.avg)}</td><td>${r3(r.obp)}</td><td>${r3(r.ops)}</td><td>${r.sb}</td><td>${r2(r.era)}</td><td>${r.bba}</td><td>${r.np}</td></tr>`).join('')+
+  `</tbody><tfoot><tr><td colspan="14" style="padding-top:12px">* Record from pitcher win/loss decisions, runs from player totals.</td></tr></tfoot>`;
+ $('scards').innerHTML=rows.map(r=>`<button type="button" class="scard${pickYrs.includes(r.y)?' cur':''}" data-year="${r.y}" aria-pressed="${pickYrs.includes(r.y)}"><span class="yr">${r.y}</span><span class="lg">${esc(lg(r.y))}<br><span class="pips" role="img" aria-label="${r.W} wins, ${r.L} losses">${'<i></i>'.repeat(r.W)}${'<i class="l"></i>'.repeat(r.L)}</span></span><span class="wl">${r.W}–${r.L}${r.fromSt?'':'*'}<small style="display:block;font-size:12px;opacity:.75">${r.pct==null?'':r3(r.pct)}</small></span><span class="mt"><span>Runs <b>${r.RS}–${r.RA}</b></span><span>AVG <b>${r3(r.avg)}</b></span><span>OPS <b>${r3(r.ops)}</b></span><span>ERA <b>${r2(r.era)}</b></span></span></button>`).join('')+'<p class="sub" style="margin:4px 0 0;font-size:14px">* Record from pitcher win/loss decisions.</p>';
+ /* standings */
+ const st=t.st;$('standWrap').hidden=false;
+ $('standH').textContent=st?st.group.replace('Vorrunde ','')+' standings':'Standings';
+ $('standSub').textContent=st?`Final ${year} group table.`:(all?'Pick a single season to see its table.':`EasyScore has no separate ${year} group table, so none is shown.`);
+ $('stand').innerHTML=st?st.rows.map(([n,w,l,s,h,a,rs,ra],i)=>`<li class="${n==='Zürich Eighters'?'us':''}"><span class="rk">${i+1}</span><span class="n">${esc(n)}</span><span class="wl">${w}–${l}</span><span class="d">${rs-ra>0?'+':''}${rs-ra}</span></li>`).join(''):'';
+ $('midSec').hidden=!st&&!G;
+ /* totals */
+ const B=t.B,P=t.P,F=t.F;
+ const T=[['Batting',[['Plate appearances',B('PA')],['Hits',`${B('H')} (${B('2B')} 2B, ${B('3B')} 3B, ${B('HR')} HR)`],['Runs / RBI',`${B('R')} / ${B('RBI')}`],['Walks / hit by pitch',`${B('BB')} / ${B('HBP')}`],['Strikeouts',B('SO')],['Stolen bases',`${B('SB')} (${B('CS')} caught)`],['AVG / OBP / SLG',`${r3(t.avg)} / ${r3(t.obp)} / ${r3(t.slg)}`]]],
+  ['Pitching',[['Innings',ipOf(P('Outs'))],['Hits / runs allowed',`${P('HA')} / ${P('RA')}`],['Earned runs',P('ER')],['Walks / hit batters',`${P('BBA')} / ${P('HBPA')}`],['Wild pitches',P('WP')],['Strikeouts',P('K')],['ERA / WHIP',`${r2(t.era)} / ${r2(t.whip)}`]]],
+  ['Fielding',[['Chances',F('TC')],['Putouts / assists',`${F('PO')} / ${F('A')}`],['Errors',F('E')],['Fielding %',r3((F('PO')+F('A'))/F('TC'))],['Double plays',F('DP')],['Passed balls',F('PB')],['Steals allowed',F('SBA')]]]];
+ $('tot').innerHTML=T.map(([h,r])=>`<div><h3>${h}</h3><dl>${r.map(([a,b])=>`<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}</dl></div>`).join('');
+}
+/* ---------- players view ---------- */
+const GR={
+ bat:{label:'Batting',has:p=>p.bat,minKey:'plate appearances',minOpts:[0,5,10,20,50],minDef:10,minAll:50,val:(p,k)=>p.bat[k],
+  metrics:[['OPS','OPS',r3],['BA','AVG',r3],['OBP','OBP',r3],['H','Hits',int],['RBI','RBI',int],['R','Runs',int],['SB','Steals',int],['BB','Walks',int]],
+  cols:[['G','G',int],['PA','PA',int],['AB','AB',int],['R','R',int],['H','H',int],['2B','2B',int],['3B','3B',int],['HR','HR',int],['RBI','RBI',int],['BB','BB',int],['SO','SO',int],['HBP','HBP',int],['SB','SB',int],['CS','CS',int],['BA','AVG',r3],['OBP','OBP',r3],['SLG','SLG',r3],['OPS','OPS',r3]],def:'OPS'},
+ pit:{label:'Pitching',has:p=>p.pit,minKey:'innings',minOpts:[0,1,3,5,10],minDef:1,minAll:10,val:(p,k)=>k==='IPo'?p.pit.Outs:p.pit[k],
+  metrics:[['IPo','Innings',ipOf],['K','Strikeouts',int],['ERA','ERA',r2,1],['WHIP','WHIP',r2,1],['W','Wins',int]],
+  cols:[['G','G',int],['GS','GS',int],['IPo','IP',ipOf],['BF','BF',int],['HA','H',int],['RA','R',int],['ER','ER',int],['BBA','BB',int],['K','K',int],['HBPA','HBP',int],['WP','WP',int],['W','W',int],['L','L',int],['SV','SV',int],['ERA','ERA',r2],['WHIP','WHIP',r2],['OppAVG','Opp AVG',r3],['PitchCount','Pitches',int]],def:'IPo'},
+ fld:{label:'Fielding',has:p=>p.fld,minKey:'chances',minOpts:[0,5,10,20,50],minDef:10,minAll:50,val:(p,k)=>k==='INNn'?p.fld.INN:p.fld[k],
+  metrics:[['TC','Chances',int],['FPct','Fielding %',r3],['PO','Putouts',int],['A','Assists',int],['DP','Double plays',int]],
+  cols:[['G','G',int],['INNn','Inn',v=>v?ipOf(Math.round(v*3)):'–'],['TC','TC',int],['PO','PO',int],['A','A',int],['E','E',int],['DP','DP',int],['FPct','FPct',r3],['PB','PB',int],['SBA','SB att',int],['CS','CS',int]],def:'TC'}};
+const mdef=c=>isAgg()?Math.min(c.minAll,c.minDef*pickYrs.length):c.minDef;
+const qual=(p,g,m)=>{const c=GR[g];if(!c.has(p))return false;m=m??(minV??mdef(c));if(g==='bat')return (p.bat.PA||0)>=m;if(g==='pit')return p.pit.Outs>=m*3;return (p.fld.TC||0)>=m};
+const rankOf=(p,g,k,low)=>{const c=GR[g];if(!qual(p,g,mdef(c)))return '';const l=D.filter(x=>qual(x,g,mdef(c))).map(x=>c.val(x,k)).filter(ok);const v=c.val(p,k);if(!ok(v))return '';return `${ord(1+l.filter(x=>low?x<v:x>v).length)} of ${l.length}`};
+const careerOf=id=>YEARS.map(y=>{const e=M.years[y].p[id];if(!e)return null;const p={bat:e.bat&&{...e.bat},pit:e.pit&&{...e.pit}};rates(p);return {y,...p}}).filter(Boolean);
+const cur=()=>D.find(x=>x.id===sel)||(sel===+PHID?stub8():D[0]);
+function renderJersey(p){
+ const nm=surname(p).toUpperCase(),no=String(jn(p)).replace(/[^0-9]/g,'').slice(0,2);
+ const n=$('jName');n.textContent=nm||' ';if(nm.length>10){n.setAttribute('textLength','218');n.setAttribute('lengthAdjust','spacingAndGlyphs')}else{n.removeAttribute('textLength');n.removeAttribute('lengthAdjust')}
+ $('jFront').textContent=no;$('jBack').textContent=no;
+ $('jsvg').setAttribute('aria-label',`Eighters navy jersey, front and back${no?', number '+no:''}${nm?', name '+nm:''}`);
+}
+function renderPlayer(){const p=cur();if(!p)return;renderJersey(p);
+ $('pq').value=p.n;
+ $('pPos').textContent=posText(p.pos);
+ const fo=firstOf(p);$('pName').innerHTML=(fo?`${esc(fo)}<br>${esc(surname(p))}`:esc(surname(p)))+badge(p);
+ $('pNum').textContent=jn(p)?'#'+jn(p):'';
+ $('pStrip').innerHTML=p.stub?'':'<span class="plab">Innings by position</span>'+posStrip(p);
+ const b=p.bat,t=p.pit,span=isAgg()?`${p.yrs} of the selected season${p.yrs>1?'s':''} (${yLabel()})`:String(year);
+ $('pLead').textContent=b?`${year==='all'?'Across '+span:'In '+year}: ${int(b.G)} games, ${int(b.PA)} plate appearances, ${int(b.H)} hits, ${int(b.R)} runs and ${int(b.RBI)} RBI.`:t?`${year==='all'?'Across '+span:'In '+year}: pitched ${ipOf(t.Outs)} innings in ${int(t.G)} games.`:`${year==='all'?'Across '+span:'In '+year}: fielding only.`;
+ if(p.stub)$('pLead').textContent=`No Z-License appearances ${isAgg()?'in '+yLabel():'in '+year}. Pick another season, or another player from the list.`;
+ let note='';
+ if(p.g)note=`${CLUBNAME[p.g]} player who played for the Eighters.${p.g==='lions'?' The Eighters and Lions share the 1. Liga roster (EIG/LIO2).':''}`;
+ else if(p.ph)note='All Z-License entries combined (the Eighters and Lions club licences). Scorers use them for players without a profile, so these numbers belong to several people.';
+ else if(!p.full)note='Former player, not on the current team list. EasyScore only stores a shortened first name.';
+ else if(!p.club)note=`Not on the club's 1. Liga team list. Name${p.esno?' and number':''} taken from ${p.src||'EasyScore'}.`;
+ else if(p.esno&&p.no&&p.esno!==p.no)note=`EasyScore lineups list #${p.esno}; the team list says #${p.no}, which is shown here.`;
+ else if(!p.no&&p.esno)note=`No number on the team list; #${p.esno} comes from EasyScore.`;
+ if(p.renum)note=`Shown as #${p.num}: #${p.renum.from} is already worn by ${p.renum.by.n}${p.renum.prio?', and 2026 numbers have priority':', so the closest free number is used'}.`+(note?' '+note:'');
+ if(!jn(p))note+=(note?' ':'')+'No jersey number on file.';
+ $('pNote').hidden=!note;$('pNote').textContent=note;
+ {const ys=YEARS.filter(y=>M.years[y].p[p.id]),inSel=ys.filter(y=>pickYrs.includes(y)),ey=(inSel.length?inSel:ys).slice(-1)[0],a=$('pES');
+  if(p.ph||!ey)a.hidden=true;else{a.hidden=false;a.href=`https://www.easyscore.com/playerstats/${p.id}?yr=${ey}&lg=${LGID[ey]}`;a.textContent=`EasyScore player page, ${ey} ↗`;a.setAttribute('aria-label',`${p.n} on EasyScore, ${ey} season (opens EasyScore)`)}}
+ const K=b?[['OBP',r3(b.OBP),rankOf(p,'bat','OBP')],['AVG',r3(b.BA),rankOf(p,'bat','BA')],['OPS',r3(b.OPS),rankOf(p,'bat','OPS')],['Stolen bases',int(b.SB),`${int(b.CS)} caught`]]:t?[['ERA',r2(t.ERA),rankOf(p,'pit','ERA',1)],['WHIP',r2(t.WHIP),rankOf(p,'pit','WHIP',1)],['Innings',ipOf(t.Outs),''],['Strikeouts',int(t.K),'']]:[];
+ $('pKey').innerHTML=K.map(([l,v,r])=>`<div><b>${esc(v)}</b><span>${esc(l)}</span><em>${esc(r?(r.includes(' of ')?r+' on the team':r):' ')}</em></div>`).join('');
+ $('gTitle').textContent=isAgg()?`${yLabel()} combined`:`${year} season`;
+ $('gSub').textContent=`Ranks are among teammates with at least ${mdef(GR.bat)} plate appearances or ${mdef(GR.pit)} innings`;
+ const grp3=[['Batting',b&&[['Games',int(b.G)],['Plate app.',int(b.PA)],['Hits',int(b.H)],['Doubles',int(b['2B'])],['Runs',int(b.R)],['RBI',int(b.RBI)],['Walks',int(b.BB)],['Hit by pitch',int(b.HBP)],['Strikeouts',int(b.SO)],['SLG',r3(b.SLG)]]],
+  ['Pitching',t&&[['Games',int(t.G)],['Innings',ipOf(t.Outs)],['W–L',`${int(t.W)}–${int(t.L)}`],['Strikeouts',int(t.K)],['Walks',int(t.BBA)],['Hits allowed',int(t.HA)],['Earned runs',int(t.ER)],['Opp. AVG',r3(t.OppAVG)]]],
+  ['Fielding',p.fld&&[['Chances',int(p.fld.TC)],['Putouts',int(p.fld.PO)],['Assists',int(p.fld.A)],['Errors',int(p.fld.E)],['Fielding %',r3(p.fld.FPct)],['Double plays',int(p.fld.DP)]]]];
+ $('groups').innerHTML=grp3.map(([h,r])=>`<div><h3>${h}</h3>${r?`<dl>${r.map(([a,v])=>`<div><dt>${esc(a)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`:`<p class="none">No ${h.toLowerCase()} this ${year==='all'?'period':'season'}.</p>`}</div>`).join('');
+ const C=careerOf(p.id);
+ $('career').innerHTML='<thead><tr><th scope="col">Season</th><th scope="col">League</th><th scope="col">G</th><th scope="col">PA</th><th scope="col">H</th><th scope="col">BB</th><th scope="col">RBI</th><th scope="col">AVG</th><th scope="col">IP</th><th scope="col">ERA</th><th scope="col" style="text-align:left">OBP</th></tr></thead><tbody>'+
+  C.map(s=>`<tr data-year="${s.y}" class="${pickYrs.includes(s.y)?'cur':''}" style="cursor:pointer"><td><b>${s.y}</b></td><td>${esc(lg(s.y))}</td><td>${int(s.bat?.G)}</td><td>${int(s.bat?.PA)}</td><td>${int(s.bat?.H)}</td><td>${int(s.bat?.BB)}</td><td>${int(s.bat?.RBI)}</td><td>${r3(s.bat?.BA)}</td><td>${s.pit?ipOf(s.pit.Outs):'–'}</td><td>${s.pit?r2(s.pit.ERA):'–'}</td><td><span class="obp"><div><i style="width:${ok(s.bat?.OBP)?Math.round(s.bat.OBP*100):0}%"></i></div><b>${r3(s.bat?.OBP)}</b></span></td></tr>`).join('')+'</tbody>';
+}
+function renderList(q){
+ const list=withStub([...D]).sort((a,b)=>numKey(a)-numKey(b)||sortKey(a).localeCompare(sortKey(b))).filter(p=>!q||p.n.toLowerCase().includes(q)||jn(p)===q.replace('#',''));
+ $('plist').innerHTML=list.map(p=>`<li role="option" id="opt-${p.id}" data-id="${p.id}" aria-selected="${p.id===sel}"><span class="no">${jn(p)?'#'+esc(jn(p)):''}</span><span>${esc(p.n)}${badge(p)}</span></li>`).join('')||'<li class="empty" role="option" aria-disabled="true">No player matches.</li>';
+ act=-1;
+}
+let act=-1;
+function openList(q){renderList(q);$('plist').hidden=false;$('pq').setAttribute('aria-expanded','true')}
+function closeList(){$('plist').hidden=true;$('pq').setAttribute('aria-expanded','false');$('pq').removeAttribute('aria-activedescendant')}
+function moveAct(d){const o=[...$('plist').querySelectorAll('li[data-id]')];if(!o.length)return;act=(act+d+o.length)%o.length;o.forEach((x,i)=>x.classList.toggle('act',i===act));o[act].scrollIntoView({block:'nearest'});$('pq').setAttribute('aria-activedescendant',o[act].id)}
+function renderCtrls(){
+ const tb=Object.entries(GR).map(([k,c])=>`<button type="button" data-g="${k}" aria-pressed="${k===grp}">${c.label}</button>`).join('');
+ $('grp').innerHTML=tb;$('grp2').innerHTML=tb;const c=GR[grp];
+ $('met').innerHTML=c.metrics.map(([k,l])=>`<button type="button" data-m="${k}" aria-pressed="${k===metric}">${esc(l)}</button>`).join('');
+ $('minLbl').textContent=c.minKey;$('minSel').innerHTML=c.minOpts.map(v=>`<option value="${v}" ${v===(minV??mdef(c))?'selected':''}>${v}</option>`).join('');
+}
+function renderLB(){const c=GR[grp],m=c.metrics.find(x=>x[0]===metric),low=!!m[3];
+ const list=D.filter(p=>qual(p,grp)).map(p=>({p,v:c.val(p,metric)})).filter(x=>ok(x.v)).sort((a,b)=>low?a.v-b.v:b.v-a.v);
+ const max=Math.max(...list.map(x=>x.v),0.0001),sp=cur(),inL=list.some(x=>x.p.id===sel);
+ $('lbTitle').textContent=`${c.label} leaders: ${m[1]}`;
+ $('lbSub').textContent=`${list.length} players with at least ${minV??mdef(c)} ${c.minKey}${', '+yLabel()}.${low?' Lower is better, so the shortest bar leads.':''}${sp&&!inL?` ${sp.n} is below the minimum.`:''}`;
+ $('lb').innerHTML=list.length?list.map(({p,v})=>`<button type="button" class="row${p.id===sel?' sel':''}" data-id="${p.id}"><span class="nm">${jn(p)?'#'+esc(jn(p))+' ':''}${esc(p.n)}${badge(p)}</span><span class="tr"><span class="fl" style="width:${Math.max(1.5,v/max*100)}%"></span></span><span class="v">${esc(m[2](v))}</span></button>`).join(''):'<p class="empty">Nobody meets that minimum.</p>';
+}
+function renderTable(){const c=GR[grp],k=sortK||c.def,t=TM;
+ const list=D.filter(p=>c.has(p)).sort((a,b)=>{if(!sortK&&isPh(a)!==isPh(b))return isPh(a)?-1:1;if(k==='n')return surname(a).localeCompare(surname(b))*-sortDir;if(k==='no')return((+jn(a)||999)-(+jn(b)||999))*-sortDir;const x=c.val(a,k),y=c.val(b,k);if(!ok(x))return 1;if(!ok(y))return -1;return(x-y)*sortDir});
+ const ar=kk=>kk===k?`aria-sort="${sortDir<0?'descending':'ascending'}"`:'';
+ $('tbl').dataset.ctx=grp;$('tbl').tHead.innerHTML=`<tr><th data-k="n" ${ar('n')} scope="col">Player</th><th data-k="no" ${ar('no')} scope="col">#</th>${c.cols.map(([ck,l])=>`<th data-k="${ck}" ${ar(ck)} scope="col">${esc(l)}</th>`).join('')}</tr>`;
+ $('tbl').tBodies[0].innerHTML=list.map(p=>`<tr class="${p.id===sel?'cur':''}" data-id="${p.id}"><td>${esc(p.n)}${badge(p)}</td><td>${esc(jn(p))}</td>${c.cols.map(([ck,,f])=>`<td>${esc(f(c.val(p,ck)))}</td>`).join('')}</tr>`).join('');
+ let v={};if(grp==='bat')v={BA:t.avg,OBP:t.obp,SLG:t.slg,OPS:t.obp+t.slg,G:null};if(grp==='pit')v={IPo:t.P('Outs'),ERA:t.era,WHIP:t.whip,OppAVG:null,G:null,GS:null};if(grp==='fld')v={FPct:(t.F('PO')+t.F('A'))/t.F('TC'),G:null,INNn:null};
+ const S=grp==='bat'?t.B:grp==='pit'?t.P:t.F;
+ $('tbl').tFoot.innerHTML=`<tr><td>Team</td><td></td>${c.cols.map(([ck,,f])=>`<td>${ck in v?(v[ck]==null?'':esc(f(v[ck]))):int(S(ck))}</td>`).join('')}</tr>`;
+}
+/* ---------- roster ---------- */
+let rpos='all';
+const PG={all:['All',()=>true],P:['Pitchers',s=>s.includes('P')],C:['Catchers',s=>s.includes('C')],IF:['Infield',s=>['1B','2B','3B','SS'].some(x=>s.includes(x))],OF:['Outfield',s=>['LF','CF','RF'].some(x=>s.includes(x))]};
+const shortPos=s=>{const a=(s||'').split('/').filter(x=>x&&!['PH','PR','R'].includes(x));return a.length>4?a.slice(0,4).join(', ')+' +'+(a.length-4):a.join(', ')};
+const P9=['P','C','1B','2B','3B','SS','LF','CF','RF'],PNAME={P:'Pitcher',C:'Catcher','1B':'First base','2B':'Second base','3B':'Third base',SS:'Shortstop',LF:'Left field',CF:'Center field',RF:'Right field'};
+const fmtIn=o=>`${Math.floor(o/3)}${o%3?'.'+o%3:''}`;
+function posInn(p){const ys=isAgg()?pickYrs:[year],s=[0,0,0,0,0,0,0];
+ ys.forEach(y=>{const r=M.ip?.[y]?.[p.id];if(r)r.forEach((v,i)=>s[i]+=v)});
+ const listed=new Set((p.pos instanceof Set?[...p.pos]:String(p.pos||'').split('/')).filter(Boolean));
+ const o={P:s[0],C:s[1],'1B':s[2],'2B':s[3],'3B':s[4],SS:s[5]};
+ let of=['LF','CF','RF'].filter(x=>listed.has(x));if(!of.length&&s[6])of=['LF','CF','RF'];
+ ['LF','CF','RF'].forEach(x=>o[x]=of.includes(x)?s[6]/of.length:0);
+ return {o,listed,ofTot:s[6],ofN:of.length}}
+function posStrip(p){const {o,listed,ofTot,ofN}=posInn(p),mx=Math.max(...P9.map(k=>o[k]),1);
+ return `<span class="p9" role="img" aria-label="${esc(P9.filter(k=>o[k]>0||listed.has(k)).map(k=>PNAME[k]+(o[k]>0?' '+fmtIn(Math.round(o[k]))+' inn.':'')).join(', ')||'No fielding positions')}">`+P9.map(k=>{const v=o[k],on=v>0||listed.has(k),a=on?(v>0?0.28+0.72*v/mx:0.18):0;
+  const tip=on?`${PNAME[k]}: ${v>0?(['LF','CF','RF'].includes(k)&&ofN>1?`${fmtIn(ofTot)} innings in the outfield, shared over ${ofN} spots`:fmtIn(Math.round(v))+' innings'):'appeared, no outs recorded'}`:`${PNAME[k]}: not played`;
+  return `<i class="${on?'on':''}" style="--a:${a.toFixed(2)}" title="${esc(tip)}">${k}</i>`}).join('')+'</span>'}
+function renderRoster(){
+ const list=[...D].filter(p=>PG[rpos][1]((p.pos||'').split('/'))).sort((a,b)=>numKey(a)-numKey(b)||sortKey(a).localeCompare(sortKey(b)));
+ $('rTitle').textContent=isAgg()?`Roster ${yLabel()}`:`${year} roster`;
+ $('rSub').textContent=`${list.length} player${list.length===1?'':'s'}${rpos==='all'?'':' who played '+PG[rpos][0].toLowerCase()}, ordered by jersey number. The strip on each card shows the positions played in the selected seasons: the brighter the box, the more innings there (LF/CF/RF share one outfield total). Hover a box for the innings.`;
+ $('rpos').innerHTML=Object.entries(PG).map(([k,[l]])=>`<button type="button" data-rp="${k}" aria-pressed="${k===rpos}">${l}</button>`).join('');
+ $('rgrid').innerHTML=list.map(p=>{const b=p.bat,t=p.pit,fo=firstOf(p);
+  const st=b&&b.PA?`<b>${int(b.PA)}</b> PA, <b>${r3(b.BA)}</b> AVG`:t?`<b>${ipOf(t.Outs)}</b> IP, <b>${r2(t.ERA)}</b> ERA`:'Fielding only';
+  return `<button type="button" class="sq" data-id="${p.id}" aria-label="${esc((jn(p)?'#'+jn(p)+' ':'')+p.n)}, open player page"><span class="n${jn(p)?'':' none'}">${jn(p)?'#'+esc(jn(p)):'No #'}</span><span class="nm"><span class="fn">${esc(fo)||'&nbsp;'}</span><span class="ln${surname(p).length>11?' long':''}">${esc(surname(p))}${badge(p)}</span><span class="st">${st}</span>${isAgg()?`<span class="st yr">${p.yrs} of ${pickYrs.length} seasons</span>`:''}</span>${posStrip(p)}</button>`}).join('')||'<p class="empty">No players for this filter.</p>';
+}
+/* ---------- column hints ---------- */
+const GL={Season:'Season (year)',League:'League the Eighters played in',W:'Wins','Win %':'Winning percentage: wins ÷ (wins + losses)','W–L':'Wins – losses',RS:'Runs scored by the Eighters',RA:'Runs allowed to opponents',AVG:'Batting average: hits ÷ at-bats',OBP:'On-base percentage: (hits + walks + hit by pitch) ÷ (at-bats + walks + hit by pitch + sacrifice flies)',SLG:'Slugging percentage: total bases ÷ at-bats',OPS:'On-base plus slugging: OBP + SLG',SB:'Stolen bases',ERA:'Earned run average: earned runs per 7 innings',WHIP:'Walks plus hits per inning pitched','BB issued':'Base on balls (walks) issued by Eighters pitchers',Players:'Players who appeared',Date:'Game date',Opponent:'Opponent (@ = away game)',Result:'W = win, L = loss',Player:'Player name','#':'Jersey number',G:'Games played',PA:'Plate appearances',AB:'At-bats',R:'Runs scored',H:'Hits','2B':'Doubles','3B':'Triples',HR:'Home runs',RBI:'Runs batted in',BB:'Base on balls (walks)',SO:'Strikeouts',HBP:'Hit by pitch',CS:'Caught stealing',GS:'Games started as pitcher',IP:'Innings pitched (.1 = one out, .2 = two outs)',BF:'Batters faced',ER:'Earned runs allowed',K:'Strikeouts by the pitcher',WP:'Wild pitches',L:'Losses',SV:'Saves','Opp AVG':'Opponents\' batting average against this pitcher',Pitches:'Pitches thrown',Inn:'Innings played in the field',TC:'Total chances: putouts + assists + errors',PO:'Putouts',A:'Assists',E:'Errors',DP:'Double plays',FPct:'Fielding percentage: (putouts + assists) ÷ total chances',PB:'Passed balls (catchers)','SB att':'Stolen base attempts against (catchers)'};
+const GLX={pit:{G:'Games pitched',H:'Hits allowed',R:'Runs allowed',BB:'Base on balls (walks) issued',HBP:'Batters hit by pitch'},fld:{G:'Games in the field',CS:'Runners caught stealing (catchers)'},ls:{R:'Runs',H:'Hits',E:'Errors'}};
+function applyTips(){document.querySelectorAll('th').forEach(th=>{const k=th.textContent.replace(/[▾▴]/g,'').trim();if(!k)return;const ctx=th.closest('table')?.dataset.ctx;let tip=(ctx&&GLX[ctx]?.[k])||GL[k]||(/^\d+$/.test(k)&&ctx==='ls'?'Inning '+k:'');if(!tip&&th.closest('table')?.id==='ssn'&&k==='')return;if(tip){th.dataset.tip=k+': '+tip;if(!th.hasAttribute('tabindex'))th.tabIndex=0}})}
+const TIP=document.createElement('div');TIP.id='tip';TIP.setAttribute('role','tooltip');TIP.hidden=true;document.body.appendChild(TIP);
+function showTip(el){const s=el.dataset.tip,i=s.indexOf(': ');TIP.innerHTML=`<b>${esc(s.slice(0,i))}</b> ${esc(s.slice(i+2))}`;TIP.hidden=false;const r=el.getBoundingClientRect(),w=TIP.offsetWidth,h=TIP.offsetHeight;let x=Math.min(Math.max(8,r.left+r.width/2-w/2),innerWidth-w-8),y=r.top-h-8;if(y<8)y=r.bottom+8;TIP.style.left=x+'px';TIP.style.top=y+'px';el.setAttribute('aria-describedby','tip')}
+const hideTip=()=>{TIP.hidden=true};
+document.addEventListener('mouseover',e=>{const el=e.target.closest('[data-tip]');el?showTip(el):hideTip()});
+document.addEventListener('focusin',e=>{const el=e.target.closest('[data-tip]');el?showTip(el):hideTip()});
+document.addEventListener('focusout',hideTip);addEventListener('scroll',hideTip,{passive:true});
+/* ---------- wiring ---------- */
+function renderAll(){D=dataFor(year);TM=teamOf(year);if(sel==null||(sel!==+PHID&&!D.some(p=>p.id===sel)))sel=defaultSel();
+ renderHeader();if(mode==='team')renderTeam();else if(mode==='roster')renderRoster();else{renderPlayer();renderCtrls();renderLB();renderTable()}applyTips()}
+const yHash=()=>isAgg()?(pickYrs.length===YEARS.length?'all':pickYrs.join('x')):String(year);
+const hashOf=()=>`#${mode}-${yHash()}${mode==='players'?'-'+sel:''}`;
+function setYears(a){a=[...new Set(a.map(Number).filter(y=>YEARS.includes(y)))].sort((x,y)=>x-y);if(!a.length)return;pickYrs=a;year=a.length===1?a[0]:'all';minV=null}
+function yearClick(v){if(v==='all')setYears(YEARS);else{const y=+v;if(combine){const s=new Set(pickYrs);s.has(y)?s.delete(y):s.add(y);if(!s.size)return;setYears([...s])}else setYears([y])}go(null,null)}
+function go(m,y,id){if(m)mode=m;if(y!=null)setYears(y==='all'?YEARS:[+y]);if(id!=null)sel=id;try{history.replaceState(null,'',hashOf())}catch(e){}renderAll()}
+function pickPlayer(id,scroll){closeList();go('players',null,id);if(scroll)scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+document.addEventListener('click',e=>{
+ if(!e.target.closest('.pick'))closeList();
+ const yr=e.target.closest('[data-year]');if(yr){yearClick(yr.dataset.year);if(!yr.closest('#years')&&!combine)scrollTo({top:0,behavior:'smooth'});return}
+ const sh=e.target.closest('#ssn th[data-k]');if(sh){const k=sh.dataset.k;const lowGood=k==='era'||k==='bba'||k==='RA'||k==='y'||k==='lg';if(ssnK===k)ssnDir=-ssnDir;else{ssnK=k;ssnDir=lowGood?1:-1}renderTeam();applyTips();return}
+ const gr=e.target.closest('tr[data-gc]');if(gr&&!e.target.closest('a')){gr.querySelector('a.gclink')?.click();return}
+ const cb=e.target.closest('#combine');if(cb){combine=!combine;renderHeader();return}
+ const md=e.target.closest('[data-mode]');if(md){go(md.dataset.mode);return}
+ const g=e.target.closest('[data-g]');if(g){grp=g.dataset.g;metric=GR[grp].metrics[0][0];minV=null;sortK=null;sortDir=-1;renderCtrls();renderLB();renderTable();applyTips();return}
+ const rp=e.target.closest('[data-rp]');if(rp){rpos=rp.dataset.rp;renderRoster();return}
+ const m=e.target.closest('[data-m]');if(m){metric=m.dataset.m;renderCtrls();renderLB();return}
+ const h=e.target.closest('#tbl th');if(h){const k=h.dataset.k;sortDir=sortK===k?-sortDir:-1;sortK=k;renderTable();applyTips();return}
+ const r=e.target.closest('[data-id]');if(r){pickPlayer(+r.dataset.id,!r.closest('#plist'))}
+});
+$('minSel').addEventListener('change',e=>{minV=+e.target.value;renderLB()});
+$('ysel').addEventListener('change',e=>{if(e.target.value!=='custom')go(null,e.target.value)});
+const rangeSet=()=>{let a=+$('yFrom').value,b=+$('yTo').value;if(a>b)[a,b]=[b,a];setYears(YEARS.filter(y=>y>=a&&y<=b));go(null,null)};
+$('yFrom').addEventListener('change',rangeSet);$('yTo').addEventListener('change',rangeSet);
+$('guests').addEventListener('click',()=>{showGuests=!showGuests;try{localStorage.setItem('eig-guests',showGuests?'on':'off')}catch(e){}renderAll()});
+$('theme').addEventListener('click',()=>{const d=document.documentElement.dataset.ui==='dark'?'light':'dark';document.documentElement.dataset.ui=d;try{localStorage.setItem('eig-ui',d)}catch(e){}renderHeader()});
+$('pq').addEventListener('focus',e=>{e.target.select();openList('')});
+$('pq').addEventListener('input',e=>openList(e.target.value.trim().toLowerCase()));
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('#ssn th[data-k]')){e.preventDefault();const k=e.target.dataset.k;e.target.click();requestAnimationFrame(()=>document.querySelector(`#ssn th[data-k="${k}"]`)?.focus())}});
+$('pq').addEventListener('keydown',e=>{
+ if(e.key==='ArrowDown'){e.preventDefault();if($('plist').hidden)openList('');moveAct(1)}
+ else if(e.key==='ArrowUp'){e.preventDefault();moveAct(-1)}
+ else if(e.key==='Enter'){e.preventDefault();const o=[...$('plist').querySelectorAll('li[data-id]')];const t=o[act]||o[0];if(t){pickPlayer(+t.dataset.id);e.target.blur()}}
+ else if(e.key==='Escape'){closeList();e.target.value=cur()?.n||''}});
+const fromHash=()=>{const[m,y,id]=location.hash.slice(1).split('-');if(m==='team'||m==='players'||m==='roster')mode=m;if(y==='all')setYears(YEARS);else if(y)setYears(y.split('x'));if(id&&PEOPLE[id])sel=+id;renderAll()};
+try{const s=localStorage.getItem('eig-ui');if(s==='dark'||s==='light')document.documentElement.dataset.ui=s}catch(e){}
+$('ver').textContent=VERSION;$('ver').title='Version '+VERSION+' – open settings';
+const fmtDate=d=>{try{return new Date(d+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}catch(e){return d}};
+$('setVer').textContent=`Eighters-stats ${VERSION} · ${fmtDate(CHANGELOG[0].date)}`;
+$('clog').innerHTML=CHANGELOG.map(c=>`<p class="clv">V${c.v} <small>${fmtDate(c.date)}</small></p><ul>${c.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`).join('');
+const openSet=()=>{const d=$('setDlg');if(d.showModal)d.showModal();else d.setAttribute('open','')};
+$('openSet').addEventListener('click',openSet);$('ver').addEventListener('click',openSet);
+$('closeSet').addEventListener('click',()=>$('setDlg').close());
+$('setDlg').addEventListener('click',e=>{if(e.target===$('setDlg'))$('setDlg').close()});
+const cmpVer=(a,b)=>{const x=String(a).split('.').map(Number),y=String(b).split('.').map(Number);for(let i=0;i<Math.max(x.length,y.length);i++){const d=(x[i]||0)-(y[i]||0);if(d)return d}return 0};
+async function checkUpdate(manual){const m=$('updMsg');
+ try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const j=await r.json();
+  if(cmpVer(j.version,APP_VERSION)>0){m.innerHTML=`Version V${esc(j.version)} is ready. <a href="#" id="doUpd">Update now</a>`;$('doUpd').addEventListener('click',e=>{e.preventDefault();updateNow()});if(!manual)openSet()}
+  else if(manual)m.textContent='You have the latest version.'}
+ catch(e){if(manual)m.textContent='Could not check for updates here. Open the app from dusiaclaw.github.io/eighters-stats.'}}
+async function updateNow(){try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();for(const k of await caches.keys())await caches.delete(k)}catch(e){}location.replace(location.pathname+'?u='+Date.now()+location.hash)}
+$('chkUpd').addEventListener('click',()=>checkUpdate(true));
+if('serviceWorker' in navigator&&/github\.io$|^localhost$/.test(location.hostname)){navigator.serviceWorker.register('sw.js').catch(()=>{});checkUpdate(false)}
+addEventListener('hashchange',fromHash);fromHash();
+}
+</script>
+</body></html>
