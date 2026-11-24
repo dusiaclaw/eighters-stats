@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.6 (2026-11-24)
+- Splash screen with the 8-ball when the app opens.
+- New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.
+- Season compare has its own page; pick a season there to open it on the Team page.
+
 ## v2.5 (2026-11-24)
 - Renamed to Eighters-stats, with an 8-ball app icon.
 - Installable app: add it to your phone or computer, and it updates itself when a new version is published.

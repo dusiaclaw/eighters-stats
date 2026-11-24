@@ -1,10 +1,9 @@
 {
-  "version": "2.5",
+  "version": "2.6",
   "date": "2026-11-24",
   "notes": [
-    "Renamed to Eighters-stats, with an 8-ball app icon.",
-    "Installable app: add it to your phone or computer, and it updates itself when a new version is published.",
-    "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.",
-    "Published on GitHub: github.com/dusiaclaw/eighters-stats."
+    "Splash screen with the 8-ball when the app opens.",
+    "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.",
+    "Season compare has its own page; pick a season there to open it on the Team page."
   ]
 }
