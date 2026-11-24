@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.0 (2026-11-24)
+- All seasons on EasyScore: 2011–2026 (16 seasons).
+- New menu: sidebar on the computer, tab bar at the bottom on the phone.
+- New Home page with the club history: win % by season, best season, all-time record and milestones.
+- New Hall of Fame with the MVP and rookie of the year for each season.
+- New app icon: the 8-ball baseball.
+
 ## v2.7 (2026-11-24)
 - Shorter footer: license and data sources.
 
