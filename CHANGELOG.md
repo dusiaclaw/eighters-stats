@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7 (2026-11-25)
+- Season compare charts: show count stats as season totals, per game or per 7 innings, so seasons compare fairly.
+- Players: the player search is back at the top of the page; on a computer the sidebar has one too.
+
 ## v3.6 (2026-11-25)
 - Home: club totals for every Eighter since 2011 and a club-history list of milestones (1,000th hit, 1,000th stolen base…) with the next ones coming up.
 - Home: Hall of Fame and All-time leaders are big buttons on every screen.
