@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.5 (2026-11-25)
+- Marcos Ramirez #12 now has his 2026 games: 3 games EasyScore had booked on other players are moved to him.
+- Hall of Fame: 2021 MVP Christian Erhard and rookie of the year Chang Chih Yeh.
+
 ## v3.4 (2026-11-25)
 - Language setting: the app now speaks English or German (Settings › Language).
 - Phone: Hall of Fame and All-time leaders are big tiles on the Home page; the bottom bar has five tabs.
