@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.10 (2026-11-25)
+- Rotating player photos are now the default picture.
+- On the phone, one photo at a time: front for one player, back for the next.
+- Name on the back is easier to read: plain gold letters, no white outline.
+- Settings switches show the chosen option clearly: filled, with a check mark.
+- A stray hand was removed from one photo.
+
 ## v3.9 (2026-11-25)
 - Settings › Player picture: Jersey or Rotating.
 - Rotating shows two player photos side by side, front and back, with the player's name and number on the back.
