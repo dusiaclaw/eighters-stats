@@ -1,6 +1,6 @@
 /* Eighters-stats service worker – cache name is bumped by make-version.py */
-const CACHE='eighters-stats-3.7';
-const SHELL=['./','index.html','manifest.webmanifest','jersey.png','lions.png','ravens.png','icons/favicon-64.png','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
+const CACHE='eighters-stats-3.8';
+const SHELL=['./','index.html','manifest.webmanifest','jersey.png','figure.webp','lions.png','ravens.png','icons/favicon-64.png','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{

@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.8 (2026-11-25)
+- Players on a wide computer screen: a baseball field next to the name shows where the player played, circles sized by innings.
+- Settings › Player picture: choose the jersey or the new player figure (front and back, with name and number).
+- Player names never break in the middle; long names shrink to fit.
+
 ## v3.7 (2026-11-25)
 - Season compare charts: show count stats as season totals, per game or per 7 innings, so seasons compare fairly.
 - Players: the player search is back at the top of the page; on a computer the sidebar has one too.
