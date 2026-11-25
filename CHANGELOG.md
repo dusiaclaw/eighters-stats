@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.9 (2026-11-25)
+- Settings › Player picture: Jersey or Rotating.
+- Rotating shows two player photos side by side, front and back, with the player's name and number on the back.
+- A new front and back pose is picked every time you open a player.
+
 ## v3.8 (2026-11-25)
 - Players on a wide computer screen: a baseball field next to the name shows where the player played, circles sized by innings.
 - Settings › Player picture: choose the jersey or the new player figure (front and back, with name and number).
