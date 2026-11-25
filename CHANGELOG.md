@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4 (2026-11-25)
+- Language setting: the app now speaks English or German (Settings › Language).
+- Phone: Hall of Fame and All-time leaders are big tiles on the Home page; the bottom bar has five tabs.
+
 ## v3.3 (2026-11-24)
 - Every player now has a full name: 21 more names found in old EasyScore line-ups (2011–2023).
 - Single-season batting average and on-base % need 15 plate appearances instead of 25.

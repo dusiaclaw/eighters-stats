@@ -1,9 +1,8 @@
 {
-  "version": "3.3",
-  "date": "2026-11-24",
+  "version": "3.4",
+  "date": "2026-11-25",
   "notes": [
-    "Every player now has a full name: 21 more names found in old EasyScore line-ups (2011–2023).",
-    "Single-season batting average and on-base % need 15 plate appearances instead of 25.",
-    "Season compare shows only the seasons you pick; one season shows one row."
+    "Language setting: the app now speaks English or German (Settings › Language).",
+    "Phone: Hall of Fame and All-time leaders are big tiles on the Home page; the bottom bar has five tabs."
   ]
 }
