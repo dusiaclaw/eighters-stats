@@ -149,6 +149,12 @@ th[data-tip]{text-decoration:underline dotted 1px;text-underline-offset:3px;curs
 .tot dt{color:var(--mut)}.tot dd{margin:0;font-weight:800;text-align:right}
 /* ---------- player view ---------- */
 .hero{background:var(--bg2);border-bottom:6px solid var(--navy);padding-block:clamp(20px,3vw,36px)}
+.spick:empty{display:none}
+.spick .pick{margin:0}
+.spick .pick label{color:#CAC294;font-size:13px}
+.spick .pick input{min-height:44px;font-size:15px;background:var(--navy2);color:#fff;border-color:#2A4A85}
+.spick .pick input::placeholder{color:#9FB0CF}
+.spick .pick ul{max-height:min(420px,55vh);color:var(--text);text-align:left}
 .pick{position:relative;max-width:520px;margin-bottom:clamp(16px,2.5vw,26px)}
 .pick label{display:block;font-size:14px;font-weight:700;color:var(--head);margin-bottom:4px}
 .pick input{width:100%;min-height:48px;padding:0 14px;border:2px solid var(--chip);border-radius:10px;background:var(--card);color:var(--text);font-size:16px}
@@ -367,21 +373,51 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leader
  header.top .tabs .lgt{display:none}header.top .tabs .sht{display:inline}
  header.top .tabs svg{width:22px;height:22px;stroke:currentColor}
 }
-.htiles{display:none}
-@media (max-width:899px){
- .htiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
+.htiles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 16px}
  .htile{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:132px;padding:16px;border:0;border-radius:6px;background:var(--navy);color:#fff;font:inherit;text-align:left;cursor:pointer;box-shadow:inset 0 -4px 0 #CAC294}
  .htile svg{width:44px;height:44px;fill:none;stroke:#CAC294;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:auto}
  .htile b{font-size:18px;line-height:1.15}
  .htile small{font-size:13px;color:#C9D3E6;line-height:1.3}
  .htile:active{transform:translateY(1px)}
  .htile:focus-visible{outline:3px solid #CAC294;outline-offset:2px}
+ @media (min-width:900px){.htile{min-height:0;flex-direction:row;align-items:center;gap:16px;padding:18px 20px}.htile svg{margin:0;width:40px;height:40px;flex:none}.htile b{font-size:20px}.htile small{margin-left:auto;text-align:right}}
+@media (max-width:899px){
  header.top .tabs [data-mode=leaders],header.top .tabs [data-mode=hall]{display:none}
  header.top .tabs{grid-template-columns:repeat(5,1fr)!important}
  body.mode-hall header.top .tabs [data-mode=home],body.mode-leaders header.top .tabs [data-mode=home]{color:#CAC294}
 }
 /* ===== language switch ===== */
 .lsw{display:flex;gap:6px;flex:none}.lsw button{min-width:44px}.lsw button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* ===== club totals, milestones, season trends ===== */
+.ctot{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.ctot div{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--bar);padding:12px 14px}
+.ctot b{display:block;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:32px;line-height:1.05;color:var(--head)}
+.ctot small{display:block;font-size:13px;font-weight:700;color:var(--mut);margin-top:2px}
+.mtl{list-style:none;margin:0;padding:0}
+.mtl>li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.mtl>li:first-child{border-top:0}
+.mtl .my{font-family:Anton,Impact,sans-serif;font-size:24px;line-height:1.1;color:var(--goldtxt)}
+.mtl ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.mtl ul li{background:var(--navy);color:#fff;border-radius:4px;padding:6px 10px;font-size:14px;line-height:1.3}
+.mtl ul li b{color:#CAC294;font-weight:800}
+.mnext{margin:16px 0 8px;font-size:14px;font-weight:800;color:var(--head)}
+.mup{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.mup li{border:1px dashed var(--line);padding:8px 10px;font-size:14px;color:var(--mut)}
+.mup li b{color:var(--head)}
+.trend{margin-top:28px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px}
+.tbox{border:1px solid var(--line);background:var(--card);padding:14px 16px}
+.tbox label{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--mut)}
+.tbox select{font:inherit;font-weight:700;color:var(--head);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:6px 8px;min-height:40px}
+.tsvg{display:block;width:100%;height:auto;margin-top:10px;overflow:visible}
+.tsvg text{font:12px Archivo,system-ui,sans-serif;fill:var(--mut)}
+.tsvg .vl{font-weight:800;fill:var(--head)}
+.tsvg .gl{stroke:var(--line);stroke-width:1}
+.tsvg .ln{fill:none;stroke:var(--bar);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.tsvg .pt{fill:var(--card);stroke:var(--bar);stroke-width:2.5}
+.tsvg .pt.hi{fill:#CAC294;stroke:#CAC294}
+.tsvg .av{stroke:#CAC294;stroke-width:1.5;stroke-dasharray:5 4}
+.tnote{font-size:13px;color:var(--mut);margin:6px 0 0}
 /* ===== home: club history ===== */
 .hhero{display:flex;align-items:center;gap:18px;background:var(--navy);color:#fff;padding:20px;margin-bottom:16px}
 .logo8.big{width:84px;height:84px;flex:none}
@@ -460,7 +496,7 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leader
 <a class="brand" href="#home" title="Home"><i class="logo8" aria-hidden="true"></i><span class="bt">Eighters<br>stats</span></a>
 <span class="ptitle" id="ptitle">Home</span>
 <nav class="tabs" role="tablist" aria-label="Pages"><button type="button" role="tab" data-mode="home" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg><span class="lgt">Home</span><span class="sht">Home</span></button><button type="button" role="tab" data-mode="seasons" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="lgt">Season compare</span><span class="sht">Seasons</span></button><button type="button" role="tab" data-mode="team" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 9v6M12 9v6M16 9v6"/></svg><span class="lgt">Team</span><span class="sht">Team</span></button><button type="button" role="tab" data-mode="players" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/></svg><span class="lgt">Players</span><span class="sht">Players</span></button><button type="button" role="tab" data-mode="roster" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="lgt">Roster</span><span class="sht">Roster</span></button><button type="button" role="tab" data-mode="leaders" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 21V11h4v10M14 21V5h4v16"/></svg><span class="lgt">All-time leaders</span><span class="sht">Leaders</span></button><button type="button" role="tab" data-mode="hall" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><span class="lgt">Hall of Fame</span><span class="sht">Fame</span></button></nav>
-<div class="sbox"><span class="slab">Season</span><div class="yrow"><div class="yrs" id="years" role="group" aria-label="Season"></div>
+<div id="sidePick" class="spick"></div><div class="sbox"><span class="slab">Season</span><div class="yrow"><div class="yrs" id="years" role="group" aria-label="Season"></div>
 <div class="yctl"><button type="button" class="pill" id="combine" aria-pressed="false" title="Click several seasons to add them up">Combine seasons</button>
 <label class="rng">From <select id="yFrom" aria-label="From season"></select></label><label class="rng">to <select id="yTo" aria-label="To season"></select></label>
 <span class="ynow" id="ynow"></span></div></div>
@@ -474,7 +510,8 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leader
 <div class="hhero"><i class="logo8 big" aria-hidden="true"></i><div><h1 class="cond">Zürich Eighters</h1><p id="hSub"></p></div></div><div class="htiles"><button type="button" class="htile" data-mode="hall"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><b>Hall of Fame</b><small>MVPs and rookies of the year</small></button><button type="button" class="htile" data-mode="leaders"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 21V11h4v10M14 21V5h4v16"/></svg><b>All-time leaders</b><small>Top 5 in every category</small></button></div>
 <div class="hcard"><h2 class="hh">Win % by season</h2><p class="sub sm">Each bar is one season. Pick a bar to open that season on the Team page.</p><div class="hbars" id="hBars"></div></div>
 <div class="hstats" id="hStats"></div>
-<div class="hcard"><h2 class="hh">Hall of Fame</h2><div id="hFame"></div><button type="button" class="hlink" data-mode="hall">All MVPs and rookies of the year →</button></div><div class="hcard"><h2 class="hh">All-time leaders</h2><div id="hRec"></div><button type="button" class="hlink" data-mode="leaders">All career and single-season leaders →</button></div>
+<div class="hcard"><h2 class="hh">Club totals</h2><p class="sub sm" id="hTotSub">Everything the Eighters have put on the board since 2011, all players combined.</p><div class="ctot" id="hTot"></div></div>
+<div class="hcard"><h2 class="hh">Club history: milestones</h2><p class="sub sm">Round numbers the club has passed, by the season it happened in. EasyScore keeps season totals for most years, so a milestone is dated to its season.</p><ol class="mtl" id="hMil"></ol><h3 class="mnext">Next up</h3><ul class="mup" id="hNext"></ul></div>
 
 </div></section></div>
 <div id="v-leaders" hidden>
@@ -499,6 +536,7 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leader
 <p class="sub" id="ssnSub"></p>
 <div class="box ssnTable"><table class="ssn" id="ssn"></table></div>
 <div class="scards" id="scards"></div>
+<div class="trend"><h2 class="sec cond">Year over year</h2><p class="sub">How the main numbers changed from season to season, for the seasons picked above. Pick a stat in each chart.</p><div class="tgrid" id="tgrid"></div></div>
 </div></section>
 </div>
 <div id="v-team">
@@ -537,11 +575,11 @@ body.mode-home header.top .sbox,body.mode-hall header.top .sbox,body.mode-leader
 
 <div id="v-players" hidden>
 <section class="hero pad"><div class="wrap">
-<div class="pick">
+<div id="pagePick"><div class="pick">
 <label for="pq">Player</label>
 <input id="pq" type="text" role="combobox" aria-expanded="false" aria-controls="plist" aria-autocomplete="list" autocomplete="off" placeholder="Search by name or number">
 <ul id="plist" role="listbox" aria-label="Players" hidden></ul>
-</div>
+</div></div>
 <div class="idrow">
 <div class="jersey">
 <img src="jersey.png" alt="" width="920" height="615">
@@ -622,8 +660,8 @@ const M=__DATA__;
 {
 const GC=id=>`https://www.easyscore.com/live/boxscore/${id}`;
 const LGID={2011:84,2012:84,2013:84,2014:84,2015:84,2016:84,2017:84,2018:84,2019:84,2020:84,2021:83,2022:84,2023:84,2024:9947,2025:10028,2026:10143};
-const APP_VERSION='3.5';const VERSION='V'+APP_VERSION;
-/*CHANGELOG*/const CHANGELOG=[{"v": "3.5", "date": "2026-11-25", "notes": ["Marcos Ramirez #12 now has his 2026 games: 3 games EasyScore had booked on other players are moved to him.", "Hall of Fame: 2021 MVP Christian Erhard and rookie of the year Chang Chih Yeh."]}, {"v": "3.4", "date": "2026-11-25", "notes": ["Language setting: the app now speaks English or German (Settings › Language).", "Phone: Hall of Fame and All-time leaders are big tiles on the Home page; the bottom bar has five tabs."]}, {"v": "3.3", "date": "2026-11-24", "notes": ["Every player now has a full name: 21 more names found in old EasyScore line-ups (2011–2023).", "Single-season batting average and on-base % need 15 plate appearances instead of 25.", "Season compare shows only the seasons you pick; one season shows one row."]}, {"v": "3.2", "date": "2026-11-24", "notes": ["New version popup: when an update is ready, choose Update or see What’s new.", "All-time leaders always count Eighters players only (no Lions or Ravens).", "Single-season leaders: a player with the same record in several seasons is listed once with all the years."]}, {"v": "3.1", "date": "2026-11-24", "notes": ["New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.", "Home shows the all-time leaders instead of the record tables.", "Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.", "Full names for 25 more players from the 2011–2013 line-ups."]}, {"v": "3.0", "date": "2026-11-24", "notes": ["All seasons on EasyScore: 2011–2026 (16 seasons).", "New menu: sidebar on the computer, tab bar at the bottom on the phone.", "New Home page with the club history: win % by season, best season, all-time record and milestones.", "New Hall of Fame with the MVP and rookie of the year for each season.", "New app icon: the 8-ball baseball."]}, {"v": "2.7", "date": "2026-11-24", "notes": ["Shorter footer: license and data sources."]}, {"v": "2.6", "date": "2026-11-24", "notes": ["Splash screen with the 8-ball when the app opens.", "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.", "Season compare has its own page; pick a season there to open it on the Team page."]}, {"v": "2.5", "date": "2026-11-24", "notes": ["Renamed to Eighters-stats, with an 8-ball app icon.", "Installable app: add it to your phone or computer, and it updates itself when a new version is published.", "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.", "Published on GitHub: github.com/dusiaclaw/eighters-stats."]}, {"v": "2.4", "date": "2026-11-24", "notes": ["Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.", "Player page shows an 'Innings by position' strip under the name."]}, {"v": "2.3", "date": "2026-11-24", "notes": ["All roster cards have the same size.", "9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings."]}, {"v": "2.2", "date": "2026-11-24", "notes": ["Z-License now sorts like any other player once you click a column heading.", "Version shown as V2.2 instead of v22."]}, {"v": "2.1", "date": "2026-11-24", "notes": ["Button to open each player's EasyScore page for the season shown."]}, {"v": "2.0", "date": "2026-11-24", "notes": ["Games link to the EasyScore box score with the win-probability chart.", "Line scores follow scoreboard order: away team on top; Eighters runs always in gold.", "Win/loss squares hidden on narrow screens."]}, {"v": "1.9", "date": "2026-11-24", "notes": ["Click a 2026 game to open it on EasyScore."]}, {"v": "1.8", "date": "2026-11-24", "notes": ["Version number in a bubble next to the theme switch.", "Shorter footer with sources and creation date."]}, {"v": "1.7", "date": "2026-11-24", "notes": ["Players tab always opens on #8 Z-License.", "Thierry Schnieper marked as a Raven."]}, {"v": "1.6", "date": "2026-11-24", "notes": ["Win % column and sortable Seasons compared table.", "Green wins, red losses; only the picked seasons are listed when combining."]}, {"v": "1.5", "date": "2026-11-24", "notes": ["Seasons 2016–2019 added.", "Combine seasons: From/to range or pick any years to add them up.", "Hover hints on every table column heading."]}, {"v": "1.4", "date": "2026-11-24", "notes": ["First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers."]}];/*END*/
+const APP_VERSION='3.6';const VERSION='V'+APP_VERSION;
+/*CHANGELOG*/const CHANGELOG=[{"v": "3.6", "date": "2026-11-25", "notes": ["Home: club totals for every Eighter since 2011 and a club-history list of milestones (1,000th hit, 1,000th stolen base…) with the next ones coming up.", "Home: Hall of Fame and All-time leaders are big buttons on every screen.", "Season compare opens with all seasons and has year-over-year charts: pick any of 22 stats.", "Team: tiles read Games won and Games lost.", "Players on a computer: the player search sits in the left sidebar."]}, {"v": "3.5", "date": "2026-11-25", "notes": ["Marcos Ramirez #12 now has his 2026 games: 3 games EasyScore had booked on other players are moved to him.", "Hall of Fame: 2021 MVP Christian Erhard and rookie of the year Chang Chih Yeh."]}, {"v": "3.4", "date": "2026-11-25", "notes": ["Language setting: the app now speaks English or German (Settings › Language).", "Phone: Hall of Fame and All-time leaders are big tiles on the Home page; the bottom bar has five tabs."]}, {"v": "3.3", "date": "2026-11-24", "notes": ["Every player now has a full name: 21 more names found in old EasyScore line-ups (2011–2023).", "Single-season batting average and on-base % need 15 plate appearances instead of 25.", "Season compare shows only the seasons you pick; one season shows one row."]}, {"v": "3.2", "date": "2026-11-24", "notes": ["New version popup: when an update is ready, choose Update or see What’s new.", "All-time leaders always count Eighters players only (no Lions or Ravens).", "Single-season leaders: a player with the same record in several seasons is listed once with all the years."]}, {"v": "3.1", "date": "2026-11-24", "notes": ["New All-time leaders page: top 5 career and single-season Eighters in every batting and pitching category.", "Home shows the all-time leaders instead of the record tables.", "Hall of Fame: MVP and rookie of the year updated for 2020, 2023, 2024 and 2025.", "Full names for 25 more players from the 2011–2013 line-ups."]}, {"v": "3.0", "date": "2026-11-24", "notes": ["All seasons on EasyScore: 2011–2026 (16 seasons).", "New menu: sidebar on the computer, tab bar at the bottom on the phone.", "New Home page with the club history: win % by season, best season, all-time record and milestones.", "New Hall of Fame with the MVP and rookie of the year for each season.", "New app icon: the 8-ball baseball."]}, {"v": "2.7", "date": "2026-11-24", "notes": ["Shorter footer: license and data sources."]}, {"v": "2.6", "date": "2026-11-24", "notes": ["Splash screen with the 8-ball when the app opens.", "New start menu: Season compare, Team, Players, Roster. Tap the Zurich Eighters name to come back to it.", "Season compare has its own page; pick a season there to open it on the Team page."]}, {"v": "2.5", "date": "2026-11-24", "notes": ["Renamed to Eighters-stats, with an 8-ball app icon.", "Installable app: add it to your phone or computer, and it updates itself when a new version is published.", "New Settings window (gear button): theme, Lions & Ravens switch, version and updates, what's new, install instructions, license.", "Published on GitHub: github.com/dusiaclaw/eighters-stats."]}, {"v": "2.4", "date": "2026-11-24", "notes": ["Roster cards are compact tiles: number on the left, name and stats on the right, position strip along the bottom.", "Player page shows an 'Innings by position' strip under the name."]}, {"v": "2.3", "date": "2026-11-24", "notes": ["All roster cards have the same size.", "9-position strip (P to RF) on every card, brighter for more innings in the selected seasons; hover for the innings."]}, {"v": "2.2", "date": "2026-11-24", "notes": ["Z-License now sorts like any other player once you click a column heading.", "Version shown as V2.2 instead of v22."]}, {"v": "2.1", "date": "2026-11-24", "notes": ["Button to open each player's EasyScore page for the season shown."]}, {"v": "2.0", "date": "2026-11-24", "notes": ["Games link to the EasyScore box score with the win-probability chart.", "Line scores follow scoreboard order: away team on top; Eighters runs always in gold.", "Win/loss squares hidden on narrow screens."]}, {"v": "1.9", "date": "2026-11-24", "notes": ["Click a 2026 game to open it on EasyScore."]}, {"v": "1.8", "date": "2026-11-24", "notes": ["Version number in a bubble next to the theme switch.", "Shorter footer with sources and creation date."]}, {"v": "1.7", "date": "2026-11-24", "notes": ["Players tab always opens on #8 Z-License.", "Thierry Schnieper marked as a Raven."]}, {"v": "1.6", "date": "2026-11-24", "notes": ["Win % column and sortable Seasons compared table.", "Green wins, red losses; only the picked seasons are listed when combining."]}, {"v": "1.5", "date": "2026-11-24", "notes": ["Seasons 2016–2019 added.", "Combine seasons: From/to range or pick any years to add them up.", "Hover hints on every table column heading."]}, {"v": "1.4", "date": "2026-11-24", "notes": ["First versions: Team scoreboard, Players with the Eighters jersey, Roster, seasons 2020–2026, light/dark theme, Lions & Ravens switch, full names and unique jersey numbers."]}];/*END*/
 const ME=32163,PEOPLE=M.people,YEARS=Object.keys(M.years).map(Number).sort();
 const GUEST={3678:'lions',47408:'lions',4116:'lions',3955:'lions',47410:'lions',47407:'lions',4146:'ravens',4148:'ravens',37510:'ravens'};
 const GUESTNAME={4146:'Cedric Thommen',4148:'Nolan Thommen'};
@@ -764,7 +802,29 @@ function renderSeasons(){ const multi=isAgg()&&pickYrs.length<YEARS.length;
   rows.map(r=>`<tr data-year="${r.y}" class="${pickYrs.includes(r.y)?'cur':''}"><td><span class="yr">${r.y}</span></td><td>${esc(lg(r.y))}</td><td>${r.W}–${r.L}${r.fromSt?'':'*'}</td><td>${r.pct==null?'–':r3(r.pct)}</td><td class="pc"><span class="pips" role="img" aria-label="${r.W} wins, ${r.L} losses">${'<i></i>'.repeat(r.W)}${'<i class="l"></i>'.repeat(r.L)}</span></td><td>${r.RS}</td><td>${r.RA}</td><td>${r3(r.avg)}</td><td>${r3(r.obp)}</td><td>${r3(r.ops)}</td><td>${r.sb}</td><td>${r2(r.era)}</td><td>${r.bba}</td><td>${r.np}</td></tr>`).join('')+
   `</tbody><tfoot><tr><td colspan="14" style="padding-top:12px">* Record from pitcher win/loss decisions, runs from player totals.</td></tr></tfoot>`;
  $('scards').innerHTML=rows.map(r=>`<button type="button" class="scard${pickYrs.includes(r.y)?' cur':''}" data-year="${r.y}" aria-pressed="${pickYrs.includes(r.y)}"><span class="yr">${r.y}</span><span class="lg">${esc(lg(r.y))}<br><span class="pips" role="img" aria-label="${r.W} wins, ${r.L} losses">${'<i></i>'.repeat(r.W)}${'<i class="l"></i>'.repeat(r.L)}</span></span><span class="wl">${r.W}–${r.L}${r.fromSt?'':'*'}<small style="display:block;font-size:12px;opacity:.75">${r.pct==null?'':r3(r.pct)}</small></span><span class="mt"><span>Runs <b>${r.RS}–${r.RA}</b></span><span>AVG <b>${r3(r.avg)}</b></span><span>OPS <b>${r3(r.ops)}</b></span><span>ERA <b>${r2(r.era)}</b></span></span></button>`).join('')+'<p class="sub" style="margin:4px 0 0;font-size:14px">* Record from pitcher win/loss decisions.</p>';
+ renderTrend(rows);
 }
+const TST=[['pct','Win %',r=>r.W+r.L?r.W/(r.W+r.L):null,r3],['W','Wins',r=>r.W,int],['L','Losses',r=>r.L,int,1],['rpg','Runs scored per game',r=>r.W+r.L?r.RS/(r.W+r.L):null,r2],['rapg','Runs allowed per game',r=>r.W+r.L?r.RA/(r.W+r.L):null,r2,1],['diff','Run differential',r=>r.RS-r.RA,v=>(v>0?'+':'')+int(v)],['RS','Runs scored',r=>r.RS,int],['RA','Runs allowed',r=>r.RA,int,1],
+ ['avg','Batting average (AVG)',r=>r.avg,r3],['obp','On-base % (OBP)',r=>r.obp,r3],['slg','Slugging % (SLG)',r=>r.slg,r3],['ops','OPS',r=>r.obp+r.slg,r3],['H','Hits',r=>r.B('H'),int],['HR','Home runs',r=>r.B('HR'),int],['SB','Stolen bases',r=>r.B('SB'),int],['BB','Walks',r=>r.B('BB'),int],['SO','Strikeouts (batters)',r=>r.B('SO'),int,1],
+ ['era','ERA',r=>isFinite(r.era)?r.era:null,r2,1],['whip','WHIP',r=>isFinite(r.whip)?r.whip:null,r2,1],['K','Strikeouts (pitchers)',r=>r.P('K'),int],['bba','Walks issued',r=>r.P('BBA'),int,1],['np','Players used',r=>r.D.length,int]];
+let TSEL=['pct','ops'];
+function trendSVG(rows,k){const d=TST.find(x=>x[0]===k),[,lab,f,fm,low]=d,pts=rows.map(r=>({y:r.y,v:f(r)})).filter(p=>p.v!=null&&isFinite(p.v));
+ if(pts.length<2)return `<p class="tnote">Pick at least two seasons to see a trend.</p>`;
+ const nar=innerWidth<600,W=nar?360:600,H=nar?230:250,L=nar?40:48,R=nar?10:14,T=26,B=30,vs=pts.map(p=>p.v),mx=Math.max(...vs),mn=Math.min(...vs),cnt=fm===int&&mn>=0||k==='pct';
+ let lo=cnt?0:mn-(mx-mn)*.15,hi=mx+(mx-mn||Math.abs(mx)||1)*.12;if(k==='diff'){lo=Math.min(0,mn-(mx-mn)*.1);hi=Math.max(0,hi)}if(hi===lo)hi=lo+1;
+ const X=i=>L+(pts.length===1?0:i*(W-L-R)/(pts.length-1)),Y=v=>T+(hi-v)*(H-T-B)/(hi-lo),best=low?mn:mx,avg=vs.reduce((a,b)=>a+b,0)/vs.length;
+ const ticks=[0,1,2,3].map(i=>lo+(hi-lo)*i/3),many=pts.length>(nar?6:9);
+ return `<svg class="tsvg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(lab)} by season: ${pts.map(p=>p.y+' '+fm(p.v)).join(', ')}">`+
+  ticks.map(v=>`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${fm(v)}</text>`).join('')+
+  (k==='diff'?`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" style="stroke:var(--mut)"/>`:'')+
+  `<line class="av" x1="${L}" x2="${W-R}" y1="${Y(avg)}" y2="${Y(avg)}"/><text x="${W-R}" y="${Y(avg)-5}" text-anchor="end" style="fill:var(--goldtxt);font-weight:700">avg ${fm(avg)}</text>`+
+  `<polyline class="ln" points="${pts.map((p,i)=>X(i)+','+Y(p.v)).join(' ')}"/>`+
+  pts.map((p,i)=>{const hi2=p.v===best,lab2=!many||hi2||i===pts.length-1||i===0;return `<circle class="pt${hi2?' hi':''}" cx="${X(i)}" cy="${Y(p.v)}" r="${hi2?6:4.5}"><title>${p.y}: ${fm(p.v)}</title></circle>${lab2?`<text class="vl" x="${X(i)}" y="${Y(p.v)-10}" text-anchor="middle">${fm(p.v)}</text>`:''}<text x="${X(i)}" y="${H-8}" text-anchor="middle">${many?"'"+String(p.y).slice(2):p.y}</text>`}).join('')+'</svg>'+
+  `<p class="tnote">Gold dot: ${low?'lowest':'highest'} season (${pts.filter(p=>p.v===best).map(p=>p.y).join(', ')}). Dashed line: average of the picked seasons.</p>`}
+function renderTrend(rows){rows=[...rows].sort((a,b)=>a.y-b.y);
+ $('tgrid').innerHTML=TSEL.map((k,i)=>`<div class="tbox"><label>Stat <select data-ts="${i}" aria-label="Stat for chart ${i+1}">${TST.map(([v,l])=>`<option value="${v}"${v===k?' selected':''}>${l}</option>`).join('')}</select></label>${trendSVG(rows,k)}</div>`).join('')}
+let TRW=innerWidth<600;addEventListener('resize',()=>{const n=innerWidth<600;if(n!==TRW){TRW=n;if(mode==='seasons')renderSeasons()}});
+document.addEventListener('change',e=>{const s=e.target.closest('select[data-ts]');if(s){TSEL[+s.dataset.ts]=s.value;renderSeasons();applyTips()}});
 function renderTeam(){const t=TM,all=year==='all';
  $('tTitle').textContent=all?`${yLabel()} · ${pickYrs.length} seasons combined`:`${year} · ${lg(year)}${t.st?' '+t.st.group.replace(/^1\. Liga ?/,'').replace('Vorrunde ',''):''}`.toUpperCase();
  const gx=showGuests?'':' Player totals exclude Lions and Ravens.';
@@ -772,7 +832,7 @@ function renderTeam(){const t=TM,all=year==='all';
  const G=all?null:M.games[year];
  const homeAway=t.me?[`${t.me[4]} at home`,`${t.me[5]} on the road`]:['pitcher decisions','pitcher decisions'];
  const place=t.st?ord(t.st.rows.findIndex(r=>r[0]==='Zürich Eighters')+1):'–';
- $('tiles').innerHTML=[['Won',t.W,homeAway[0]],['Lost',t.L,homeAway[1]],['Runs scored',t.RS,G?`${r1(t.RS/G.length)} per game`:(t.fromSt?'from standings':'from player totals')],['Runs allowed',t.RA,G?`${r1(t.RA/G.length)} per game`:(t.fromSt?'from standings':'from pitcher totals')],['Place',place,t.st?`of ${t.st.rows.length} in the group`:(all?`${pickYrs.length} seasons`:'no group table')]]
+ $('tiles').innerHTML=[['Games won',t.W,homeAway[0]],['Games lost',t.L,homeAway[1]],['Runs scored',t.RS,G?`${r1(t.RS/G.length)} per game`:(t.fromSt?'from standings':'from player totals')],['Runs allowed',t.RA,G?`${r1(t.RA/G.length)} per game`:(t.fromSt?'from standings':'from pitcher totals')],['Place',place,t.st?`of ${t.st.rows.length} in the group`:(all?`${pickYrs.length} seasons`:'no group table')]]
   .map(([l,v,s])=>`<div class="tile"><div class="l">${esc(l)}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join('');
  /* line scores */
  $('gameBox').hidden=!G;$('gcards').hidden=!G;$('noGames').hidden=!!G;$('innWrap').hidden=!G;
@@ -944,12 +1004,22 @@ function renderHome(){const R=YEARS.map(seasonRec),W=sum(R,r=>r.W),L=sum(R,r=>r.
  $('hSub').textContent=`${YEARS.length} seasons on EasyScore, ${YEARS[0]}–${YEARS[YEARS.length-1]} · ${W}–${L} all-time · ${pl.size} players`;
  $('hBars').innerHTML=R.map(r=>`<button type="button" data-ty="${r.y}" title="${r.y}: ${r.W}–${r.L}${r.st?'':' (pitcher decisions)'}" aria-label="${r.y}: ${r.W} wins, ${r.L} losses, open season"><em>${r===best?'BEST':''}</em><span class="bv">${r3(r.pct)}</span><i class="${r===best?'best':r===last?'now':''}" style="height:${Math.max(2,r.pct*100)}%"></i><small>'${String(r.y).slice(2)}</small></button>`).join('');
  $('hStats').innerHTML=[['Best season',best.y,`${best.W}–${best.L} · ${r3(best.pct)}`],['This season',last.y,`${last.W}–${last.L}${TM?.st?'':''}`],['All-time',`${W}–${L}`,`${r3(W/(W+L))} · ${YEARS.length} seasons`]].map(([a,b,c])=>`<div class="hstat"><small>${a}</small><b>${b}</b><span>${c}</span></div>`).join('');
- // records: Eighters only, never Z-License or Lions/Ravens guests (ignores the Settings switch)
- const {C:CC}=allTime(),pk=(f)=>CC.filter(c=>f(c)>0).sort((a,b)=>f(b)-f(a))[0];
- $('hRec').innerHTML='<table class="rec"><tbody>'+[['Career hits',c=>c.b.H,int],['Career RBI',c=>c.b.RBI,int],['Career stolen bases',c=>c.b.SB,int],['Career strikeouts (pitcher)',c=>c.p.K,int]].map(([l,f,fm])=>{const c=pk(f);return c?`<tr><th scope="row">${l}</th><td class="v">${fm(f(c))}</td><td><a href="#" data-pl="${c.id}">${esc(PEOPLE[c.id].n)}</a></td></tr>`:''}).join('')+'</tbody></table>';
- const ly=[...YEARS].reverse().find(y=>AWARDS[y]);const A=ly&&AWARDS[ly];
- $('hFame').innerHTML=A?`<p class="sub sm" style="margin:0">Latest awards, ${ly}</p><div class="fmini"><div><small>MVP</small>${A.mvp?esc((awNo(A.mvp)?'#'+awNo(A.mvp)+' ':'')+awName(A.mvp)):'–'}</div><div><small>ROTY</small>${A.roty?esc((awNo(A.roty)?'#'+awNo(A.roty)+' ':'')+awName(A.roty)):'–'}</div></div>`:'';
+ renderClub();
 }
+
+/* ---------- club totals and milestones (Eighters only: Lions/Ravens guests never count) ---------- */
+const nf=n=>Math.round(n).toLocaleString('en-US');
+function clubBySeason(){const R=YEARS.map(seasonRec);return YEARS.map((y,i)=>{const s={y,W:R[i].W,G:R[i].W+R[i].L,H:0,R:0,RBI:0,HR:0,'2B':0,'3B':0,SB:0,BB:0,K:0,Outs:0,pl:0};
+ Object.entries(M.years[y].p).forEach(([id,e])=>{if(GUEST[id])return;const b=e.bat||{},p=e.pit||{};for(const k of ['H','R','RBI','HR','2B','3B','SB','BB'])s[k]+=b[k]||0;s.K+=p.K||0;s.Outs+=p.Outs||0});return s})}
+const MIL=[['G','game played',100],['W','win',25],['R','run',500],['H','hit',500],['2B','double',100],['HR','home run',10],['RBI','RBI',500],['SB','stolen base',500],['BB','walk',500],['K','strikeout by an Eighters pitcher',500],['Outs','inning pitched',1500,3]];
+function renderClub(){const S=clubBySeason(),T={},pl=new Set();
+ YEARS.forEach(y=>Object.keys(M.years[y].p).forEach(id=>{if(!GUEST[id]&&!PEOPLE[id]?.ph)pl.add(id)}));
+ S.forEach(s=>{for(const k in s)if(k!=='y')T[k]=(T[k]||0)+s[k]});
+ $('hTot').innerHTML=[['Games',T.G],['Wins',T.W],['Runs',T.R],['Hits',T.H],['Doubles',T['2B']],['Triples',T['3B']],['Home runs',T.HR],['RBI',T.RBI],['Walks',T.BB],['Stolen bases',T.SB],['Strikeouts (pitchers)',T.K],['Innings pitched',Math.floor(T.Outs/3)],['Players',pl.size]].map(([l,v,s])=>`<div><b>${s||nf(v)}</b><small>${l}</small></div>`).join('');
+ const by={},next=[];
+ MIL.forEach(([k,thing,step,div])=>{let cum=0;const d=div||1;S.forEach(s=>{const before=cum;cum+=s[k];for(let m=Math.floor(before/d/step)*step+step;m*d<=cum;m+=step)(by[s.y]=by[s.y]||[]).push([m,thing])});const nx=(Math.floor(cum/d/step)+1)*step;next.push([nx,thing,Math.ceil(nx-cum/d)])});
+ $('hMil').innerHTML=Object.keys(by).map(Number).sort((a,b)=>b-a).map(y=>`<li><span class="my">${y}</span><ul>${by[y].map(([m,th])=>`<li><b>${nf(m)}th</b> ${th}</li>`).join('')}</ul></li>`).join('');
+ $('hNext').innerHTML=next.sort((a,b)=>a[2]/a[0]-b[2]/b[0]).map(([m,th,togo])=>`<li><b>${nf(m)}th</b> ${th}<br>${nf(togo)} to go</li>`).join('');}
 
 /* ---------- all-time leaders ---------- */
 let LT='bat';
@@ -983,13 +1053,17 @@ document.addEventListener('mouseover',e=>{const el=e.target.closest('[data-tip]'
 document.addEventListener('focusin',e=>{const el=e.target.closest('[data-tip]');el?showTip(el):hideTip()});
 document.addEventListener('focusout',hideTip);addEventListener('scroll',hideTip,{passive:true});
 /* ---------- wiring ---------- */
-function renderAll(){D=dataFor(year);TM=teamOf(year);if(sel==null||(sel!==+PHID&&!D.some(p=>p.id===sel)))sel=defaultSel();
+function placePick(){const pk=document.querySelector('.pick'),side=matchMedia('(min-width:900px)').matches&&mode==='players',to=$(side?'sidePick':'pagePick');if(pk&&pk.parentElement!==to)to.appendChild(pk)}
+matchMedia('(min-width:900px)').addEventListener('change',()=>placePick());
+function renderAll(){placePick();D=dataFor(year);TM=teamOf(year);if(sel==null||(sel!==+PHID&&!D.some(p=>p.id===sel)))sel=defaultSel();
  renderHeader();if(mode==='home')renderHome();else if(mode==='hall')renderHall();else if(mode==='leaders')renderLeaders();else if(mode==='seasons')renderSeasons();else if(mode==='team')renderTeam();else if(mode==='roster')renderRoster();else{renderPlayer();renderCtrls();renderLB();renderTable()}applyTips()}
 const yHash=()=>isAgg()?(pickYrs.length===YEARS.length?'all':pickYrs.join('x')):String(year);
 const hashOf=()=>['home','hall','leaders'].includes(mode)?'#'+mode:`#${mode}-${yHash()}${mode==='players'?'-'+sel:''}`;
 function setYears(a){a=[...new Set(a.map(Number).filter(y=>YEARS.includes(y)))].sort((x,y)=>x-y);if(!a.length)return;pickYrs=a;year=a.length===1?a[0]:'all';minV=null}
 function yearClick(v){if(v==='all')setYears(YEARS);else{const y=+v;if(combine){const s=new Set(pickYrs);s.has(y)?s.delete(y):s.add(y);if(!s.size)return;setYears([...s])}else setYears([y])}go(null,null)}
-function go(m,y,id){if(m)mode=m;if(y!=null)setYears(y==='all'?YEARS:[+y]);if(id!=null)sel=id;try{history.replaceState(null,'',hashOf())}catch(e){}renderAll()}
+let SSN=null,OUTP=null;
+function swapPick(m){if(!m||m===mode)return;if(m==='seasons'){OUTP=[...pickYrs];setYears(SSN||YEARS)}else if(mode==='seasons'){SSN=[...pickYrs];if(OUTP)setYears(OUTP)}}
+function go(m,y,id){swapPick(m);if(m)mode=m;if(y!=null)setYears(y==='all'?YEARS:[+y]);if(id!=null)sel=id;try{history.replaceState(null,'',hashOf())}catch(e){}renderAll()}
 function pickPlayer(id,scroll){closeList();go('players',null,id);if(scroll)scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
 document.addEventListener('click',e=>{
  if(!e.target.closest('.pick'))closeList();
@@ -1022,7 +1096,7 @@ $('pq').addEventListener('keydown',e=>{
  else if(e.key==='ArrowUp'){e.preventDefault();moveAct(-1)}
  else if(e.key==='Enter'){e.preventDefault();const o=[...$('plist').querySelectorAll('li[data-id]')];const t=o[act]||o[0];if(t){pickPlayer(+t.dataset.id);e.target.blur()}}
  else if(e.key==='Escape'){closeList();e.target.value=cur()?.n||''}});
-const fromHash=()=>{const[m,y,id]=location.hash.slice(1).split('-');if(m==='menu')mode='home';else if(['home','hall','leaders','seasons','team','players','roster'].includes(m))mode=m;else if(!m)mode='home';if(y==='all')setYears(YEARS);else if(y)setYears(y.split('x'));if(id&&PEOPLE[id])sel=+id;renderAll()};
+const fromHash=()=>{const[m,y,id]=location.hash.slice(1).split('-');if(m==='menu')mode='home';else if(['home','hall','leaders','seasons','team','players','roster'].includes(m)){if(!y)swapPick(m);mode=m}else if(!m)mode='home';if(y==='all')setYears(YEARS);else if(y)setYears(y.split('x'));if(id&&PEOPLE[id])sel=+id;renderAll()};
 try{const s=localStorage.getItem('eig-ui');if(s==='dark'||s==='light')document.documentElement.dataset.ui=s}catch(e){}
 $('splashVer').textContent=VERSION;{const sp=$('splash'),hide=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),500)};sp.addEventListener('click',hide);setTimeout(hide,matchMedia('(prefers-reduced-motion: reduce)').matches?400:1500)}
 $('ver').textContent=VERSION;$('ver').title='Version '+VERSION+' – open settings';
@@ -1071,7 +1145,7 @@ const DE={
 // seasons
 'Season by season':'Saison für Saison','Click a column heading to sort.':'Zum Sortieren auf eine Spaltenüberschrift klicken.','Every Eighters season on record. ':'Alle erfassten Eighters-Saisons. ','Every Eighters season on record.':'Alle erfassten Eighters-Saisons.','League':'Liga','Players':'Spieler','BB issued':'BB abgegeben','Win %':'Sieg-%','* Record from pitcher win/loss decisions, runs from player totals.':'* Bilanz aus den Sieg-/Niederlage-Entscheiden der Pitcher, Runs aus den Spielersummen.','* Record from pitcher win/loss decisions.':'* Bilanz aus den Sieg-/Niederlage-Entscheiden der Pitcher.','On-base percentage by season: the share of plate appearances that reached base. Pick a row to switch season.':'On-Base-Prozentsatz pro Saison: der Anteil der Plate Appearances, die auf Base führten. Tippe auf eine Zeile, um die Saison zu wechseln.',
 // team
-'Won':'Gewonnen','Lost':'Verloren','Runs scored':'Erzielte Runs','Runs allowed':'Zugelassene Runs','Place':'Platz','pitcher decisions':'Pitcher-Entscheide','from standings':'aus der Tabelle','from player totals':'aus den Spielersummen','from pitcher totals':'aus den Pitchersummen','no group table':'keine Gruppentabelle','Line scores':'Line Scores','Standings':'Tabelle','Runs by inning':'Runs pro Inning','All games combined.':'Alle Spiele zusammen.','Scored':'Erzielt','Allowed':'Zugelassen','Date':'Datum','Opponent':'Gegner','Result':'Resultat','Team totals':'Teamtotale','All players combined, added up from the individual lines.':'Alle Spieler zusammen, aus den einzelnen Zeilen addiert.','Eighters runs in gold, opponent runs in white. The away team bats first, so it is on top. Click a game to open its box score and win-probability chart on EasyScore.':'Eighters-Runs in Gold, gegnerische Runs in Weiss. Das Auswärtsteam schlägt zuerst und steht deshalb oben. Klicke auf ein Spiel, um Box Score und Siegwahrscheinlichkeit auf EasyScore zu öffnen.','EasyScore has only season totals for 2026, no game-by-game results. Line scores are available for 2026.':'EasyScore hat für 2026 nur Saisontotale, keine Resultate pro Spiel. Line Scores gibt es für 2026.','Box score on EasyScore ↗':'Box Score auf EasyScore ↗','Final 2026 group table.':'Schlusstabelle der Gruppe 2026.','Every player, every line':'Jeder Spieler, jede Zeile','Click a 2026 game to open it on EasyScore.':'Klicke auf ein Spiel von 2026, um es auf EasyScore zu öffnen.','Green wins, red losses; only the picked seasons are listed when combining.':'Grün Siege, rot Niederlagen; beim Zusammenzählen werden nur die gewählten Saisons gezeigt.',
+'Won':'Gewonnen','Lost':'Verloren','Games won':'Spiele gewonnen','Club totals':'Klubtotale','Everything the Eighters have put on the board since 2011, all players combined.':'Alles, was die Eighters seit 2011 erreicht haben, alle Spieler zusammen.','Club history: milestones':'Klubgeschichte: Meilensteine','Round numbers the club has passed, by the season it happened in. EasyScore keeps season totals for most years, so a milestone is dated to its season.':'Runde Zahlen, die der Klub erreicht hat, nach der Saison, in der es geschah. EasyScore hat für die meisten Jahre nur Saisontotale, deshalb wird ein Meilenstein seiner Saison zugeordnet.','Next up':'Als Nächstes','Triples':'Triples','Strikeouts (pitchers)':'Strikeouts (Pitcher)','Strikeouts (batters)':'Strikeouts (Schlagleute)','Year over year':'Jahr für Jahr','How the main numbers changed from season to season, for the seasons picked above. Pick a stat in each chart.':'Wie sich die wichtigsten Zahlen von Saison zu Saison verändert haben, für die oben gewählten Saisons. Wähle in jedem Diagramm eine Statistik.','Stat':'Statistik','Wins':'Siege','Losses':'Niederlagen','Runs scored per game':'Erzielte Runs pro Spiel','Runs allowed per game':'Zugelassene Runs pro Spiel','Run differential':'Run-Differenz','Batting average (AVG)':'Batting Average (AVG)','On-base % (OBP)':'On-Base-% (OBP)','Slugging % (SLG)':'Slugging-% (SLG)','Walks issued':'Abgegebene Walks','Players used':'Eingesetzte Spieler','Pick at least two seasons to see a trend.':'Wähle mindestens zwei Saisons, um einen Verlauf zu sehen.','Games lost':'Spiele verloren','Runs scored':'Erzielte Runs','Runs allowed':'Zugelassene Runs','Place':'Platz','pitcher decisions':'Pitcher-Entscheide','from standings':'aus der Tabelle','from player totals':'aus den Spielersummen','from pitcher totals':'aus den Pitchersummen','no group table':'keine Gruppentabelle','Line scores':'Line Scores','Standings':'Tabelle','Runs by inning':'Runs pro Inning','All games combined.':'Alle Spiele zusammen.','Scored':'Erzielt','Allowed':'Zugelassen','Date':'Datum','Opponent':'Gegner','Result':'Resultat','Team totals':'Teamtotale','All players combined, added up from the individual lines.':'Alle Spieler zusammen, aus den einzelnen Zeilen addiert.','Eighters runs in gold, opponent runs in white. The away team bats first, so it is on top. Click a game to open its box score and win-probability chart on EasyScore.':'Eighters-Runs in Gold, gegnerische Runs in Weiss. Das Auswärtsteam schlägt zuerst und steht deshalb oben. Klicke auf ein Spiel, um Box Score und Siegwahrscheinlichkeit auf EasyScore zu öffnen.','EasyScore has only season totals for 2026, no game-by-game results. Line scores are available for 2026.':'EasyScore hat für 2026 nur Saisontotale, keine Resultate pro Spiel. Line Scores gibt es für 2026.','Box score on EasyScore ↗':'Box Score auf EasyScore ↗','Final 2026 group table.':'Schlusstabelle der Gruppe 2026.','Every player, every line':'Jeder Spieler, jede Zeile','Click a 2026 game to open it on EasyScore.':'Klicke auf ein Spiel von 2026, um es auf EasyScore zu öffnen.','Green wins, red losses; only the picked seasons are listed when combining.':'Grün Siege, rot Niederlagen; beim Zusammenzählen werden nur die gewählten Saisons gezeigt.',
 // players
 'Player':'Spieler','Position':'Position','Stat group':'Statistikgruppe','Search by name or number':'Nach Name oder Nummer suchen','Minimum':'Minimum','Leaderboard stat':'Statistik für die Rangliste','Batting leaders: OPS':'Beste Schlagleute: OPS','Plate appearances':'Plate Appearances','plate appearances':'Plate Appearances','Plate app.':'Plate App.','Runs / RBI':'Runs / RBI','Walks / hit by pitch':'Walks / Hit by Pitch','AVG / OBP / SLG':'AVG / OBP / SLG','Innings':'Innings','Earned runs':'Earned Runs','ERA / WHIP':'ERA / WHIP','Hits / runs allowed':'Hits / zugelassene Runs','Walks / hit batters':'Walks / getroffene Schlagleute','Wild pitches':'Wild Pitches','Chances':'Chancen','Putouts / assists':'Putouts / Assists','Putouts':'Putouts','Assists':'Assists','Errors':'Errors','Fielding %':'Fielding-%','Double plays':'Double Plays','Passed balls':'Passed Balls','Steals allowed':'Zugelassene Steals','Steals':'Steals','Hit by pitch':'Hit by Pitch','Innings by position':'Innings pro Position','EasyScore player page ↗':'Spielerseite auf EasyScore ↗','No pitching this season.':'In dieser Saison nicht gepitcht.','Fielding only':'Nur Feldspiel','Click a column to sort. Click a player to put them on the jersey.':'Zum Sortieren auf eine Spalte klicken. Klicke auf einen Spieler, um ihn aufs Trikot zu holen.','All Z-License entries combined (the Eighters and Lions club licences). Scorers use them for players without a profile, so these numbers belong to several people.':'Alle Z-License-Einträge zusammen (Klublizenzen der Eighters und der Lions). Scorer verwenden sie für Spieler ohne Profil, deshalb gehören diese Zahlen zu mehreren Personen.','Zürich Lions player':'Spieler der Zürich Lions','Dulliken Ravens player':'Spieler der Dulliken Ravens','No fielding positions':'Keine Feldpositionen','appeared, no outs recorded':'eingesetzt, kein Out erfasst','No #':'Ohne #','Pitchers':'Pitcher','Catchers':'Catcher','Infield':'Infield','Outfield':'Outfield','All':'Alle','Batting stats':'Schlagstatistik','Pitching stats':'Pitchingstatistik','Fielding stats':'Feldstatistik',
 // roster
@@ -1135,6 +1209,13 @@ const DER=[
 [/^Version V(\S+) · (.+)$/,'Version V$1 · $2'],
 [/^(\d+) players?$/,'$1 Spieler'],
 [/^No (.+) this season\.$/,'Keine $1 in dieser Saison.'],
+[/^([\d,]+)th$/,(m,n)=>n.replace(/,/g,'’')+'.'],
+[/^([\d,]+) to go$/,(m,n)=>'noch '+n.replace(/,/g,'’')],
+[/^(game played|win|run|hit|double|home run|RBI|stolen base|walk|strikeout by an Eighters pitcher|inning pitched)$/,(m,w)=>({'game played':'gespieltes Spiel',win:'Sieg',run:'Run',hit:'Hit',double:'Double','home run':'Home Run',RBI:'RBI','stolen base':'gestohlene Base',walk:'Walk','strikeout by an Eighters pitcher':'Strikeout eines Eighters-Pitchers','inning pitched':'gepitchtes Inning'})[w]],
+[/^Gold dot: (highest|lowest) season \((.+)\)\. Dashed line: average of the picked seasons\.$/,(m,h,y)=>`Goldener Punkt: ${h==='highest'?'höchster':'tiefster'} Wert (${y}). Gestrichelte Linie: Durchschnitt der gewählten Saisons.`],
+[/^Stat for chart (\d)$/,'Statistik für Diagramm $1'],
+[/^(\d+) seasons added up: (.+)$/,'$1 Saisons zusammengezählt: $2'],
+[/^avg (.+)$/,'Ø $1'],
 [/^Not on EasyScore under his own name: (.+)$/,'Auf EasyScore nicht unter seinem eigenen Namen: Seine Zahlen 2026 stammen aus 3 Spielen, die die Scorer auf andere Spieler gebucht haben (9. Mai gegen Wittenbach-St.Gallen und Wil Pirates 2 als Björn Chudzinski, 18. Juli gegen Zürich Barracudas 4 als Diego Alfonso Ramirez Mendez).']
 ];
 const LANGS=['en','de'];
