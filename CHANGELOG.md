@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.12 (2026-11-26)
+- Players: click a column heading in Season by season to sort it (click again to reverse).
+- Home: Hall of Fame and All-time leaders have a gold outline on the dark page.
+- Settings: a note that the app is best viewed when opened on a PC.
+- Phone: the player bar reads PLAYER: with the name, or Select player.
+
 ## v3.11 (2026-11-26)
 - Double-tap (or double-click) the player photo for the next pose.
 - Phone: seasons are a row of round year buttons. Tap a season; hold one to add it to the selection.
