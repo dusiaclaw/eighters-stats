@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.11 (2026-11-26)
+- Double-tap (or double-click) the player photo for the next pose.
+- Phone: seasons are a row of round year buttons. Tap a season; hold one to add it to the selection.
+- Phone: the player search is also at the top of the Players page, under the seasons.
+- Club history milestones: the th is a smaller raised suffix.
+
 ## v3.10 (2026-11-25)
 - Rotating player photos are now the default picture.
 - On the phone, one photo at a time: front for one player, back for the next.

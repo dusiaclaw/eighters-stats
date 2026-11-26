@@ -1,11 +1,10 @@
 {
-  "version": "3.10",
-  "date": "2026-11-25",
+  "version": "3.11",
+  "date": "2026-11-26",
   "notes": [
-    "Rotating player photos are now the default picture.",
-    "On the phone, one photo at a time: front for one player, back for the next.",
-    "Name on the back is easier to read: plain gold letters, no white outline.",
-    "Settings switches show the chosen option clearly: filled, with a check mark.",
-    "A stray hand was removed from one photo."
+    "Double-tap (or double-click) the player photo for the next pose.",
+    "Phone: seasons are a row of round year buttons. Tap a season; hold one to add it to the selection.",
+    "Phone: the player search is also at the top of the Players page, under the seasons.",
+    "Club history milestones: the th is a smaller raised suffix."
   ]
 }
