@@ -1,0 +1,42 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+9110,2019-05-05,342,Zürich Eighters,1306,SG Mustangs/Lions,3,8,5,10,VR,box,from data/games/2019.json
+9111,2019-05-05,1190,Zürich Challengers 3,342,Zürich Eighters,10,6,3,4,VR,box,from data/games/2019.json
+9117,2019-05-12,342,Zürich Eighters,1190,Zürich Challengers 3,4,15,1,7,VR,box,from data/games/2019.json
+9118,2019-05-12,1308,SG Submarines/Bandits/Vikings,342,Zürich Eighters,1,11,4,7,VR,box,from data/games/2019.json
+9124,2019-05-26,342,Zürich Eighters,1308,SG Submarines/Bandits/Vikings,11,12,11,11,VR,box,from data/games/2019.json
+9125,2019-05-26,642,Wil Devils II,342,Zürich Eighters,13,7,4,5,VR,box,from data/games/2019.json
+9151,2019-07-07,342,Zürich Eighters,343,Zürich Barracudas III,6,7,8,6,VR,box,from data/games/2019.json
+9152,2019-07-07,1308,SG Submarines/Bandits/Vikings,342,Zürich Eighters,6,8,5,11,VR,box,from data/games/2019.json
+9163,2019-07-21,343,Zürich Barracudas III,342,Zürich Eighters,8,9,5,7,VR,box,from data/games/2019.json
+9165,2019-07-21,342,Zürich Eighters,1190,Zürich Challengers 3,12,13,7,11,VR,box,from data/games/2019.json
+9169,2019-08-03,342,Zürich Eighters,1306,SG Mustangs/Lions,12,23,5,6,VR,box,from data/games/2019.json
+9170,2019-08-03,343,Zürich Barracudas III,342,Zürich Eighters,6,11,5,9,VR,box,from data/games/2019.json
+9181,2019-08-18,342,Zürich Eighters,1306,SG Mustangs/Lions,14,15,9,8,VR,box,from data/games/2019.json
+9104,2019-04-27,343,Zürich Barracudas III,1308,SG Submarines/Bandits/Vikings,7,4,0,5,VR,box,
+9105,2019-04-27,1306,SG Mustangs/Lions,343,Zürich Barracudas III,6,11,5,9,VR,box,
+9106,2019-04-27,1308,SG Submarines/Bandits/Vikings,1306,SG Mustangs/Lions,13,17,11,14,VR,box,
+9112,2019-05-05,1306,SG Mustangs/Lions,1190,Zürich Challengers 3,13,8,5,6,VR,box,
+9113,2019-05-11,642,Wil Devils II,1306,SG Mustangs/Lions,10,3,7,3,VR,box,
+9114,2019-05-11,343,Zürich Barracudas III,642,Wil Devils II,1,16,1,6,VR,box,
+9115,2019-05-11,1306,SG Mustangs/Lions,343,Zürich Barracudas III,10,11,12,8,VR,box,
+9116,2019-05-12,1190,Zürich Challengers 3,1308,SG Submarines/Bandits/Vikings,15,11,10,8,VR,box,
+9119,2019-05-18,1308,SG Submarines/Bandits/Vikings,642,Wil Devils II,7,15,10,11,VR,box,
+9120,2019-05-18,343,Zürich Barracudas III,1308,SG Submarines/Bandits/Vikings,33,9,18,8,VR,box,
+9121,2019-05-18,642,Wil Devils II,343,Zürich Barracudas III,14,4,16,4,VR,box,
+9126,2019-05-26,1308,SG Submarines/Bandits/Vikings,642,Wil Devils II,2,7,8,7,VR,box,
+9133,2019-06-01,343,Zürich Barracudas III,642,Wil Devils II,10,7,9,8,VR,box,
+9134,2019-06-01,1190,Zürich Challengers 3,343,Zürich Barracudas III,3,12,4,10,VR,box,date-inferred-from-neighbour-IDs
+9135,2019-06-01,642,Wil Devils II,1190,Zürich Challengers 3,19,0,15,3,VR,box,
+9136,2019-06-15,1308,SG Submarines/Bandits/Vikings,642,Wil Devils II,5,19,2,9,VR,box,
+9137,2019-06-15,1190,Zürich Challengers 3,1308,SG Submarines/Bandits/Vikings,4,19,2,8,VR,box,
+9138,2019-06-15,642,Wil Devils II,1190,Zürich Challengers 3,6,2,6,4,VR,box,
+9142,2019-06-29,1306,SG Mustangs/Lions,1190,Zürich Challengers 3,10,14,4,9,VR,box,
+9143,2019-06-29,642,Wil Devils II,1306,SG Mustangs/Lions,12,0,10,7,VR,box,
+9144,2019-06-29,1190,Zürich Challengers 3,642,Wil Devils II,1,25,4,6,VR,box,
+10656,2019-07-07,343,Zürich Barracudas III,1308,SG Submarines/Bandits/Vikings,8,11,6,5,VR,box,odd-ID-outside-VR-range
+9157,2019-07-14,1306,SG Mustangs/Lions,1190,Zürich Challengers 3,10,3,6,3,VR,box,
+9158,2019-07-14,1308,SG Submarines/Bandits/Vikings,1306,SG Mustangs/Lions,30,2,21,4,VR,box,
+9159,2019-07-14,1190,Zürich Challengers 3,1308,SG Submarines/Bandits/Vikings,9,5,3,1,VR,box,
+9164,2019-07-21,1190,Zürich Challengers 3,343,Zürich Barracudas III,5,8,5,5,VR,box,
+9168,2019-08-03,1306,SG Mustangs/Lions,343,Zürich Barracudas III,4,19,6,15,VR,box,
+9180,2019-08-18,1306,SG Mustangs/Lions,1190,Zürich Challengers 3,17,13,11,11,VR,box,

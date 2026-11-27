@@ -1,8 +1,10 @@
 {
-  "version": "3.15",
+  "version": "3.16",
   "date": "2026-11-27",
   "notes": [
-    "Standings for 2020, 2021 (NLB), 2022 and 2023: group tables worked out from every regular-season game on EasyScore, including games between the other teams.",
-    "2023: the two games against Bern Cardinals 2 (26 Aug and 2 Sep) were placement-round games, so they now count as playoffs, not regular season."
+    "Standings for 2017, 2018 and 2019: group tables worked out from every regular-season game on EasyScore.",
+    "2015 and 2016: the Eighters' win-loss record, home and road record and runs now come from their own game results instead of pitcher totals (no group table: EasyScore has no clear group for those years).",
+    "2015 counts both Eighters teams (two groups, one roster); 2016 counts the unfinished 13–6 game at Romanshorn as a win.",
+    "Team tab: home and road records are now shown for every season with a group table."
   ]
 }

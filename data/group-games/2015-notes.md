@@ -1,0 +1,34 @@
+# 2015 progress
+- Log Martin Moor 3882 L84 2015 off: VR 3663,3664,3665,3666; PL 3743,3744,3756 (ignored)
+- Box done: 3663,3664,3665,3666
+- Candidate teams: 1111, 1110, 348 (Sissach Frogs)
+- get_game 3665 done (box wrong, game 15-12)
+- Log Bienz 3474: VR 3653,3654,3663,3664,3665,3666,3702(vs Barracudas III),3707(0 PA)
+- Log Rosenberger 4019: VR also 3690 (vs Lions II), 3691
+- Box done: 3653,3654
+- Eighters VR ids: 3653,3654,3663,3664,3665,3666,3690,3691,3702,3707
+- Team 1110 & 1111 not in list_teams(84); names null in get_game. 1110 players: Mottay 47419, Ambühl, Réganély, Alleyn (French names). 1111 pitchers: 18435, Geiger 3657, Mharchat 3874, 3687, Borando 3497, Tran 4153
+- Box done 3690,3691,3702,3707; get_game 3691.
+- FINDING: two Eighters teams in L84 VR 2015: TeamID 342 (opp: 643 Dulliken, 1110, 1111, 348 Sissach) and TeamID 482 (opp: 393 Lions II, 1107, 343 Barracudas III, 1108). Shared roster (Rosenberger, Stoll, Acosta, Bienz play both). 482 games saved separately in 2015_eighters482.csv
+- 1107 roster: Schüpbach 4072, Kästli 3771, Hoffmann 3720, Hubler 3732 (license club 12)
+- get_standings(57): cumulative, names only; IDs 1107/1108/1110/1111/482/348 have null names (not in list_teams 84) -> no standings check possible for them. Dulliken 643 row 10-20 cumulative (not unique).
+- Logs: Mottay 47419 (1110): VR 3654,3655,3665,3667,3734; Kovac 3798 (643): 3653,3655; Geiger 3657 (1111): 3663,3662,3681,3684,3685; Meier 7016 (348): 3657,3658,3662,3664,3670,3679
+- Next: box for 3655,3657,3658,3662,3667,3670,3679,3681,3684,3685,3734 + probe gap IDs 3656,3659-61,3668-69,3671-78,3680,3682-83,3686-89
+- Box done 3655,3656,3657,3658. New team 1109 (pitchers 7000, Müller Jerome 3894, 18268)
+- Box 3662 done; 3659,3660,3661 box EMPTY -> get_game
+- 3659 (2015-06-07, 1110 @ 643 Dulliken): GameEnded=0, no score, not postponed flag -> NOT played/not entered; not saved. (1110 log has 3734 on 2015-06-07 - maybe replacement)
+- 3660: get_game empty (deleted id). 3661 (2015-06-07, 643 @ 1109, field Dulliken): GameEnded=0, unplayed; not saved.
+- Box 3670 done. 3667 box odd (T 6.0 IP vs B 3.1 IP, 7-4 home) -> get_game. 3668,3669 box empty -> get_game
+- get_game 3667: 7-7 tie. Umpires listed as 'Zürich Eighters West' -> 342 likely = Eighters West (482 = other Eighters team, probably 'East'?). 1111 roster club-lic 5 (Borando, Tran, Maier, Gyr); 1110 lic 3/6/20 (Alleyn, Ambühl, Mottay, Droxler)
+- 3668 (06-14, 643 @ 348) and 3669 (06-14, 1109 @ 643): GameEnded=0, unplayed, not saved. Pattern: Dulliken 643 games after Apr 12 unplayed (withdrawal?). 348 = 'Sissach Frogs (NLB Baseball)' team record.
+- Unplayed (GameEnded=0, no score) 2015-07-04: 3671 (348@1110, Bern Allmend), 3672 (1110@348), 3673 (342@1109, Reussbühl), 3674 (1109@342). Not saved.
+- Box done 3675,3676,3678 (Eighters game! not in Moor/Bienz/Rosenberger logs),3680; dates TBD. 3677 empty -> get_game
+- Dankwa 15766 pit log: VR 3654,3683(04-25),3663,3665,3678(07-18 vs Dulliken),3733(07-18 vs Sissach). 3677 get_game empty (deleted). Next box 3679,3681,3682,3683,3684..3689,3733..3740
+- TASK NARROWED (coordinator): only Eighters' own VR games; 342 and 482 both = Eighters. 482 games merged into 2015.csv.
+- Box done 3679,3681,3682,3683 (3683 = 1112 @ 482, 10-9). Pending: 3733 (07-18 482? vs Sissach), pitcher logs for completeness.
+- Pit logs: Betschart 9133: 3654,3691,3702,3707,3709(07-12 L). Stoll 4122: 3654,3664,3678,3690,3733(07-18 vs Sissach). R.Bienz 3475: 3685(04-25 L),3691,3701(05-30 vs Barracudas III, L),3702,3707,3709. A.Bienz 3474: 3653,3654,3664,3665,3666,3702. NEW Eighters ids: 3685,3701,3709,3733 (+3684 maybe)
+- Box done 3684,3685,3701,3709,3733. Eighters total so far 16 games: 342 6-2 (3653,3654,3663,3664,3665,3666,3678,3733); 482 1-7 (3683,3685,3690,3691,3701,3702,3707,3709). Next: league pitching stats round 57 to cross-check W/L.
+- Pitch logs Acosta 16578 (3683 L,3691,3701), Qizmolli 16581 (3685), Locher 16506 (3707). League pit stats r57: Al.Bienz 6G 3-0 RA17, Moor 2G 2-0 RA8, Stoll 5G 1-0 RA20, Betschart 5G 0-3 RA33, Dankwa 6G 1-2 RA31 (482-only pitchers R.Bienz/Acosta/Qizmolli/Locher not listed since 482 has no name).
+- CHECK OK: decisions 7W/9L = game results 7-9; sum pitcher RA 208 = game RA 208.
+- FINAL: 16 Eighters VR games (342: 8, 6-2; 482: 8, 1-7). W-L 7-9, home 3-5, away 4-4, RS 171, RA 208. meta written.
+- Not probed: IDs 3686-3689, 3692-3700, 3703-3706, 3708, 3710-3732, 3734+ (could hold unplayed 482 games; no played Eighters game missing per pitcher check).

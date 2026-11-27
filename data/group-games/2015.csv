@@ -1,0 +1,31 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+3663,2015-05-10,342,Zürich Eighters,1111,?,16,8,12,6,VR,box,
+3664,2015-05-10,348,Sissach Frogs,342,Zürich Eighters,2,15,3,7,VR,box,
+3666,2015-06-13,1111,?,342,Zürich Eighters,7,17,6,8,VR,box,
+3665,2015-06-13,342,Zürich Eighters,1110,?,15,12,3,8,VR,game,"box TOTALS incomplete (7-6, 2-3 IP); get_game 15-12 in 5 inn, GameEnded=1, checked by admin; played at Wil Lindenhof"
+3653,2015-04-12,342,Zürich Eighters,643,Dulliken Truck Star,5,4,9,2,VR,box,
+3654,2015-04-12,1110,?,342,Zürich Eighters,8,11,10,8,VR,box,
+3655,2015-04-12,643,Dulliken Truck Star,1110,?,0,11,2,10,VR,box,
+3656,2015-04-19,1111,?,1109,?,15,0,8,1,VR,box,
+3657,2015-04-19,348,Sissach Frogs,1111,?,10,11,9,9,VR,box,
+3658,2015-04-19,1109,?,348,Sissach Frogs,19,2,13,1,VR,box,
+3662,2015-05-10,1111,?,348,Sissach Frogs,14,4,8,6,VR,box,
+3670,2015-06-14,348,Sissach Frogs,1109,?,14,2,6,2,VR,box,
+3667,2015-06-13,1110,?,1111,?,7,7,8,5,VR,game,TIE 7-7 after 6 inn per get_game (box TOTALS wrong: 7-4 with 3.1 IP)
+3675,TBD,643,Dulliken Truck Star,1111,?,7,12,8,8,VR,box,
+3676,TBD,1111,?,643,Dulliken Truck Star,21,4,7,4,VR,box,
+3678,2015-07-18,643,Dulliken Truck Star,342,Zürich Eighters,10,7,7,9,VR,box,4 inn each side
+3680,TBD,1110,?,1109,?,6,5,6,7,VR,box,
+3679,2015-07-18,348,Sissach Frogs,643,Dulliken Truck Star,5,14,3,5,VR,box,
+3681,2015-05-17,1111,?,1110,?,7,11,8,11,VR,box,
+3682,TBD,1109,?,1111,?,13,10,13,4,VR,box,
+3683,2015-04-25,1112,?,482,Zürich Eighters (alt ID 482),10,9,6,4,VR,box,Eighters alt team 482
+3690,2015-05-16,482,Zürich Eighters (alt ID 482),393,Zürich Lions II,21,5,10,3,VR,box,second Eighters TeamID 482
+3691,2015-05-16,1107,?,482,Zürich Eighters (alt ID 482),18,5,12,9,VR,game,box TOTALS agree; get_game 18-5
+3702,2015-06-08,482,Zürich Eighters (alt ID 482),343,Zürich Barracudas III,6,23,7,12,VR,box,
+3707,2015-07-12,1108,?,482,Zürich Eighters (alt ID 482),28,3,20,3,VR,box,
+3685,2015-04-25,482,Zürich Eighters (alt ID 482),1108,?,3,20,3,12,VR,box,box pitcher TeamIDs 1108 for Geiger/Gyr (who pitched for 1111 elsewhere)
+3701,2015-05-30,343,Zürich Barracudas III,482,Zürich Eighters (alt ID 482),25,12,16,7,VR,box,
+3709,2015-07-12,482,Zürich Eighters (alt ID 482),1107,?,12,13,8,6,VR,box,
+3733,2015-07-18,342,Zürich Eighters,348,Sissach Frogs,14,15,10,13,VR,box,
+3684,2015-04-25,1108,?,1112,?,13,9,19,11,VR,box,not Eighters

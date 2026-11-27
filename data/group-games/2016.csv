@@ -1,0 +1,19 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+4197,2016-04-02,343,Zürich Barracudas III,1190,Zürich Challengers 3,12,6,,,VR,box,non-Eighters game (opponent cluster)
+4198,2016-04-02,1191,(1191 unnamed),343,Zürich Barracudas III,11,9,,,VR,box,non-Eighters game (opponent cluster)
+4203,2016-04-09,482,Zürich Eighters (dup ID 482),344,"(344 unnamed; Wil field, club-5 licences)",3,15,2,13,VR,box,
+4204,2016-04-09,1197,(1197 unnamed; Barracudas III players),482,Zürich Eighters (dup ID 482),18,13,10,6,VR,box,
+4205,2016-04-09,344,"(344 unnamed; Wil field, club-5 licences)",1197,(1197 unnamed; Barracudas III players),17,7,,,VR,box,non-Eighters game (opponent cluster)
+4206,2016-04-16,482,Zürich Eighters (dup ID 482),1194,(1194 unnamed),6,7,6,6,VR,box,
+4207,2016-04-16,1197,(1197 unnamed; Barracudas III players),482,Zürich Eighters (dup ID 482),5,10,8,4,VR,box,
+4214,2016-05-01,342,Zürich Eighters,1196,Bern Mammoths,16,7,10,4,VR,box,
+4219,2016-05-08,344,"(344 unnamed; Wil field, club-5 licences)",1112,(1112 unnamed; Romanshorn field),10,9,,,VR,box,non-Eighters game (opponent cluster)
+4220,2016-05-08,1197,(1197 unnamed; Barracudas III players),344,"(344 unnamed; Wil field, club-5 licences)",10,18,,,VR,box,non-Eighters game (opponent cluster)
+4224,2016-05-08,342,Zürich Eighters,393,Zürich Lions II,12,10,11,6,VR,box,
+4231,2016-05-21,1194,(1194 unnamed),344,"(344 unnamed; Wil field, club-5 licences)",7,5,,,VR,box,non-Eighters game (opponent cluster)
+4237,2016-07-16,343,Zürich Barracudas III,1107,(1107 unnamed),12,13,,,VR,box,non-Eighters game (opponent cluster)
+4240,2016-06-05,1192,Martigny Minotaures,342,Zürich Eighters,19,7,13,7,VR,box,
+4255,2016-06-26,344,"(344 unnamed; Wil field, club-5 licences)",906,(906 unnamed),23,1,,,VR,box,non-Eighters game (opponent cluster)
+4263,2016-07-10,906,(906 unnamed),482,Zürich Eighters (dup ID 482),7,8,,,VR,box,
+4271,2016-07-30,342,Zürich Eighters,1196,Bern Mammoths,8,21,4,15,VR,box,
+4357,2016-08-06,482,Zürich Eighters (dup ID 482),1112,(1112 unnamed; Romanshorn field),13,6,,,VR,game,get_game AwayRuns 13 HomeRuns 6 but GameEnded=0; box has only 1 inning (0-1); not admin-checked
