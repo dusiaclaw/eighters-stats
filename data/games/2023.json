@@ -380,7 +380,8 @@
     1,
     0,
     0
-   ]
+   ],
+   "rd": "PL"
   },
   {
    "d": "2023-09-02",
@@ -410,7 +411,9 @@
     4,
     3,
     null
-   ]
+   ],
+   "rd": "PL"
   }
- ]
+ ],
+ "coverage_note": " Games 16374 and 16375 (vs Bern Cardinals 2) are round 410 (PL), checked with get_game 2026-11-27."
 }

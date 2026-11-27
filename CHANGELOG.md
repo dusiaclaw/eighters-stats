@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.15 (2026-11-27)
+- Standings for 2020, 2021 (NLB), 2022 and 2023: group tables worked out from every regular-season game on EasyScore, including games between the other teams.
+- 2023: the two games against Bern Cardinals 2 (26 Aug and 2 Sep) were placement-round games, so they now count as playoffs, not regular season.
+
+## v3.14 (2026-11-27)
+- Team tab: summary first, then standings and runs by inning, team totals, and line scores at the bottom.
+- Team win and loss record now comes from the game line scores, not pitcher decisions.
+- 2020 playoff games (round 410) are marked, with a switch on the Team tab for regular season, playoffs or all games.
+
+## v3.13 (2026-11-27)
+- Runs by inning and game line scores for 2020, 2021 (NLB), 2022 and 2023.
+- Games in the 2020 season (regular season and the round 410 PL games) are now listed with their line scores.
+
 ## v3.12 (2026-11-26)
 - Players: click a column heading in Season by season to sort it (click again to reverse).
 - Home: Hall of Fame and All-time leaders have a gold outline on the dark page.

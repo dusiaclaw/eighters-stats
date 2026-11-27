@@ -1,0 +1,13 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+14361,2022-05-29,11294,Hünenberg Unicorns,1190,Zürich Challengers 3,0,9,,,VR,box,given in task
+14367,2022-06-12,11294,Hünenberg Unicorns,340,Bern Cardinals 2,18,3,15,2,VR,box,
+14337,2022-04-24,11294,Hünenberg Unicorns,1190,Zürich Challengers 3,4,13,7,10,VR,box,
+14368,2022-06-12,340,Bern Cardinals 2,11294,Hünenberg Unicorns,2,13,5,7,VR,box,
+14376,2022-08-07,11294,Hünenberg Unicorns,340,Bern Cardinals 2,17,14,17,8,VR,box,
+14377,2022-08-07,340,Bern Cardinals 2,11294,Hünenberg Unicorns,9,14,10,7,VR,box,
+14390,2022-07-02,11294,Hünenberg Unicorns,340,Bern Cardinals 2,16,10,10,6,VR,box,
+14399,2022-07-10,11294,Hünenberg Unicorns,340,Bern Cardinals 2,15,3,12,2,VR,box,
+14398,2022-07-10,1190,Zürich Challengers 3,11294,Hünenberg Unicorns,11,12,4,8,VR,game,3 innings only; played at Bern Allmend
+14433,2022-08-13,340,Bern Cardinals 2,1190,Zürich Challengers 3,14,4,5,3,VR,box,
+14511,2022-06-18,340,Bern Cardinals 2,1190,Zürich Challengers 3,5,8,3,4,VR,box,ID out of sequence (added later?)
+14397,2022-07-10,340,Bern Cardinals 2,1190,Zürich Challengers 3,21,10,17,8,VR,box,

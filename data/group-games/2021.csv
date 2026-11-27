@@ -1,0 +1,41 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+12542,2021-08-14,11693,Zürich Eighters,276,Embrach Mustangs,0,20,2,19,VR,box,eighters-check confirmed
+12543,2021-08-14,11693,Zürich Eighters,276,Embrach Mustangs,1,19,3,13,VR,box,eighters-check confirmed
+12509,2021-08-02,11693,Zürich Eighters,321,Zürich Barracudas II,1,32,2,24,VR,box,eighters-check confirmed
+12468,2021-06-05,321,Zürich Barracudas II,276,Embrach Mustangs,20,0,15,1,VR,box,
+12469,2021-06-05,321,Zürich Barracudas II,276,Embrach Mustangs,15,2,2,1,VR,box,
+12472,2021-06-06,348,Sissach Frogs,6704,Lausanne Indians,1,16,3,11,VR,box,
+12473,2021-06-06,348,Sissach Frogs,6704,Lausanne Indians,3,7,5,9,VR,box,
+12490,2021-06-20,6704,Lausanne Indians,276,Embrach Mustangs,7,15,8,10,VR,box,
+12491,2021-06-20,6704,Lausanne Indians,276,Embrach Mustangs,17,0,11,4,VR,box,
+12494,2021-06-26,6704,Lausanne Indians,321,Zürich Barracudas II,1,2,2,6,VR,box,
+12495,2021-06-26,6704,Lausanne Indians,321,Zürich Barracudas II,10,11,11,9,VR,box,
+12512,2021-07-11,6704,Lausanne Indians,348,Sissach Frogs,5,11,4,11,VR,box,
+12513,2021-07-11,6704,Lausanne Indians,348,Sissach Frogs,4,7,3,14,VR,box,
+12527,2021-07-25,276,Embrach Mustangs,321,Zürich Barracudas II,5,6,3,9,VR,box,
+12528,2021-08-24,276,Embrach Mustangs,321,Zürich Barracudas II,7,8,3,12,VR,box,log date 08-24 though ID sits beside 12527 (07-25); likely suspended and completed later
+12532,2021-07-31,348,Sissach Frogs,276,Embrach Mustangs,9,10,7,8,VR,box,
+12533,2021-07-31,348,Sissach Frogs,276,Embrach Mustangs,10,7,13,6,VR,box,
+12548,2021-08-15,321,Zürich Barracudas II,6704,Lausanne Indians,13,2,7,5,VR,box,
+12549,2021-08-15,321,Zürich Barracudas II,6704,Lausanne Indians,2,17,5,12,VR,game,box pitcher rows inconsistent; TOTALS and get_game agree (5 inn)
+12554,2021-08-21,321,Zürich Barracudas II,348,Sissach Frogs,6,2,9,9,VR,box,
+12558,2021-08-22,276,Embrach Mustangs,6704,Lausanne Indians,5,3,5,5,VR,box,
+12559,2021-08-22,276,Embrach Mustangs,6704,Lausanne Indians,3,6,2,10,VR,box,
+12555,2021-08-21,321,Zürich Barracudas II,348,Sissach Frogs,3,8,8,5,VR,game,RUN CONFLICT: HomeRuns field and inning line sum = 8 but box TOTALS/HomeTeamScore/line total = 9; Sissach win either way
+12564,2021-08-29,276,Embrach Mustangs,348,Sissach Frogs,18,2,10,4,VR,box,
+12565,2021-08-29,276,Embrach Mustangs,348,Sissach Frogs,11,1,9,6,VR,box,
+12536,2021-08-07,347,Therwil Flyers II,276,Embrach Mustangs,2,4,4,7,VR,box,
+12560,2021-08-28,6704,Lausanne Indians,347,Therwil Flyers II,4,15,4,9,VR,box,
+12561,2021-08-28,6704,Lausanne Indians,347,Therwil Flyers II,2,11,1,13,VR,box,
+12478,2021-06-13,276,Embrach Mustangs,347,Therwil Flyers II,13,6,9,10,VR,box,
+12479,2021-06-13,276,Embrach Mustangs,347,Therwil Flyers II,9,14,5,13,VR,box,
+12488,2021-06-20,347,Therwil Flyers II,321,Zürich Barracudas II,3,4,8,8,VR,box,
+12489,2021-06-20,347,Therwil Flyers II,321,Zürich Barracudas II,17,22,12,18,VR,box,
+12498,2021-06-27,347,Therwil Flyers II,348,Sissach Frogs,13,16,17,11,VR,box,
+12499,2021-06-27,347,Therwil Flyers II,348,Sissach Frogs,7,6,5,11,VR,box,
+12504,2021-07-04,347,Therwil Flyers II,6704,Lausanne Indians,10,4,10,6,VR,box,
+12505,2021-07-04,347,Therwil Flyers II,6704,Lausanne Indians,3,4,4,5,VR,box,
+12514,2021-07-11,321,Zürich Barracudas II,347,Therwil Flyers II,9,2,9,5,VR,box,
+12515,2021-07-11,321,Zürich Barracudas II,347,Therwil Flyers II,4,6,6,5,VR,box,
+12545,2021-08-14,348,Sissach Frogs,347,Therwil Flyers II,14,6,9,13,VR,box,
+12544,2021-08-14,348,Sissach Frogs,347,Therwil Flyers II,11,14,9,11,VR,box,pitcher rows inconsistent; TOTALS confirmed by get_game
