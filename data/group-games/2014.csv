@@ -1,0 +1,36 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+3086,2014-04-12,342,Zürich Eighters,351,?351,7,20,6,18,VR,box,
+3087,2014-04-12,643,Dulliken Truck Star,342,Zürich Eighters,17,4,15,4,VR,box,
+3092,2014-04-26,351,?351,342,Zürich Eighters,7,13,7,9,VR,box,
+3093,2014-04-26,342,Zürich Eighters,904,?904,4,7,3,6,VR,box,short game (3 inn)
+3114,2014-05-24,342,Zürich Eighters,349,Luzern Eagles 2,3,4,5,5,VR,box,
+3115,2014-05-24,641,Yverdon Golgoths,342,Zürich Eighters,6,7,5,6,VR,box,
+3136,2014-07-05,641,Yverdon Golgoths,342,Zürich Eighters,4,5,7,7,VR,box,
+3135,2014-07-05,342,Zürich Eighters,343,Zürich Barracudas III,9,10,12,12,VR,box,
+3141,2014-08-10,342,Zürich Eighters,343,Zürich Barracudas III,9,8,6,10,VR,box,
+3142,2014-08-10,904,?904,342,Zürich Eighters,11,7,11,7,VR,box,
+3117,2014-05-31,342,Zürich Eighters,643,Dulliken Truck Star,13,4,11,6,VR,box,
+3088,2014-04-12,351,?351,643,Dulliken Truck Star,18,5,16,7,VR,box,
+3094,2014-04-26,351,?351,904,?904,4,10,6,5,VR,box,
+3095,2014-05-03,343,Zürich Barracudas III,643,Dulliken Truck Star,4,5,1,4,VR,box,
+3096,2014-05-03,641,Yverdon Golgoths,343,Zürich Barracudas III,2,4,3,3,VR,box,
+3104,2014-05-11,643,Dulliken Truck Star,351,?351,2,10,2,7,VR,box,
+3105,2014-05-11,343,Zürich Barracudas III,643,Dulliken Truck Star,14,8,9,6,VR,box,both Barr-Dulliken games (3095 3105) have Dulliken home
+3106,2014-05-31,351,?351,343,Zürich Barracudas III,13,2,10,3,VR,box,
+3107,2014-05-17,343,Zürich Barracudas III,349,Luzern Eagles 2,5,15,7,13,VR,box,
+3108,2014-05-17,904,?904,343,Zürich Barracudas III,23,7,15,8,VR,box,
+3109,2014-05-17,349,Luzern Eagles 2,904,?904,4,18,6,16,VR,box,
+3116,2014-05-24,349,Luzern Eagles 2,641,Yverdon Golgoths,4,9,8,7,VR,box,
+3123,2014-06-15,351,?351,904,?904,5,6,7,8,VR,box,
+3124,2014-06-15,641,Yverdon Golgoths,351,?351,9,9,7,5,VR,box,TOTALS show 9-9 tie (T IP 2.0) - doubtful
+3125,2014-06-15,904,?904,641,Yverdon Golgoths,14,1,9,4,VR,box,
+3128,2014-06-21,904,?904,349,Luzern Eagles 2,13,7,6,7,VR,box,
+3098,2014-05-04,906,?906,482,Zürich Eighters (alt ID 482),28,2,18,3,VR,box,Eighters 2nd team ID 482
+3100,2014-05-04,482,Zürich Eighters (alt ID 482),309,SG MUS/VIK,9,18,9,6,VR,box,Eighters 2nd team ID 482
+3112,2014-05-18,482,Zürich Eighters (alt ID 482),344,?344 (Wil Pirates? P Borando),5,6,4,5,VR,box,Eighters 2nd team ID 482
+3113,2014-05-18,344,?344,482,Zürich Eighters (alt ID 482),18,7,11,9,VR,box,Eighters 2nd team ID 482
+3148,2014-07-20,309,SG MUS/VIK,482,Zürich Eighters (alt ID 482),20,2,11,6,VR,box,Eighters 2nd team ID 482
+3130,2014-06-22,482,Zürich Eighters (alt ID 482),905,?905 (at Romanshorn),0,21,1,11,VR,game,Eighters 2nd team ID 482; 4 inn
+3190,2014-08-05,905,?905,482,Zürich Eighters (alt ID 482),24,1,17,6,VR,box,Eighters 2nd team ID 482; get_game GameEnded=0 but linescore 24-1 (5 inn) at Zürich Heerenschürli; game added 2014-08-11
+3146,2014-08-03,351,?351,349,Luzern Eagles 2,5,6,8,8,VR,box,
+3118,2014-05-31,349,Luzern Eagles 2,342,Zürich Eighters,0,7,,,VR,game,FORFEIT (Forfeit=1) - Eighters win 7-0 by forfeit; no box

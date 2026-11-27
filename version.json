@@ -1,10 +1,8 @@
 {
-  "version": "3.16",
+  "version": "3.17",
   "date": "2026-11-27",
   "notes": [
-    "Standings for 2017, 2018 and 2019: group tables worked out from every regular-season game on EasyScore.",
-    "2015 and 2016: the Eighters' win-loss record, home and road record and runs now come from their own game results instead of pitcher totals (no group table: EasyScore has no clear group for those years).",
-    "2015 counts both Eighters teams (two groups, one roster); 2016 counts the unfinished 13–6 game at Romanshorn as a win.",
-    "Team tab: home and road records are now shown for every season with a group table."
+    "2011 to 2014: the Eighters' win-loss record, home and road record and runs now come from their own regular-season game results instead of pitcher totals.",
+    "2012 to 2014 count both Eighters teams (EasyScore lists a second, unnamed Eighters team with the same roster)."
   ]
 }

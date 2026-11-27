@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.17 (2026-11-27)
+- 2011 to 2014: the Eighters' win-loss record, home and road record and runs now come from their own regular-season game results instead of pitcher totals.
+- 2012 to 2014 count both Eighters teams (EasyScore lists a second, unnamed Eighters team with the same roster).
+
 ## v3.16 (2026-11-27)
 - Standings for 2017, 2018 and 2019: group tables worked out from every regular-season game on EasyScore.
 - 2015 and 2016: the Eighters' win-loss record, home and road record and runs now come from their own game results instead of pitcher totals (no group table: EasyScore has no clear group for those years).

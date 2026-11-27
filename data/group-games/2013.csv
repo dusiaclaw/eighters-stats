@@ -1,0 +1,21 @@
+id,date,away_id,away,home_id,home,away_r,home_r,away_h,home_h,round,source,note
+2424,2013-04-20,342,Zürich Eighters,351,(team 351; name null in EasyScore),5,13,2,6,VR,box,home team 351 deleted/unnamed; field Bern Allmend; lic prefix 01 3; umpires Thun Hunters
+2425,2013-04-20,336,(team 336; name null in EasyScore),342,Zürich Eighters,16,7,10,6,VR,box,away team 336 unnamed in L84 team list
+2203,2013-05-04,342,Zürich Eighters,349,Luzern Eagles 2,11,12,8,8,VR,box,
+2434,2013-05-04,641,Yverdon Golgoths,342,Zürich Eighters,18,7,7,8,VR,box,
+2449,2013-05-26,309,SG MUS/VIK,482,Zürich Eighters,14,8,14,11,VR,box,Eighters under TeamID 482 (deleted/unnamed duplicate) per pitcher rows
+2604,2013-06-16,482,Zürich Eighters,481,(team 481; name null in EasyScore),4,24,5,13,VR,box+game,"Eighters as TeamID 482 (get_game confirms; lineup lic 01 23); home 481 lic prefix 01 11, field Zürich Heerenschürli, umpires Barracudas3; game created by user decf90e1"
+2605,2013-06-16,343,Zürich Barracudas III,482,Zürich Eighters,24,16,11,14,VR,box,Eighters as TeamID 482 per pitcher rows
+2610,2013-06-23,342,Zürich Eighters,336,(team 336; name null in EasyScore),7,17,13,12,VR,box,
+2611,2013-06-23,351,(team 351; name null in EasyScore),342,Zürich Eighters,7,8,3,10,VR,box+game,TOTALS T RA=8 vs single pitcher row RA=9; get_game confirms 7-8 (8 inn)
+2613,2013-06-30,349,Luzern Eagles 2,342,Zürich Eighters,8,18,7,10,VR,box,
+2615,2013-06-30,342,Zürich Eighters,641,Yverdon Golgoths,5,6,10,6,VR,box,
+2442,2013-07-13,341,(team 341; name null in EasyScore),342,Zürich Eighters,19,4,11,8,VR,box,away pitcher Cordero Cruz 6363 also pitched for 481 in 2604 -> 341 and 481 likely same club (lic 01 11) under two IDs
+2427,2013-04-27,482,Zürich Eighters,642,Wil Devils II,7,15,4,9,VR,box,Eighters as TeamID 482 per pitcher rows
+2428,2013-04-27,642,Wil Devils II,482,Zürich Eighters,20,6,11,6,VR,box,Eighters as TeamID 482 per pitcher rows
+2448,2013-05-26,482,Zürich Eighters,343,Zürich Barracudas III,11,24,7,16,VR,box,Eighters as TeamID 482 per pitcher rows
+2444,2013-07-13,342,Zürich Eighters,643,Dulliken Truck Star,23,3,15,5,VR,box,
+2580,2013-07-14,643,Dulliken Truck Star,342,Zürich Eighters,10,13,6,10,VR,box,
+2582,2013-07-14,342,Zürich Eighters,341,(team 341; name null in EasyScore),2,24,4,16,VR,box,
+2583,2013-07-20,482,Zürich Eighters,481,(team 481; name null in EasyScore),5,18,4,11,VR,box,Eighters as TeamID 482 per pitcher rows
+2585,2013-07-20,345,SG Submarines/Bandits,482,Zürich Eighters,6,10,9,6,VR,box,Eighters as TeamID 482 per pitcher rows

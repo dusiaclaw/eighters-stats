@@ -1,0 +1,12 @@
+{
+ "league": "1.Liga Baseball",
+ "league_id": 84,
+ "vr_round": 57,
+ "group": "1.Liga Baseball",
+ "eighters_id": 342,
+ "eighters_alt_ids": [
+  482
+ ],
+ "scope": "Eighters VR games only (task narrowed); no group table",
+ "notes": "482 is an unnamed duplicate Eighters ID (licences 01 23). Opponent IDs 336, 341, 351, 481 are unnamed/deleted teams; 341 and 481 share pitcher Cordero Cruz (lic club 11)."
+}
