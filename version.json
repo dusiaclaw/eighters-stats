@@ -1,8 +1,9 @@
 {
-  "version": "3.13",
+  "version": "3.14",
   "date": "2026-11-27",
   "notes": [
-    "Runs by inning and game line scores for 2020, 2021 (NLB), 2022 and 2023.",
-    "Games in the 2020 season (regular season and the round 410 PL games) are now listed with their line scores."
+    "Team tab: summary first, then standings and runs by inning, team totals, and line scores at the bottom.",
+    "Team win and loss record now comes from the game line scores, not pitcher decisions.",
+    "2020 playoff games (round 410) are marked, with a switch on the Team tab for regular season, playoffs or all games."
   ]
 }

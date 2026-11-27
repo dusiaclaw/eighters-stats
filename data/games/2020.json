@@ -4,7 +4,7 @@
  "league_id": 84,
  "team_id": 342,
  "source": "EasyScore: get_stats (game log) for player IDs, then get_game (line score) via connector",
- "coverage_note": "Regular season (round 57) plus 5 games in round 410 (PL). Game IDs from player logs of 4 Eighters players; not checked against a full schedule",
+ "coverage_note": "Regular season (round 57, VR) plus 5 round 410 (PL) playoff games. Each game is marked rd VR or PL. Game IDs checked against EasyScore get_game (round field).",
  "games": [
   {
    "d": "2020-07-05",
@@ -30,7 +30,8 @@
     4,
     0,
     1
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-07-05",
@@ -58,7 +59,8 @@
     2,
     0,
     0
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-08-02",
@@ -86,7 +88,8 @@
     1,
     0,
     1
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-08-02",
@@ -112,7 +115,8 @@
     1,
     2,
     null
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-09-05",
@@ -140,7 +144,8 @@
     2,
     0,
     2
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-09-05",
@@ -166,7 +171,8 @@
     1,
     0,
     4
-   ]
+   ],
+   "rd": "VR"
   },
   {
    "d": "2020-09-12",
@@ -196,7 +202,8 @@
     1,
     3,
     0
-   ]
+   ],
+   "rd": "PL"
   },
   {
    "d": "2020-09-13",
@@ -226,7 +233,8 @@
     2,
     3,
     null
-   ]
+   ],
+   "rd": "PL"
   },
   {
    "d": "2020-09-19",
@@ -256,7 +264,8 @@
     1,
     0,
     4
-   ]
+   ],
+   "rd": "PL"
   },
   {
    "d": "2020-09-27",
@@ -286,7 +295,8 @@
     5,
     2,
     1
-   ]
+   ],
+   "rd": "PL"
   },
   {
    "d": "2020-09-27",
@@ -316,7 +326,8 @@
     1,
     0,
     4
-   ]
+   ],
+   "rd": "PL"
   }
  ]
 }
