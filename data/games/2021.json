@@ -1,0 +1,276 @@
+{
+ "season": 2021,
+ "league": "NLB Baseball",
+ "league_id": 83,
+ "team_id": 11693,
+ "source": "EasyScore: get_stats (game log) for player IDs, then get_game (line score) via connector",
+ "coverage_note": "Game IDs from player logs of 9 Eighters players; record matches round 53 standings (0-10, RS 18, RA 191)",
+ "games": [
+  {
+   "d": "2021-06-13",
+   "id": 12480,
+   "opp": "Lausanne Indians",
+   "home": 1,
+   "r": 0,
+   "ra": 18,
+   "h": 2,
+   "e": 4,
+   "oh": 13,
+   "oe": 0,
+   "ln": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    1,
+    5,
+    2,
+    8,
+    2
+   ]
+  },
+  {
+   "d": "2021-06-13",
+   "id": 12481,
+   "opp": "Lausanne Indians",
+   "home": 1,
+   "r": 3,
+   "ra": 22,
+   "h": 4,
+   "e": 7,
+   "oh": 18,
+   "oe": 2,
+   "ln": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1
+   ],
+   "oln": [
+    2,
+    3,
+    0,
+    1,
+    8,
+    8
+   ]
+  },
+  {
+   "d": "2021-06-19",
+   "id": 12484,
+   "opp": "Sissach Frogs",
+   "home": 0,
+   "r": 3,
+   "ra": 7,
+   "h": 3,
+   "e": 2,
+   "oh": 7,
+   "oe": 2,
+   "ln": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "oln": [
+    0,
+    1,
+    3,
+    0,
+    2,
+    1,
+    null
+   ]
+  },
+  {
+   "d": "2021-06-19",
+   "id": 12485,
+   "opp": "Sissach Frogs",
+   "home": 0,
+   "r": 4,
+   "ra": 14,
+   "h": 4,
+   "e": 1,
+   "oh": 14,
+   "oe": 2,
+   "ln": [
+    1,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    3,
+    2,
+    0,
+    2,
+    1,
+    6
+   ]
+  },
+  {
+   "d": "2021-07-05",
+   "id": 12508,
+   "opp": "Zürich Barracudas II",
+   "home": 1,
+   "r": 1,
+   "ra": 19,
+   "h": 2,
+   "e": 8,
+   "oh": 21,
+   "oe": 0,
+   "ln": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    3,
+    0,
+    2,
+    4,
+    5,
+    5
+   ]
+  },
+  {
+   "d": "2021-07-18",
+   "id": 12522,
+   "opp": "Embrach Mustangs",
+   "home": 1,
+   "r": 0,
+   "ra": 19,
+   "h": 1,
+   "e": 5,
+   "oh": 15,
+   "oe": 1,
+   "ln": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    6,
+    2,
+    2,
+    2,
+    7
+   ]
+  },
+  {
+   "d": "2021-07-18",
+   "id": 12523,
+   "opp": "Embrach Mustangs",
+   "home": 1,
+   "r": 5,
+   "ra": 21,
+   "h": 10,
+   "e": 5,
+   "oh": 13,
+   "oe": 4,
+   "ln": [
+    2,
+    1,
+    1,
+    1,
+    0
+   ],
+   "oln": [
+    2,
+    6,
+    2,
+    7,
+    4
+   ]
+  },
+  {
+   "d": "2021-08-02",
+   "id": 12509,
+   "opp": "Zürich Barracudas II",
+   "home": 0,
+   "r": 1,
+   "ra": 32,
+   "h": 2,
+   "e": 8,
+   "oh": 24,
+   "oe": 1,
+   "ln": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "oln": [
+    11,
+    7,
+    14,
+    null
+   ]
+  },
+  {
+   "d": "2021-08-14",
+   "id": 12542,
+   "opp": "Embrach Mustangs",
+   "home": 0,
+   "r": 0,
+   "ra": 20,
+   "h": 2,
+   "e": 2,
+   "oh": 19,
+   "oe": 0,
+   "ln": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    11,
+    2,
+    2,
+    5
+   ]
+  },
+  {
+   "d": "2021-08-14",
+   "id": 12543,
+   "opp": "Embrach Mustangs",
+   "home": 0,
+   "r": 1,
+   "ra": 19,
+   "h": 3,
+   "e": 8,
+   "oh": 13,
+   "oe": 1,
+   "ln": [
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "oln": [
+    6,
+    1,
+    5,
+    7,
+    null
+   ]
+  }
+ ]
+}
