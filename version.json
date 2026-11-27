@@ -1,10 +1,8 @@
 {
-  "version": "3.12",
-  "date": "2026-11-26",
+  "version": "3.13",
+  "date": "2026-11-27",
   "notes": [
-    "Players: click a column heading in Season by season to sort it (click again to reverse).",
-    "Home: Hall of Fame and All-time leaders have a gold outline on the dark page.",
-    "Settings: a note that the app is best viewed when opened on a PC.",
-    "Phone: the player bar reads PLAYER: with the name, or Select player."
+    "Runs by inning and game line scores for 2020, 2021 (NLB), 2022 and 2023.",
+    "Games in the 2020 season (regular season and the round 410 PL games) are now listed with their line scores."
   ]
 }
